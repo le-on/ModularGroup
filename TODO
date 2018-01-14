@@ -1,0 +1,7 @@
+- make modular subgroup object immutable
+- add references to papers
+- cusp object?
+- more examples in documentation
+- tests
+- implement möbius transformations as group action?
+- implement alternative method for calculating cusps for congruence subgroups
