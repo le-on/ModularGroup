@@ -6,3 +6,4 @@
 - implement möbius transformations as group action?
 - implement alternative method for calculating cusps for congruence subgroups
 - smarter coset representative computation?
+- implement 'Cusps' for 'IsModularSubgroup and HasCuspsRedundant'
