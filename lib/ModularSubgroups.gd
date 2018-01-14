@@ -6,6 +6,7 @@ DeclareSynonym("IsDefaultModularSubgroup", IsModularSubgroup and IsModularSubgro
 DeclareAttribute("Index", IsModularSubgroup);
 DeclareAttribute("IsCongruenceSubgroup", IsModularSubgroup);
 DeclareAttribute("Cusps", IsModularSubgroup);
+DeclareAttribute("CuspsRedundant", IsModularSubgroup);
 DeclareAttribute("RightCosetRepresentatives", IsModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsModularSubgroup);
 DeclareAttribute("GeneratorsOfGroup", IsModularSubgroup);

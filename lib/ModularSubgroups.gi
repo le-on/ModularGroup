@@ -204,13 +204,18 @@ end);
 #! @Description
 #!  Tests whether a given modular subgroup is a congruence subgroup.
 InstallMethod(IsCongruenceSubgroup, "for a modular subgroup", [IsModularSubgroup], function(G)
-  local s, t, r, N, e, m, a, b, c, d, p, q, u;
+  local s, t, r, L, N, e, m, a, b, c, d, p, q, u;
 
   s := SAction(G);
   t := TAction(G);
   r := s^2*t*s^-1*t;
 
-  N := GeneralizedLevel(G);
+  L := GeneralizedLevel(G);
+  if IsElementOf([[-1,0],[0,-1]], G) then
+    N := L;
+  else
+    N := 2 * L;
+  fi;
 
   e := 1;
   while RemInt(N, 2) <> 1 do
@@ -281,18 +286,16 @@ end);
 #! @Description
 #!  Computes the generalized level (i.e. the lowest common multiple of all cusp
 #!  widths) of a given modular subgroup.
-#!  Note: Since the group is given in a coset permutation representation, there
-#!  is no need to calculate all cusps and their widths for this! Hence, this
-#!  method is rather fast.
 InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
-  local s, t;
+  local s, t, cusps, widths, c;
   s := SAction(G);
   t := TAction(G);
-  if 1^(s^2)=1 then # group is even, i.e. it contains -1
-    return Order(t);
-  else
-    return 2 * Order(t);
-  fi;
+  cusps := CuspsRedundant(G);
+  widths := [];
+  for c in cusps do
+    Add(widths, CuspWidth(c, G));
+  od;
+  return Lcm(widths);
 end);
 
 #! @Arguments G
@@ -484,7 +487,7 @@ end);
 #! @Returns a list of cusps
 #! @Label for a modular subgroup
 #! @Description
-#!  Calculates a list of cusp representative for a given modular subgroup.
+#!  Calculates a list of inequivalent cusp representative for a given modular subgroup.
 InstallMethod(Cusps, [IsModularSubgroup], function(G)
   local coset_reps, i, cusps, r, c, known, o;
 
@@ -504,6 +507,19 @@ InstallMethod(Cusps, [IsModularSubgroup], function(G)
     if not known then
       Add(cusps, c);
     fi;
+  od;
+  return cusps;
+end);
+InstallMethod(CuspsRedundant, [IsModularSubgroup], function(G)
+  local coset_reps, i, cusps, r, c, known, o;
+
+  i := infinity;
+  cusps := [i];
+  coset_reps := RightCosetRepresentatives(G);
+
+  for r in coset_reps do
+    c := MoebiusTransformation(r, i);
+    Add(cusps, c);
   od;
   return cusps;
 end);
