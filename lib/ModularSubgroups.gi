@@ -210,11 +210,7 @@ InstallMethod(IsCongruenceSubgroup, "for a modular subgroup", [IsModularSubgroup
   t := TAction(G);
   r := s^2*t*s^-1*t;
 
-  if s^2 = () then
-    N := Order(t);
-  else
-    N := 2*Order(t);
-  fi;
+  N := GeneralizedLevel(G);
 
   e := 1;
   while RemInt(N, 2) <> 1 do
