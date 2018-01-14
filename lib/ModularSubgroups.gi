@@ -292,7 +292,7 @@ InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
   local s, t;
   s := SAction(G);
   t := TAction(G);
-  if s^2 = () then # group is even, i.e. it contains -1
+  if 1^(s^2)=1 then # group is even, i.e. it contains -1
     return Order(t);
   else
     return 2 * Order(t);
