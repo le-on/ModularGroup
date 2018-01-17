@@ -4,6 +4,7 @@
 - more examples in documentation
 - tests
 - implement möbius transformations as group action?
-- implement alternative method for calculating cusps for congruence subgroups
+- implement alternative method for calculating cusps for common congruence subgroups?
 - smarter coset representative computation?
-- implement 'Cusps' for 'IsModularSubgroup and HasCuspsRedundant'
+- implement 'Cusps' for 'IsModularSubgroup and HasCuspsRedundant' (-> use group actions and orbits?)
+- 'Print' functionality for the ModularSubgroup object
