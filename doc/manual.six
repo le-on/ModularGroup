@@ -1,0 +1,77 @@
+#SIXFORMAT  GapDocGAP
+HELPBOOKINFOSIXTMP := rec(
+encoding := "UTF-8",
+bookname := "ModularGroup",
+entries :=
+[ [ "Title page", ".", [ 0, 0, 0 ], 1, 1, "title page", "X7D2C85EC87DD46E5" ],
+  [ "Table of Contents", ".-1", [ 0, 0, 1 ], 41, 2, "table of contents", 
+      "X8537FEB07AF2BEC8" ], 
+  [ 
+      "\033[1X\033[33X\033[0;-2YThe Modular Group and its subgroups\033[133X\033[\
+101X", "1", [ 1, 0, 0 ], 1, 3, "the modular group and its subgroups", 
+      "X7CFC464D875B9922" ], 
+  [ 
+      "\033[1X\033[33X\033[0;-2YConstruction of modular subgroups\033[133X\033[10\
+1X", "1.1", [ 1, 1, 0 ], 9, 3, "construction of modular subgroups", 
+      "X82B1267A8369ABC3" ], 
+  [ 
+      "\033[1X\033[33X\033[0;-2YComputations with modular subgroups\033[133X\033[\
+101X", "1.2", [ 1, 2, 0 ], 85, 4, "computations with modular subgroups", 
+      "X85234B2885D8DF56" ], 
+  [ "Index", "ind", [ "Ind", 0, 0 ], 1, 7, "index", "X83A0356F839C696F" ], 
+  [ "\033[2XModularSubgroup\033[102X for two permutations", "1.1-1", 
+      [ 1, 1, 1 ], 16, 3, "modularsubgroup for two permutations", 
+      "X874D675284A86159" ], 
+  [ "\033[2XModularSubgroup\033[102X for a list of matrices", "1.1-2", 
+      [ 1, 1, 2 ], 24, 3, "modularsubgroup for a list of matrices", 
+      "X86C13616837F567D" ], 
+  [ "\033[2XDefinesCosetAction\033[102X for two permutations", "1.1-3", 
+      [ 1, 1, 3 ], 42, 4, "definescosetaction for two permutations", 
+      "X811EE02082291F48" ], 
+  [ 
+      "\033[2XCosetActionFromGenerators\033[102X for a list of generator matrices\
+", "1.1-4", [ 1, 1, 4 ], 52, 4, 
+      "cosetactionfromgenerators for a list of generator matrices", 
+      "X7954F4F283B4F8C3" ], 
+  [ "\033[2XSTDecomposition\033[102X for a matrix in sl(2,z)", "1.1-5", 
+      [ 1, 1, 5 ], 61, 4, "stdecomposition for a matrix in sl 2 z", 
+      "X7C82B9BE807EF3A8" ], 
+  [ "\033[2XSAction\033[102X for a modular subgroup", "1.1-6", [ 1, 1, 6 ], 
+      69, 4, "saction for a modular subgroup", "X816B8B0084130418" ], 
+  [ "\033[2XTAction\033[102X for a modular subgroup", "1.1-7", [ 1, 1, 7 ], 
+      77, 4, "taction for a modular subgroup", "X7A39A1937DF54D42" ], 
+  [ "\033[2XIndex\033[102X for a modular subgroup", "1.2-1", [ 1, 2, 1 ], 91, 
+      4, "index for a modular subgroup", "X80E1728B78D0F26D" ], 
+  [ "\033[2XIsCongruenceSubgroup\033[102X for a modular subgroup", "1.2-2", 
+      [ 1, 2, 2 ], 99, 5, "iscongruencesubgroup for a modular subgroup", 
+      "X7819EFB17A4E722C" ], 
+  [ "\033[2XRightCosetRepresentatives\033[102X for a modular subgroup", 
+      "1.2-3", [ 1, 2, 3 ], 106, 5, 
+      "rightcosetrepresentatives for a modular subgroup", "X787BDFA47BAA14DA" 
+     ], [ "\033[2XGeneralizedLevel\033[102X for a modular subgroup", "1.2-4", 
+      [ 1, 2, 4 ], 114, 5, "generalizedlevel for a modular subgroup", 
+      "X87E645C67DE537C4" ], 
+  [ "\033[2XGeneratorsOfGroup\033[102X for a modular subgroup", "1.2-5", 
+      [ 1, 2, 5 ], 122, 5, "generatorsofgroup for a modular subgroup", 
+      "X83C268CB8293911B" ], 
+  [ 
+      "\033[2XIsElementOf\033[102X for a matrix in sl(2,z) and a modular subgroup\
+", "1.2-6", [ 1, 2, 6 ], 131, 5, 
+      "iselementof for a matrix in sl 2 z and a modular subgroup", 
+      "X84976AF584CEF44C" ], 
+  [ 
+      "\033[2XCuspWidth\033[102X for a rational number or infinity and a modular \
+subgroup", "1.2-7", [ 1, 2, 7 ], 139, 5, 
+      "cuspwidth for a rational number or infinity and a modular subgroup", 
+      "X7D04D43078672A95" ], 
+  [ 
+      "\033[2XCuspsEquivalent\033[102X for two cusps (i.e. rational numbers or in\
+finity) and a modular subgroup", "1.2-8", [ 1, 2, 8 ], 148, 5, 
+      "cuspsequivalent for two cusps i.e. rational numbers or infinity and a m\
+odular subgroup", "X7CB9C6567C1293CF" ], 
+  [ "\033[2XCusps\033[102X for a modular subgroup", "1.2-9", [ 1, 2, 9 ], 
+      155, 6, "cusps for a modular subgroup", "X7D1122227CD92271" ], 
+  [ "\033[2XCuspsRedundant\033[102X for a modular subgroup", "1.2-10", 
+      [ 1, 2, 10 ], 163, 6, "cuspsredundant for a modular subgroup", 
+      "X82C8D4777E5B453F" ] ]
+);

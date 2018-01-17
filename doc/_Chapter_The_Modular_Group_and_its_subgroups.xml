@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_The_Modular_Group_and_its_subgroups">
+<Heading>The Modular Group and its subgroups</Heading>
+
+This package contains methods for computing with finite-index subgroups of the
+modular group <Math>\mathrm{SL}(2, \mathbb{Z})</Math> which are given by a coset permutation
+representation with respect to the generators
+<Alt Only="LaTeX"><![CDATA[
+$$ S = \left( {\begin{array}{cc} 0 & -1 \\ 1 & 0 \\ \end{array} } \right) \quad T = \left( {\begin{array}{cc} 1 & 1 \\ 0 & 1 \\ \end{array} } \right) $$
+]]></Alt>
+We will call these subgroups 'modular subgroups'.
+<Section Label="Chapter_The_Modular_Group_and_its_subgroups_Section_Construction_of_modular_subgroups">
+<Heading>Construction of modular subgroups</Heading>
+
+In this section we describe how to construct modular subgroups from a given
+coset permutation representation or from a list of generator matrices and
+some related methods.
+<ManSection>
+  <Func Arg="s, t" Name="ModularSubgroup" Label="for two permutations"/>
+ <Returns>an object representing a modular subgroup
+</Returns>
+ <Description>
+This method constructs a modular subgroup from two given permutations
+(provided they describe a coset action).
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="gens" Name="ModularSubgroup" Label="for a list of matrices"/>
+ <Returns>an object representing a modular subgroup
+</Returns>
+ <Description>
+This is another constructor for a modular subgroup, with the difference that it
+takes a list of generator matrices as input and calculates the coset graph of
+the generated group. One has to be careful though when using this method,
+because no check is performed if the generated group has finite index!
+Internally, when trying to calculate the coset graph, we just enumerate all
+cosets until we are done or some limit fixed is reached. This also exposes
+another weakness of this method: The coset enumeration might be very
+time-consuming, so constructing modular subgroups from a list of generators
+is not always feasible. On the other hand, the clear advantage of
+constructing a modular subgroup in this way is that it will alreasy know its
+generators. So future computations with this group involving generators will
+most likely be faster.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="s, t" Name="DefinesCosetAction" Label="for two permutations"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+This is an auxiliary method that takes two permutations as input and checks
+if they describe the action of the generators <Math>S</Math> and <Math>T</Math> on the cosets of
+some group. This check is for example performed in the constructor for
+a modular subgroup.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="gens" Name="CosetActionFromGenerators" Label="for a list of generator matrices"/>
+ <Returns>two permutations
+</Returns>
+ <Description>
+Takes a list of generator matrices and calculates the coset permutation
+representation of the generated subgroup. The same warning as above applies:
+No check is performed if the generated subgroup actually has finite index.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="M" Name="STDecomposition" Label="for a matrix in SL(2,Z)"/>
+ <Returns>a word in <Math>S</Math> and <Math>T</Math>
+</Returns>
+ <Description>
+Takes a matrix in <Math>\mathrm{SL}(2, \mathbb{Z})</Math> and decomposes it in a word
+in the generators <Math>S</Math> and <Math>T</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="SAction" Label="for a modular subgroup"/>
+ <Returns>a permutation
+</Returns>
+ <Description>
+Takes a modular subgroup and returns a permutation corresponding to the
+action of the generator matrix <Math>S</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="TAction" Label="for a modular subgroup"/>
+ <Returns>a permutation
+</Returns>
+ <Description>
+Takes a modular subgroup and returns a permutation corresponding to the
+action of the generator matrix <Math>T</Math>.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+<Section Label="Chapter_The_Modular_Group_and_its_subgroups_Section_Computations_with_modular_subgroups">
+<Heading>Computations with modular subgroups</Heading>
+
+In this section we describe the implemented method for computing with
+modular subgroups.
+<ManSection>
+  <Func Arg="G" Name="Index" Label="for a modular subgroup"/>
+ <Returns>a natural number
+</Returns>
+ <Description>
+Takes a modular subgroup and returns its index in <Math>\mathrm{SL}(2, \mathbb{Z})</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="IsCongruenceSubgroup" Label="for a modular subgroup"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Tests whether a given modular subgroup is a congruence subgroup.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="RightCosetRepresentatives" Label="for a modular subgroup"/>
+ <Returns>a list of matrices
+</Returns>
+ <Description>
+Calculates a list of representatives of the right cosets of a given
+modular subgroup.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="GeneralizedLevel" Label="for a modular subgroup"/>
+ <Returns>a natural number
+</Returns>
+ <Description>
+Computes the generalized level (i.e. the lowest common multiple of all cusp
+widths) of a given modular subgroup.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="GeneratorsOfGroup" Label="for a modular subgroup"/>
+ <Returns></Returns>
+ <Description>
+Calculates a list of generators for a given modular subgroup.
+Note: The returned list might contain redundant generators (or even
+duplicates). This calculation involves enumerating the cosets of the given
+group and might become very slow for large index.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="A, G" Name="IsElementOf" Label="for a matrix in SL(2,Z) and a modular subgroup"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+This is a membership test for modular subgroups given by a coset permutation
+representation.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="c, G" Name="CuspWidth" Label="for a rational number or infinity and a modular subgroup"/>
+ <Returns>a natural number
+</Returns>
+ <Description>
+Calculates the width of <Math>c</Math> with respect to a given modular subgroup, i.e.
+the smallest <Math>k</Math> such that <Math>\pm gT^{k}g^{-1} \in G</Math> where <Math>g \in \mathrm{SL}(2, \mathbb{Z})</Math>
+such that <Math>g\infty = c</Math>.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="c1, c2, G" Name="CuspsEquivalent" Label="for two cusps (i.e. rational numbers or infinity) and a modular subgroup"/>
+ <Returns>true or false
+</Returns>
+ <Description>
+Checks if two cusps are equivalent with respect to a given modular subgroup.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="Cusps" Label="for a modular subgroup"/>
+ <Returns>a list of cusps
+</Returns>
+ <Description>
+Calculates a list of inequivalent cusp representative for a given modular subgroup.
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G" Name="CuspsRedundant" Label="for a modular subgroup"/>
+ <Returns>a list of cusps
+</Returns>
+ <Description>
+Calculates a list of cusp representatives for a given modular subgroup.
+Will most likely produce redundant cusps, i.e. there will be cusps which are
+equivalent. This method has the advantage that it is rather fast, compared
+to the one above though. For example it is used in the calculation of the
+generalized level, since when computing the lcm of the cusp widths, we do
+not care about duplicates.
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
+</Chapter>
+

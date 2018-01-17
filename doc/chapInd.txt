@@ -1,0 +1,24 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XCosetActionFromGenerators[102X, for a list of generator matrices 1.1-4 
+  [2XCusps[102X, for a modular subgroup 1.2-9 
+  [2XCuspsEquivalent[102X, for two cusps (i.e. rational numbers or infinity) and a modular subgroup 1.2-8 
+  [2XCuspsRedundant[102X, for a modular subgroup 1.2-10 
+  [2XCuspWidth[102X, for a rational number or infinity and a modular subgroup 1.2-7 
+  [2XDefinesCosetAction[102X, for two permutations 1.1-3 
+  [2XGeneralizedLevel[102X, for a modular subgroup 1.2-4 
+  [2XGeneratorsOfGroup[102X, for a modular subgroup 1.2-5 
+  [2XIndex[102X, for a modular subgroup 1.2-1 
+  [2XIsCongruenceSubgroup[102X, for a modular subgroup 1.2-2 
+  [2XIsElementOf[102X, for a matrix in SL(2,Z) and a modular subgroup 1.2-6 
+  [2XModularSubgroup[102X, for a list of matrices 1.1-2 
+      for two permutations 1.1-1 
+  [2XRightCosetRepresentatives[102X, for a modular subgroup 1.2-3 
+  [2XSAction[102X, for a modular subgroup 1.1-6 
+  [2XSTDecomposition[102X, for a matrix in SL(2,Z) 1.1-5 
+  [2XTAction[102X, for a modular subgroup 1.1-7 
+  
+  
+  -------------------------------------------------------

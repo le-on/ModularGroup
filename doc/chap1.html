@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (ModularGroup) - Chapter 1: The Modular Group and its subgroups</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
+<p><a id="X7CFC464D875B9922" name="X7CFC464D875B9922"></a></p>
+<div class="ChapSects"><a href="chap1.html#X7CFC464D875B9922">1 <span class="Heading">The Modular Group and its subgroups</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X82B1267A8369ABC3">1.1 <span class="Heading">Construction of modular subgroups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X874D675284A86159">1.1-1 ModularSubgroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86C13616837F567D">1.1-2 ModularSubgroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X811EE02082291F48">1.1-3 DefinesCosetAction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7954F4F283B4F8C3">1.1-4 CosetActionFromGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C82B9BE807EF3A8">1.1-5 STDecomposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X816B8B0084130418">1.1-6 SAction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A39A1937DF54D42">1.1-7 TAction</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X85234B2885D8DF56">1.2 <span class="Heading">Computations with modular subgroups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80E1728B78D0F26D">1.2-1 Index</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7819EFB17A4E722C">1.2-2 IsCongruenceSubgroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X787BDFA47BAA14DA">1.2-3 RightCosetRepresentatives</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87E645C67DE537C4">1.2-4 GeneralizedLevel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83C268CB8293911B">1.2-5 GeneratorsOfGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84976AF584CEF44C">1.2-6 IsElementOf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D04D43078672A95">1.2-7 CuspWidth</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CB9C6567C1293CF">1.2-8 CuspsEquivalent</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D1122227CD92271">1.2-9 Cusps</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82C8D4777E5B453F">1.2-10 CuspsRedundant</a></span>
+</div></div>
+</div>
+
+<h3>1 <span class="Heading">The Modular Group and its subgroups</span></h3>
+
+<p>This package contains methods for computing with finite-index subgroups of the modular group <span class="Math">\mathrm{SL}(2, \mathbb{Z})</span> which are given by a coset permutation representation with respect to the generators We will call these subgroups 'modular subgroups'.</p>
+
+<p><a id="X82B1267A8369ABC3" name="X82B1267A8369ABC3"></a></p>
+
+<h4>1.1 <span class="Heading">Construction of modular subgroups</span></h4>
+
+<p>In this section we describe how to construct modular subgroups from a given coset permutation representation or from a list of generator matrices and some related methods.</p>
+
+<p><a id="X874D675284A86159" name="X874D675284A86159"></a></p>
+
+<h5>1.1-1 ModularSubgroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgroup</code>( <var class="Arg">s</var>, <var class="Arg">t</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: an object representing a modular subgroup</p>
+
+<p>This method constructs a modular subgroup from two given permutations (provided they describe a coset action).</p>
+
+<p><a id="X86C13616837F567D" name="X86C13616837F567D"></a></p>
+
+<h5>1.1-2 ModularSubgroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgroup</code>( <var class="Arg">gens</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: an object representing a modular subgroup</p>
+
+<p>This is another constructor for a modular subgroup, with the difference that it takes a list of generator matrices as input and calculates the coset graph of the generated group. One has to be careful though when using this method, because no check is performed if the generated group has finite index! Internally, when trying to calculate the coset graph, we just enumerate all cosets until we are done or some limit fixed is reached. This also exposes another weakness of this method: The coset enumeration might be very time-consuming, so constructing modular subgroups from a list of generators is not always feasible. On the other hand, the clear advantage of constructing a modular subgroup in this way is that it will alreasy know its generators. So future computations with this group involving generators will most likely be faster.</p>
+
+<p><a id="X811EE02082291F48" name="X811EE02082291F48"></a></p>
+
+<h5>1.1-3 DefinesCosetAction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefinesCosetAction</code>( <var class="Arg">s</var>, <var class="Arg">t</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>This is an auxiliary method that takes two permutations as input and checks if they describe the action of the generators <span class="Math">S</span> and <span class="Math">T</span> on the cosets of some group. This check is for example performed in the constructor for a modular subgroup.</p>
+
+<p><a id="X7954F4F283B4F8C3" name="X7954F4F283B4F8C3"></a></p>
+
+<h5>1.1-4 CosetActionFromGenerators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CosetActionFromGenerators</code>( <var class="Arg">gens</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: two permutations</p>
+
+<p>Takes a list of generator matrices and calculates the coset permutation representation of the generated subgroup. The same warning as above applies: No check is performed if the generated subgroup actually has finite index.</p>
+
+<p><a id="X7C82B9BE807EF3A8" name="X7C82B9BE807EF3A8"></a></p>
+
+<h5>1.1-5 STDecomposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; STDecomposition</code>( <var class="Arg">M</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a word in <span class="Math">S</span> and <span class="Math">T</span></p>
+
+<p>Takes a matrix in <span class="Math">\mathrm{SL}(2, \mathbb{Z})</span> and decomposes it in a word in the generators <span class="Math">S</span> and <span class="Math">T</span>.</p>
+
+<p><a id="X816B8B0084130418" name="X816B8B0084130418"></a></p>
+
+<h5>1.1-6 SAction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SAction</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a permutation</p>
+
+<p>Takes a modular subgroup and returns a permutation corresponding to the action of the generator matrix <span class="Math">S</span>.</p>
+
+<p><a id="X7A39A1937DF54D42" name="X7A39A1937DF54D42"></a></p>
+
+<h5>1.1-7 TAction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TAction</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a permutation</p>
+
+<p>Takes a modular subgroup and returns a permutation corresponding to the action of the generator matrix <span class="Math">T</span>.</p>
+
+<p><a id="X85234B2885D8DF56" name="X85234B2885D8DF56"></a></p>
+
+<h4>1.2 <span class="Heading">Computations with modular subgroups</span></h4>
+
+<p>In this section we describe the implemented method for computing with modular subgroups.</p>
+
+<p><a id="X80E1728B78D0F26D" name="X80E1728B78D0F26D"></a></p>
+
+<h5>1.2-1 Index</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Index</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a natural number</p>
+
+<p>Takes a modular subgroup and returns its index in <span class="Math">\mathrm{SL}(2, \mathbb{Z})</span>.</p>
+
+<p><a id="X7819EFB17A4E722C" name="X7819EFB17A4E722C"></a></p>
+
+<h5>1.2-2 IsCongruenceSubgroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCongruenceSubgroup</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Tests whether a given modular subgroup is a congruence subgroup.</p>
+
+<p><a id="X787BDFA47BAA14DA" name="X787BDFA47BAA14DA"></a></p>
+
+<h5>1.2-3 RightCosetRepresentatives</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCosetRepresentatives</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a list of matrices</p>
+
+<p>Calculates a list of representatives of the right cosets of a given modular subgroup.</p>
+
+<p><a id="X87E645C67DE537C4" name="X87E645C67DE537C4"></a></p>
+
+<h5>1.2-4 GeneralizedLevel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedLevel</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a natural number</p>
+
+<p>Computes the generalized level (i.e. the lowest common multiple of all cusp widths) of a given modular subgroup.</p>
+
+<p><a id="X83C268CB8293911B" name="X83C268CB8293911B"></a></p>
+
+<h5>1.2-5 GeneratorsOfGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneratorsOfGroup</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Calculates a list of generators for a given modular subgroup. Note: The returned list might contain redundant generators (or even duplicates). This calculation involves enumerating the cosets of the given group and might become very slow for large index.</p>
+
+<p><a id="X84976AF584CEF44C" name="X84976AF584CEF44C"></a></p>
+
+<h5>1.2-6 IsElementOf</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementOf</code>( <var class="Arg">A</var>, <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>This is a membership test for modular subgroups given by a coset permutation representation.</p>
+
+<p><a id="X7D04D43078672A95" name="X7D04D43078672A95"></a></p>
+
+<h5>1.2-7 CuspWidth</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CuspWidth</code>( <var class="Arg">c</var>, <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a natural number</p>
+
+<p>Calculates the width of <span class="Math">c</span> with respect to a given modular subgroup, i.e. the smallest <span class="Math">k</span> such that <span class="Math">\pm gT^{k}g^{-1} \in G</span> where <span class="Math">g \in \mathrm{SL}(2, \mathbb{Z})</span> such that <span class="Math">g\infty = c</span>.</p>
+
+<p><a id="X7CB9C6567C1293CF" name="X7CB9C6567C1293CF"></a></p>
+
+<h5>1.2-8 CuspsEquivalent</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CuspsEquivalent</code>( <var class="Arg">c1</var>, <var class="Arg">c2</var>, <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Checks if two cusps are equivalent with respect to a given modular subgroup.</p>
+
+<p><a id="X7D1122227CD92271" name="X7D1122227CD92271"></a></p>
+
+<h5>1.2-9 Cusps</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Cusps</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a list of cusps</p>
+
+<p>Calculates a list of inequivalent cusp representative for a given modular subgroup.</p>
+
+<p><a id="X82C8D4777E5B453F" name="X82C8D4777E5B453F"></a></p>
+
+<h5>1.2-10 CuspsRedundant</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CuspsRedundant</code>( <var class="Arg">G</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<p>Returns: a list of cusps</p>
+
+<p>Calculates a list of cusp representatives for a given modular subgroup. Will most likely produce redundant cusps, i.e. there will be cusps which are equivalent. This method has the advantage that it is rather fast, compared to the one above though. For example it is used in the calculation of the generalized level, since when computing the lcm of the cusp widths, we do not care about duplicates.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
