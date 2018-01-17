@@ -57,8 +57,11 @@ end);
 #!  constructing a modular subgroup in this way is that it will alreasy know its
 #!  generators. So future computations with this group involving generators will
 #!  most likely be faster.
-InstallOtherMethod(ModularSubgroup, [IsRectangularTable], function(gens)
+InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
   local G, a;
+  if Length(gens) = 0 then
+    Error("<gens> must not be empty");
+  fi;
   if not (IsMatrix(gens[1]) and gens[1] in SL(2,Integers)) then
     Error("<gens> needs to be a non-empty list of matrices in SL(2,Z)");
   fi;
