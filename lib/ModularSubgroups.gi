@@ -287,15 +287,7 @@ end);
 #!  Computes the generalized level (i.e. the lowest common multiple of all cusp
 #!  widths) of a given modular subgroup.
 InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
-  local s, t, cusps, widths, c;
-  s := SAction(G);
-  t := TAction(G);
-  cusps := CuspsRedundant(G);
-  widths := [];
-  for c in cusps do
-    Add(widths, CuspWidth(c, G));
-  od;
-  return Lcm(widths);
+  return Order(TAction(G));
 end);
 
 #! @Arguments G
