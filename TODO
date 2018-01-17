@@ -8,3 +8,5 @@
 - smarter coset representative computation?
 - implement 'Cusps' for 'IsModularSubgroup and HasCuspsRedundant' (-> use group actions and orbits?)
 - 'Print' functionality for the ModularSubgroup object
+- documentation: alternative to latex in command line help
+- resolve name clash with 'congruence' package
