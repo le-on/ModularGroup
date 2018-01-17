@@ -556,3 +556,11 @@ InstallOtherMethod(MoebiusTransformation, [IsMatrix, IsInfinity], function(A, i)
   fi;
   return A[1][1]/A[2][1];
 end);
+
+InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
+  Print("ModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
+end);
+
+InstallMethod(ViewObj, "for modular subgroups", [IsModularSubgroup], function(G)
+  Print("<modular subgroup of index ", Index(G),">");
+end);
