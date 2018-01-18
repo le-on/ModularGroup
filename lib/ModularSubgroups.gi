@@ -290,7 +290,27 @@ end);
 #!  Computes the generalized level (i.e. the lowest common multiple of all cusp
 #!  widths) of a given modular subgroup.
 InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
-  return Order(TAction(G));
+  local s, t, i, ind, orbits, plist, p, k;
+  s := SAction(G);
+  t := TAction(G);
+  i := s^2;
+
+  if 1^i = 1 then # -1 in G
+    return Order(t);
+  fi;
+
+  ind := LargestMovedPoint([i, i^-1, t, t^-1]);
+  orbits := [];
+  for k in [1..ind] do
+    Add(orbits, Set(Cycle(i, [1..ind], k)));
+  od;
+  orbits := Set(orbits);
+  plist := [];
+  for k in [1..Length(orbits)] do
+    Add(plist, Position(orbits, OnSets(orbits[k], t)));
+  od;
+  p := PermList(plist);
+  return Order(p);
 end);
 
 #! @Arguments G
