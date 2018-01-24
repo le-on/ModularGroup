@@ -10,3 +10,4 @@
 - 'Print' functionality for the ModularSubgroup object
 - documentation: alternative to latex in command line help
 - resolve name clash with 'congruence' package
+- remove 'CuspsRedundant'?
