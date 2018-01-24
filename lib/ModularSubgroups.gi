@@ -577,6 +577,35 @@ InstallOtherMethod(MoebiusTransformation, [IsMatrix, IsInfinity], function(A, i)
   return A[1][1]/A[2][1];
 end);
 
+#! @Arguments G, N
+#! @Returns a natural number
+#! @Label for a modular subgroup and a natural number > 1
+#! @Description
+#!  This method computes the index of the image of $G$ in $\mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})$
+#!  under the projection
+#!  $$\pi_N : \mathrm{SL}(2,\mathbb{Z}) \rightarrow \mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})$$
+InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
+  local gens, SL2Zn, H;
+  gens := ShallowCopy(GeneratorsOfGroup(G));
+  Apply(gens, M ->
+    [[ZmodnZObj(M[1][1], N), ZmodnZObj(M[1][2], N)],
+     [ZmodnZObj(M[2][1], N), ZmodnZObj(M[2][2], N)]]
+  );
+  SL2Zn := SL(2, Integers mod N);
+  H := Subgroup(SL2Zn, gens);
+  return Index(SL2Zn, H);
+end);
+
+#! @Arguments G, N
+#! @Returns a natural number
+#! @Label for a modular subgroup and a natural number > 1
+#! @Description
+#!  This method calculates the so-called deficiency $f_N$ of a modular subgroup,
+#!  i.e. the index $[ \Gamma(N) : \Gamma(N) \cap G ]$.
+InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
+  return Index(G) / IndexModN(G, N);
+end);
+
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
   Print("ModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);

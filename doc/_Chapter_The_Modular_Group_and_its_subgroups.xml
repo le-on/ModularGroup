@@ -227,6 +227,29 @@ not care about duplicates.
 </ManSection>
 
 
+<ManSection>
+  <Func Arg="G, N" Name="IndexModN" Label="for a modular subgroup and a natural number > 1"/>
+ <Returns>a natural number
+</Returns>
+ <Description>
+This method computes the index of the image of <Math>G</Math> in <Math>\mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})</Math>
+under the projection
+<Display>\pi_N : \mathrm{SL}(2,\mathbb{Z}) \rightarrow \mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})</Display>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="G, N" Name="Deficiency" Label="for a modular subgroup and a natural number > 1"/>
+ <Returns>a natural number
+</Returns>
+ <Description>
+This method calculates the so-called deficiency <Math>f_N</Math> of a modular subgroup,
+i.e. the index <Math>[ \Gamma(N) : \Gamma(N) \cap G ]</Math>.
+ </Description>
+</ManSection>
+
+
 </Section>
 
 

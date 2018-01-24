@@ -172,3 +172,25 @@
   generalized  level,  since  when computing the lcm of the cusp widths, we do
   not care about duplicates.[133X
   
+  [1X1.2-11 IndexModN[101X
+  
+  [29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X function
+  [6XReturns:[106X  [33X[0;10Ya natural number[133X
+  
+  [33X[0;0YThis  method  computes  the  index  of  the  image  of  [23XG[123X  in [23X\mathrm{SL}(2,
+  \mathbb{Z}/N\mathbb{Z})[123X under the projection[133X
+  
+  
+  [24X[33X[0;6Y\pi_N     :     \mathrm{SL}(2,\mathbb{Z})     \rightarrow     \mathrm{SL}(2,
+  \mathbb{Z}/N\mathbb{Z})[133X
+  
+  [124X
+  
+  [1X1.2-12 Deficiency[101X
+  
+  [29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X function
+  [6XReturns:[106X  [33X[0;10Ya natural number[133X
+  
+  [33X[0;0YThis  method  calculates the so-called deficiency [23Xf_N[123X of a modular subgroup,
+  i.e. the index [23X[ \Gamma(N) : \Gamma(N) \cap G ][123X.[133X
+  
