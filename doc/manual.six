@@ -71,17 +71,14 @@ finity) and a modular subgroup", "1.2-8", [ 1, 2, 8 ], 148, 5,
 odular subgroup", "X7CB9C6567C1293CF" ], 
   [ "\033[2XCusps\033[102X for a modular subgroup", "1.2-9", [ 1, 2, 9 ], 
       155, 6, "cusps for a modular subgroup", "X7D1122227CD92271" ], 
-  [ "\033[2XCuspsRedundant\033[102X for a modular subgroup", "1.2-10", 
-      [ 1, 2, 10 ], 163, 6, "cuspsredundant for a modular subgroup", 
-      "X82C8D4777E5B453F" ], 
   [ 
       "\033[2XIndexModN\033[102X for a modular subgroup and a natural number > 1"
-        , "1.2-11", [ 1, 2, 11 ], 175, 6, 
+        , "1.2-10", [ 1, 2, 10 ], 163, 6, 
       "indexmodn for a modular subgroup and a natural number > 1", 
       "X80236AC5801ACD53" ], 
   [ 
       "\033[2XDeficiency\033[102X for a modular subgroup and a natural number > 1\
-", "1.2-12", [ 1, 2, 12 ], 189, 6, 
+", "1.2-11", [ 1, 2, 11 ], 177, 6, 
       "deficiency for a modular subgroup and a natural number > 1", 
       "X7B97126F7CC34C75" ] ]
 );

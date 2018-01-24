@@ -526,31 +526,6 @@ InstallMethod(Cusps, [IsModularSubgroup], function(G)
   return cusps;
 end);
 
-#! @Arguments G
-#! @Returns a list of cusps
-#! @Label for a modular subgroup
-#! @Description
-#!  Calculates a list of cusp representatives for a given modular subgroup.
-#!  Will most likely produce redundant cusps, i.e. there will be cusps which are
-#!  equivalent. This method has the advantage that it is rather fast, compared
-#!  to the one above though. For example it is used in the calculation of the
-#!  generalized level, since when computing the lcm of the cusp widths, we do
-#!  not care about duplicates.
-InstallMethod(CuspsRedundant, [IsModularSubgroup], function(G)
-  local coset_reps, i, cusps, r, c, known, o;
-
-  i := infinity;
-  cusps := [i];
-  coset_reps := RightCosetRepresentatives(G);
-
-  for r in coset_reps do
-    c := MoebiusTransformation(r, i);
-    Add(cusps, c);
-  od;
-  return cusps;
-end);
-
-
 InstallMethod(MoebiusTransformation, [IsMatrix, IsRat], function(A, r)
   local a, b, c, d, p, q;
   if not A in SL(2,Integers) then

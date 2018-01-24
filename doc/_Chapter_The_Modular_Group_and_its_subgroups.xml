@@ -213,21 +213,6 @@ Calculates a list of inequivalent cusp representative for a given modular subgro
 
 
 <ManSection>
-  <Func Arg="G" Name="CuspsRedundant" Label="for a modular subgroup"/>
- <Returns>a list of cusps
-</Returns>
- <Description>
-Calculates a list of cusp representatives for a given modular subgroup.
-Will most likely produce redundant cusps, i.e. there will be cusps which are
-equivalent. This method has the advantage that it is rather fast, compared
-to the one above though. For example it is used in the calculation of the
-generalized level, since when computing the lcm of the cusp widths, we do
-not care about duplicates.
- </Description>
-</ManSection>
-
-
-<ManSection>
   <Func Arg="G, N" Name="IndexModN" Label="for a modular subgroup and a natural number > 1"/>
  <Returns>a natural number
 </Returns>
