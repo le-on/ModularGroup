@@ -15,7 +15,7 @@ Read("ModularGroup/lib/ModularSubgroups.gd");
 Read("ModularGroup/lib/ModularSubgroups.gi");
 ```
 
-__Usage example:__ The main object of this package is called `ModularSubgroup`. It represents a finite-index subgrhttps://github.com/le-on/ModularGroupoup of _SL(2,Z)_ which is given by the action of the generator matrices _S_ and _T_ on the right cosets. Such an object can be constructed in two different ways:
+__Usage example:__ The main object of this package is called `ModularSubgroup`. It represents a finite-index subgroup of _SL(2,Z)_ which is given by the action of the generator matrices _S_ and _T_ on the right cosets. Such an object can be constructed in two different ways:
 - either by specifying the action as permutations `s` and `t` and calling the constructor as follows:
 ```GAP
 G := ModularSubgroup(s,t);
