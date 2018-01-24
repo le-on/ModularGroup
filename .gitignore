@@ -7,3 +7,4 @@ doc/*
 !doc/*.css
 !doc/*.six
 !doc/*.lab
+!doc/*.tex
