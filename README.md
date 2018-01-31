@@ -4,6 +4,7 @@ ModularGroup
 Algorithms for computing with finite-index subgroups of SL(2,Z)
 ----
 
+**Warning: This introduction is out of date since the addition of projective modular subgroups and the procedures described below might not work any more (especially loading the package with Read-statements)! This is a temporary state and will be fixed in a timely manner.**
 
 __Usage:__ Either copy this folder into your GAP package directory (usually something like `/opt/gap/gap4r8/pkg`) and load it via
 ```GAP
