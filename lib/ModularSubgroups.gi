@@ -87,7 +87,7 @@ InstallMethod(DefinesCosetAction, [IsPerm, IsPerm], function(s, t)
   if s^4 <> () or (s^3*t)^3 <> () or s^2*t*s^-2*t^-1 <> () then return false; fi;
 
   # check if the generated subgroup acts transitively
-  # this check is quite costly, so we do it last
+  # this check can be quite costly, so we do it last
   index := Maximum(LargestMovedPoint([s, s^-1, t, t^-1]), 1);
   return IsTransitive(Group(s,t), [1..index]);
 end);
@@ -347,7 +347,7 @@ InstallMethod(GeneratorsOfGroup, [IsModularSubgroup], function(G)
   # group in a specific form. For details, see
   # https://www.gap-system.org/Manuals/doc/ref/chap47.html#X857F239583AFE0B7 and
   # https://www.gap-system.org/Manuals/doc/ref/chap47.html#X7F7F31E47D7F6EF8
-  index := LargestMovedPoint([s, s^-1, t, t^-1]);
+  index := Index(G);
   coset_table := [ListPerm(s, index), ListPerm(s^-1, index), ListPerm(t, index), ListPerm(t^-1, index)];
   H := SubgroupOfWholeGroupByCosetTable(FamilyObj(SL2Z_fp), coset_table);
 
