@@ -27,12 +27,12 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
   fi;
 
   type := NewType(FamilyObj(One(SL(2,Integers))),
-  IsObject and
-  #IsMatrixGroup and
-  IsAttributeStoringRep and
-  #IsComponentObjectRep and
-  #IsFinitelyGeneratedGroup and
-  IsDefaultModularSubgroup);
+    IsObject and
+    #IsMatrixGroup and
+    IsAttributeStoringRep and
+    IsComponentObjectRep and
+    IsFinitelyGeneratedGroup and # finite-index subgroups of finitely generated groups are finitely generated
+    IsDefaultModularSubgroup);
 
   G := Objectify(type, rec(
     s := sp,
