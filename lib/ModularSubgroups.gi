@@ -581,6 +581,30 @@ InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
   return Index(G) / IndexModN(G, N);
 end);
 
+InstallMethod(Project, [IsModularSubgroup], function(G)
+  local s, t, i, ind, orbits, plist, p, k;
+  s := SAction(G);
+  t := TAction(G);
+  i := s^2;
+
+  if 1^i = 1 then # -1 in G
+    return ProjectiveModularSubgroup(s,t);
+  fi;
+
+  ind := LargestMovedPoint([i, i^-1, t, t^-1]);
+  orbits := [];
+  for k in [1..ind] do
+    Add(orbits, Set(Cycle(i, [1..ind], k)));
+  od;
+  orbits := Set(orbits);
+  plist := [];
+  for k in [1..Length(orbits)] do
+    Add(plist, Position(orbits, OnSets(orbits[k], t)));
+  od;
+  p := PermList(plist);
+  return ProjectiveModularSubgroup(i, p);
+end);
+
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
   Print("ModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);
