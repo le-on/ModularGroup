@@ -98,13 +98,6 @@ InstallMethod(GeneratorsOfGroup, [IsProjectiveModularSubgroup], function(G)
   return GeneratorsOfGroup(H);
 end);
 
-InstallMethod(Index, "for a modular subgroup", [IsProjectiveModularSubgroup], function(G)
-  local s, t;
-  s := SAction(G);
-  t := TAction(G);
-  return Maximum(LargestMovedPoint([s, s^-1, t, t^-1]), 1);
-end);
-
 InstallMethod(GeneralizedLevel, [IsProjectiveModularSubgroup], function(G)
   return Order(TAction(G));
 end);
