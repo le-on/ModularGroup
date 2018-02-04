@@ -48,6 +48,45 @@ InstallMethod(Index, "for a projective modular subgroup", [IsProjectiveModularSu
   return Maximum(LargestMovedPoint([s, s^-1, t, t^-1]), 1);
 end);
 
+InstallMethod(IsCongruenceSubgroup, [IsProjectiveModularSubgroup], function(G)
+  local L, R, N, e, m, S, c, d, a, b, l, r, s;
+  L := TAction(G);
+  R := L*SAction(G)*L;
+  N := GeneralizedLevel(G);
+
+  e := 1;
+  while RemInt(N, 2) <> 1 do
+    e := e * 2;
+    N := N / 2;
+  od;
+  m := N;
+  N := e*m;
+
+  if e = 1 then # N is odd
+    return (R^2*L^(-(1/2 mod N)))^3 = ();
+  elif m = 1 then # N is a power of 2
+    S := L^20*R^(1/5 mod N)*L^-4*R^-1;
+    return (L*R^-1*L)^-1*S*L*R^-1*L = S^-1 and
+           S^-1*R*S = R^25 and
+           (S*R^5*L*R^-1*L)^3 = ();
+  else
+    c := ChineseRem([e, m], [0, 1]) mod N;
+    d := ChineseRem([e, m], [1, 0]) mod N;
+    a := L^c;
+    b := R^c;
+    l := L^d;
+    r := R^d;
+    s := l^20*r^(1/5 mod e)*l^-4*r^-1;
+    return a*r*a^-1*r^-1 = () and
+           (a*b^-1*a)^4 = () and
+           (a*b^-1*a)^2 = (b^-1*a)^3 and
+           (a*b^-1*a)^2 = (b^2*a^(-(1/2 mod m)))^3 and
+           (l*r^-1*l)^-1*s*l*r^-1*l = s^-1 and
+           s^-1*r*s = r^25 and
+           (l*r^-1*l)^2 = (s*r^5*l*r^-1*l)^3;
+  fi;
+end);
+
 InstallMethod(RightCosetRepresentatives, [IsProjectiveModularSubgroup], function(G)
   local s, t, index, H, SC, iso, reps, i, F2, S, T, PSL2Z, epi, epi_psl2z;
   s := SAction(G);
