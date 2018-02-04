@@ -7,7 +7,7 @@
 SetPackageInfo( rec(
 
 PackageName := "ModularGroup",
-Subtitle := "Computing with finite-index subgroups of SL(2,Z)",
+Subtitle := "Computing with finite-index subgroups of (P)SL(2,Z)",
 Version := "0.0.1",
 Date := "10/01/2018", ## dd/mm/yyyy
 
@@ -110,11 +110,11 @@ ArchiveFormats := ".tar.gz",
 ##
 Persons := [
   rec(
-    LastName      := "Mustermann",
-    FirstNames    := "Max",
+    LastName      := "Junk",
+    FirstNames    := "Luca",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "max.mustermann@example.com",
+    Email         := "junk@math.uni-sb.de",
     WWWHome       := "http://www.math.uni-sb.de/ag/weitze/",
     PostalAddress := Concatenation( [
                        "AG Weitze-Schmithüsen\n",
@@ -123,21 +123,7 @@ Persons := [
                        "D-66041 Saarbrücken" ] ),
     Place         := "Saarbrücken",
     Institution   := "Universität des Saarlandes"
-  ),
-  rec(
-    LastName      := "Doe",
-    FirstNames    := "John",
-    IsAuthor      := true,
-    IsMaintainer  := true,
-    Email         := "john.doe@example.com",
-    WWWHome       := "http://www.math.uni-sb.de/ag/weitze/",
-    PostalAddress := Concatenation( [
-                      "AG Weitze-Schmithüsen\n",
-                      "FR 6.1 Mathematik\n",
-                      "Universität des Saarlandes\n",
-                      "D-66041 Saarbrücken" ] ),
-    Place         := "Saarbrücken",
-    Institution   := "Universität des Saarlandes"
+  )
   ),
 # provide such a record for each author and/or maintainer ...
 
@@ -190,7 +176,7 @@ PackageInfoURL :=
 # utilities.",
 AbstractHTML :=
   "This package provides a collection of algorithms for computing with \
-  subgroups of SL(2,Z) of finite index.",
+  subgroups of (P)SL(2,Z) of finite index.",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the
@@ -277,6 +263,6 @@ BannerString := Concatenation(
 ##  standard GAP test suite.
 TestFile := "tst/testall.tst",
 
-Keywords := ["SL(2,Z)", "SL2Z", "modular group", "congruence subgroup"]
+Keywords := ["PSL(2,Z)", "PSL2Z", "SL(2,Z)", "SL2Z", "modular group", "congruence subgroup"]
 
 ));
