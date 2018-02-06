@@ -582,7 +582,7 @@ InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
 end);
 
 InstallMethod(Project, [IsModularSubgroup], function(G)
-  local s, t, i, ind, orbits, plist, p, k;
+  local s, t, i, ind, orbits, plist, p, k, qlist, q;
   s := SAction(G);
   t := TAction(G);
   i := s^2;
@@ -591,8 +591,10 @@ InstallMethod(Project, [IsModularSubgroup], function(G)
     return ProjectiveModularSubgroup(s,t);
   fi;
 
+  # calculate the action of T on the cosets in PSL(2,Z)
   ind := LargestMovedPoint([i, i^-1, t, t^-1]);
   orbits := [];
+  # group those cosets together which are identified by -1
   for k in [1..ind] do
     Add(orbits, Set(Cycle(i, [1..ind], k)));
   od;
@@ -602,7 +604,23 @@ InstallMethod(Project, [IsModularSubgroup], function(G)
     Add(plist, Position(orbits, OnSets(orbits[k], t)));
   od;
   p := PermList(plist);
-  return ProjectiveModularSubgroup(i, p);
+
+
+  # calculate the action of S on the cosets in PSL(2,Z)
+  ind := LargestMovedPoint([i, i^-1, s, s^-1]); # is this necessary??
+  orbits := [];
+  for k in [1..ind] do
+    Add(orbits, Set(Cycle(i, [1..ind], k)));
+  od;
+  orbits := Set(orbits);
+  qlist := [];
+  for k in [1..Length(orbits)] do
+    Add(qlist, Position(orbits, OnSets(orbits[k], s)));
+  od;
+  q := PermList(qlist);
+
+
+  return ProjectiveModularSubgroup(q, p);
 end);
 
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
