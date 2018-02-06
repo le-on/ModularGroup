@@ -124,7 +124,6 @@ Persons := [
     Place         := "Saarbrücken",
     Institution   := "Universität des Saarlandes"
   )
-  ),
 # provide such a record for each author and/or maintainer ...
 
 ],
