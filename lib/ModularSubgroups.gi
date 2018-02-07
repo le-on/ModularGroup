@@ -504,26 +504,7 @@ end);
 #! @Description
 #!  Calculates a list of inequivalent cusp representative for a given modular subgroup.
 InstallMethod(Cusps, [IsModularSubgroup], function(G)
-  local coset_reps, i, cusps, r, c, known, o;
-
-  i := infinity;
-  cusps := [i];
-  coset_reps := RightCosetRepresentatives(G);
-
-  for r in coset_reps do
-    c := MoebiusTransformation(r, i);
-    known := false;
-    for o in cusps do
-      if CuspsEquivalent(c, o, G) then
-        known := true;
-        break;
-      fi;
-    od;
-    if not known then
-      Add(cusps, c);
-    fi;
-  od;
-  return cusps;
+  return Cusps(Projection(G));
 end);
 
 InstallMethod(MoebiusTransformation, [IsMatrix, IsRat], function(A, r)
