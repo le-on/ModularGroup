@@ -581,7 +581,7 @@ InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
   return Index(G) / IndexModN(G, N);
 end);
 
-InstallMethod(Project, [IsModularSubgroup], function(G)
+InstallMethod(Projection, [IsModularSubgroup], function(G)
   local s, t, i, ind, orbits, plist, p, k, qlist, q;
   s := SAction(G);
   t := TAction(G);

@@ -21,6 +21,6 @@ DeclareOperation("CuspWidth", [IsRat, IsModularSubgroup]);
 DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsModularSubgroup]);
 DeclareOperation("IndexModN", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsModularSubgroup, IsPosInt]);
-DeclareOperation("Project", [IsModularSubgroup]);
+DeclareOperation("Projection", [IsModularSubgroup]);
 
 DeclareOperation("MoebiusTransformation", [IsMatrix, IsRat]);
