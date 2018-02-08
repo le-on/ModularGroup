@@ -88,7 +88,7 @@ InstallMethod(DefinesCosetAction, [IsPerm, IsPerm], function(s, t)
 
   # check if the generated subgroup acts transitively
   # this check can be quite costly, so we do it last
-  index := Maximum(LargestMovedPoint([s, s^-1, t, t^-1]), 1);
+  index := Maximum(LargestMovedPoint([s, t]), 1);
   return IsTransitive(Group(s,t), [1..index]);
 end);
 
@@ -198,7 +198,7 @@ InstallMethod(Index, "for a modular subgroup", [IsModularSubgroup], function(G)
   local s, t;
   s := SAction(G);
   t := TAction(G);
-  return Maximum(LargestMovedPoint([s, s^-1, t, t^-1]), 1);
+  return Maximum(LargestMovedPoint([s, t]), 1);
 end);
 
 #! @Arguments G
@@ -299,7 +299,7 @@ InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
     return Order(t);
   fi;
 
-  ind := LargestMovedPoint([i, i^-1, t, t^-1]);
+  ind := LargestMovedPoint([i, t]);
   orbits := [];
   for k in [1..ind] do
     Add(orbits, Set(Cycle(i, [1..ind], k)));
@@ -573,7 +573,7 @@ InstallMethod(Projection, [IsModularSubgroup], function(G)
   fi;
 
   # calculate the action of T on the cosets in PSL(2,Z)
-  ind := LargestMovedPoint([i, i^-1, t, t^-1]);
+  ind := LargestMovedPoint([i, t]);
   orbits := [];
   # group those cosets together which are identified by -1
   for k in [1..ind] do
@@ -588,7 +588,7 @@ InstallMethod(Projection, [IsModularSubgroup], function(G)
 
 
   # calculate the action of S on the cosets in PSL(2,Z)
-  ind := LargestMovedPoint([i, i^-1, s, s^-1]); # is this necessary??
+  ind := LargestMovedPoint([i, s]); # is this necessary??
   orbits := [];
   for k in [1..ind] do
     Add(orbits, Set(Cycle(i, [1..ind], k)));
