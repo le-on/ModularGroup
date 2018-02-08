@@ -258,29 +258,19 @@ end);
 #!  Calculates a list of representatives of the right cosets of a given
 #!  modular subgroup.
 InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
-  local s, t, index, H, SC, iso, reps, i, F2, MatS, MatT, SL2Z, epi, epi_sl2z;
+  local s, t, F2, SL2Z, S, T, hom, H;
   s := SAction(G);
   t := TAction(G);
-  index := Index(G);
-  H := Group([s,t]);
-  SC := StabChain(H);
-  iso := IsomorphismFpGroup(H);
-  reps := [];
-  for i in [1..index] do
-    reps[i] := InverseRepresentative(SC, i);
-  od;
 
-  MatS := [[0,-1],[1,0]];
-  MatT := [[1,1],[0,1]];
-  SL2Z := Group([MatS, MatT]);
+  F2 := FreeGroup("S", "T");
+  S := F2.1;
+  T := F2.2;
+  SL2Z := F2 / ParseRelators([S, T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
 
-  epi := EpimorphismFromFreeGroup(H);
-  Apply(reps, r -> PreImagesRepresentative(epi, r));
-  F2 := Source(epi);
-  epi_sl2z := GroupHomomorphismByImagesNC(F2, SL2Z, [F2.1, F2.2], [MatS, MatT]);
-  Apply(reps, r -> Image(epi_sl2z, r));
+  hom := GroupHomomorphismByImagesNC(SL2Z, Group([s,t]), [SL2Z.1,SL2Z.2], [s,t]);
+  H := PreImage(hom, Stabilizer(Image(hom), 1));
 
-  return reps;
+  return AsList(RightTransversal(SL2Z, H));
 end);
 
 #! @Arguments G

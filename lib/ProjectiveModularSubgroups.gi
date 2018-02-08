@@ -87,29 +87,19 @@ InstallMethod(IsCongruenceSubgroup, [IsProjectiveModularSubgroup], function(G)
 end);
 
 InstallMethod(RightCosetRepresentatives, [IsProjectiveModularSubgroup], function(G)
-  local s, t, index, H, SC, iso, reps, i, F2, S, T, PSL2Z, epi, epi_psl2z;
+  local s, t, F2, PSL2Z, S, T, H, hom;
   s := SAction(G);
   t := TAction(G);
-  index := Index(G);
-  H := Group([s,t]);
-  SC := StabChain(H);
-  reps := [];
-  for i in [1..index] do
-    reps[i] := InverseRepresentative(SC, i);
-  od;
-
-  epi := EpimorphismFromFreeGroup(H);
-  Apply(reps, r -> PreImagesRepresentative(epi, r));
 
   F2 := FreeGroup("S", "T");
-  S := F2.1; T := F2.2;
-  PSL2Z := F2 / ParseRelators([S,T], "S^2, (S*T)^3");
+  S := F2.1;
+  T := F2.2;
+  PSL2Z := F2 / ParseRelators([S, T], "S^2, (S*T)^3");
 
-  F2 := Source(epi);
-  epi_psl2z := GroupHomomorphismByImagesNC(F2, PSL2Z, [F2.1, F2.2], [PSL2Z.1, PSL2Z.2]);
-  Apply(reps, r -> Image(epi_psl2z, r));
+  hom := GroupHomomorphismByImagesNC(PSL2Z, Group([s,t]), [PSL2Z.1,PSL2Z.2], [s,t]);
+  H := PreImage(hom, Stabilizer(Image(hom), 1));
 
-  return reps;
+  return AsList(RightTransversal(PSL2Z, H));
 end);
 
 InstallMethod(GeneratorsOfGroup, [IsProjectiveModularSubgroup], function(G)
@@ -161,7 +151,7 @@ InstallMethod(Cusps, [IsProjectiveModularSubgroup], function(G)
   Apply(relevant_reps, r -> r^-1);
   Apply(relevant_reps, r -> ObjByExtRep(FamilyObj(S), ExtRepOfObj(r)));
   Apply(relevant_reps, r -> MappedWord(r, [S, T], [S^-1, T^-1]));
-  
+
   Apply(relevant_reps, r -> MappedWord(r, [S, T], [MatS, MatT]));
 
   cusps := List(relevant_reps, r -> MoebiusTransformation(r, infinity));
