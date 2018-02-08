@@ -140,7 +140,7 @@ InstallMethod(GeneralizedLevel, [IsProjectiveModularSubgroup], function(G)
 end);
 
 InstallMethod(Cusps, [IsProjectiveModularSubgroup], function(G)
-  local t, reps, cycles, relevant_reps, c, k, fam, MatS, MatT, S, T, F2, cusps;
+  local t, reps, cycles, relevant_reps, c, MatS, MatT, S, T, F2, cusps;
 
   t := TAction(G);
   reps := RightCosetRepresentatives(G);
@@ -150,28 +150,20 @@ InstallMethod(Cusps, [IsProjectiveModularSubgroup], function(G)
     Add(relevant_reps, reps[c[1]]);
   od;
 
-  fam := FamilyObj(UnderlyingElement(relevant_reps[1]));
-  # reverse the words since the action on the cosets is from the right but
-  # the action of (P)SL(2,Z) on the extended upper half plane is from the left.
-  # TODO: there is probably a smarter way to do this
-  Apply(relevant_reps, r -> ExtRepOfObj(r^-1));
-  Apply(relevant_reps, function(r)
-    local k;
-    for k in [2,4..Length(r)] do
-      r[k] := -r[k];
-    od;
-    return r;
-  end);
-  Apply(relevant_reps, r -> ObjByExtRep(fam, r));
-
   MatS := [[0,-1],[1,0]];
   MatT := [[1,1],[0,1]];
   F2 := FreeGroup("S", "T");
   S := F2.1;
   T := F2.2;
-  Apply(relevant_reps, r -> ObjByExtRep(FamilyObj(S), ExtRepOfObj(r)));
 
-  Apply(relevant_reps, r -> MappedWord(r, [S,T], [MatS, MatT]));
+  # reverse the words since the action on the cosets is from the right but
+  # the action of (P)SL(2,Z) on the extended upper half plane is from the left.
+  Apply(relevant_reps, r -> r^-1);
+  Apply(relevant_reps, r -> ObjByExtRep(FamilyObj(S), ExtRepOfObj(r)));
+  Apply(relevant_reps, r -> MappedWord(r, [S, T], [S^-1, T^-1]));
+  
+  Apply(relevant_reps, r -> MappedWord(r, [S, T], [MatS, MatT]));
+
   cusps := List(relevant_reps, r -> MoebiusTransformation(r, infinity));
   return cusps;
 end);
