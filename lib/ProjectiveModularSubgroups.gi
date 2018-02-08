@@ -1,5 +1,5 @@
 InstallMethod(ProjectiveModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
-  local G, type;
+  local G, type, tab, index;
 
   if not DefinesProjectiveCosetAction(sp, tp) then
     Error("<s> and <t> do not describe the action of the generators S and T on the cosets of a finite-index subgroup of PSL(2,Z)");
@@ -13,9 +13,13 @@ InstallMethod(ProjectiveModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
     IsFinitelyGeneratedGroup and
     IsDefaultProjectiveModularSubgroup);
 
+  index := Maximum(LargestMovedPoint([sp, tp]), 1);
+  tab := [ListPerm(sp, index), ListPerm(sp^-1, index), ListPerm(tp, index), ListPerm(tp^-1, index)];
+  StandardizeTable(tab);
+
   G := Objectify(type, rec(
-    s := sp,
-    t := tp
+    s := PermList(tab[1]),
+    t := PermList(tab[3])
   ));
   return G;
 end);
@@ -146,12 +150,7 @@ InstallMethod(Cusps, [IsProjectiveModularSubgroup], function(G)
   S := F2.1;
   T := F2.2;
 
-  # reverse the words since the action on the cosets is from the right but
-  # the action of (P)SL(2,Z) on the extended upper half plane is from the left.
-  Apply(relevant_reps, r -> r^-1);
   Apply(relevant_reps, r -> ObjByExtRep(FamilyObj(S), ExtRepOfObj(r)));
-  Apply(relevant_reps, r -> MappedWord(r, [S, T], [S^-1, T^-1]));
-
   Apply(relevant_reps, r -> MappedWord(r, [S, T], [MatS, MatT]));
 
   cusps := List(relevant_reps, r -> MoebiusTransformation(r, infinity));
