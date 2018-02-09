@@ -189,6 +189,91 @@ InstallOtherMethod(CuspWidth, [IsInfinity, IsProjectiveModularSubgroup], functio
   return CycleLength(TAction(G), [1..Index(G)], 1);
 end);
 
+InstallMethod(CuspsEquivalent, [IsRat, IsRat, IsProjectiveModularSubgroup], function(c1, c2, G)
+  local p1, p2, q1, q2, gcd1, gcd2, g1, g2, w1, w2, F2, S, T, PSL2Z, reps, r, s, t, k1, k2;
+
+  # find a matrix g1 that maps infinity to c1 and express it as a word w1 in S and T
+  p1 := NumeratorRat(c1);
+  q1 := DenominatorRat(c1);
+  gcd1 := Gcdex(q1, -p1);
+  g1 := [[gcd1.coeff1, p1], [gcd1.coeff2, q1]] * [[0,-1], [1,0]];
+  w1 := STDecomposition(g1);
+
+  # find a matrix g2 that maps infinity to c2 and express it as a word w2 in S and T
+  p2 := NumeratorRat(c2);
+  q2 := DenominatorRat(c2);
+  gcd2 := Gcdex(q2, -p2);
+  g2 := [[gcd2.coeff1, p2], [gcd2.coeff2, q2]] * [[0,-1], [1,0]];
+  w2 := STDecomposition(g2);
+
+  F2 := FreeGroup("S", "T");
+  S := F2.1; T := F2.2;
+  PSL2Z := F2 / ParseRelators([S,T], "S^2, (S*T)^3");
+  w1 := ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(w1)));
+  w2 := ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(w2)));
+
+  reps := ShallowCopy(RightCosetRepresentatives(G));
+  Apply(reps, r -> ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(r))));
+  s := SAction(G);
+  t := TAction(G);
+
+  # find the coset in which w1 lies
+  k1 := 1;
+  for r in reps do
+    if 1^MappedWord(w1*r^-1, [PSL2Z.1,PSL2Z.2], [s,t]) = 1 then
+      break;
+    fi;
+    k1 := k1+1;
+  od;
+
+  # find the coset in which w2 lies
+  k2 := 1;
+  for r in reps do
+    if 1^MappedWord(w2*r^-1, [PSL2Z.1,PSL2Z.2], [s,t]) = 1 then
+      break;
+    fi;
+    k2 := k2+1;
+  od;
+
+  # c1 and c2 are equivalent modulo G if and only if the cosets in which w1 and w2 lie
+  # are in the same cycle of the T-action
+  return k2 in Orbit(Group(t), k1);
+end);
+InstallOtherMethod(CuspsEquivalent, [IsRat, IsInfinity, IsProjectiveModularSubgroup], function(c1, c2, G)
+  local p, q, gcd, g, w, F2, S, T, PSL2Z, reps, r, s, t, k;
+
+  p := NumeratorRat(c1);
+  q := DenominatorRat(c1);
+  gcd := Gcdex(q, -p);
+  g := [[gcd.coeff1, p], [gcd.coeff2, q]] * [[0,-1], [1,0]];
+  w := STDecomposition(g);
+
+  F2 := FreeGroup("S", "T");
+  S := F2.1; T := F2.2;
+  PSL2Z := F2 / ParseRelators([S,T], "S^2, (S*T)^3");
+  w := ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(w)));
+
+  reps := ShallowCopy(RightCosetRepresentatives(G));
+  Apply(reps, r -> ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(r))));
+  s := SAction(G);
+  t := TAction(G);
+  k := 1;
+  for r in reps do
+    if 1^MappedWord(w*r^-1, [PSL2Z.1,PSL2Z.2], [s,t]) = 1 then
+      break;
+    fi;
+    k := k+1;
+  od;
+
+  return k in Orbit(Group(t), 1);
+end);
+InstallOtherMethod(CuspsEquivalent, [IsInfinity, IsRat, IsProjectiveModularSubgroup], function(c1, c2, G)
+  return CuspsEquivalent(c2, c1, G);
+end);
+InstallOtherMethod(CuspsEquivalent, [IsInfinity, IsInfinity, IsProjectiveModularSubgroup], function(c1, c2, G)
+  return true;
+end);
+
 InstallMethod(PrintObj, "for projective modular subgroups", [IsProjectiveModularSubgroup], function(G)
   Print("ProjectiveModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);

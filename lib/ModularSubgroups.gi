@@ -415,50 +415,10 @@ end);
 #! @Description
 #!  Checks if two cusps are equivalent with respect to a given modular subgroup.
 InstallMethod(CuspsEquivalent, [IsRat, IsRat, IsModularSubgroup], function(c1, c2, G)
-  local s, t, p1, q1, p2, q2, g1, g2, s1, s2, index, i;
-  s := SAction(G);
-  t := TAction(G);
-  p1 := NumeratorRat(c1);
-  q1 := DenominatorRat(c1);
-  p2 := NumeratorRat(c2);
-  q2 := DenominatorRat(c2);
-  g1 := Gcdex(q1, -p1);
-  g2 := Gcdex(q2, -p2);
-  s1 := [[g1.coeff1, p1], [g1.coeff2, q1]] * [[0,-1],[1,0]]; # s1.oo = c1
-  s2 := [[g2.coeff1, p2], [g2.coeff2, q2]] * [[0,-1],[1,0]]; # s2.oo = c2
-  index := Index(G);
-
-  for i in [0..index-1] do
-    if IsElementOf(s2 * [[1,i],[0,1]] * s1^-1, G) then
-      return true;
-    elif (not IsElementOf([[-1,0],[0,-1]], G) ) and
-         IsElementOf(s2 * [[-1,-i],[0,-1]] * s1^-1, G) then
-      return true;
-    fi;
-  od;
-
-  return false;
+  return CuspsEquivalent(c1, c2, Projection(G));
 end);
 InstallOtherMethod(CuspsEquivalent, [IsRat, IsInfinity, IsModularSubgroup], function(c1, c2, G)
-  local s, t, p, q, g, v, index, i;
-  s := SAction(G);
-  t := TAction(G);
-  p := NumeratorRat(c1);
-  q := DenominatorRat(c1);
-  g := Gcdex(q, -p);
-  v := [[g.coeff1, p], [g.coeff2, q]] * [[0,-1],[1,0]]; # v.oo = c1
-  index := Index(G);
-
-  for i in [0..index-1] do
-    if IsElementOf(v * [[1,i],[0,1]], G) then
-      return true;
-    elif (not IsElementOf([[-1,0],[0,-1]], G) ) and
-         IsElementOf(v * [[-1,-i],[0,-1]], G) then
-      return true;
-    fi;
-  od;
-
-  return false;
+  return CuspsEquivalent(c1, c2, Projection(G));
 end);
 InstallOtherMethod(CuspsEquivalent, [IsInfinity, IsRat, IsModularSubgroup], function(c1, c2, G)
   return CuspsEquivalent(c2, c1, G);
