@@ -1,22 +1,23 @@
 ModularGroup
 ====
 
-Algorithms for computing with finite-index subgroups of SL(2,Z)
+Algorithms for computing with finite-index subgroups of (P)SL(2,Z)
 ----
 
-**Warning: This introduction is out of date since the addition of projective modular subgroups and the procedures described below might not work any more (especially loading the package with Read-statements)! This is a temporary state and will be fixed in a timely manner.**
+This package implements finite-index subgroups of _(P)SL(2,Z)_ and various algorithms for working with them.
+These subgroups are stored as tuples of permutations `s` and `t` which describe the action of the generator matrices
+```
+      ( 0 -1 )           ( 1 1 )
+  S = ( 1  0 )  and  T = ( 0 1 )
+```
+on the right cosets.
 
-__Usage:__ Either copy this folder into your GAP package directory (usually something like `/opt/gap/gap4r8/pkg`) and load it via
+__Usage:__ Copy this folder into your GAP package directory (usually something like `/opt/gap/gap4r8/pkg`) and load it via
 ```GAP
 LoadPackage("ModularGroup")
 ```
-(this is the recommended way, since it also loads the inline documentation) or use it directly via
-```GAP
-Read("ModularGroup/lib/ModularSubgroups.gd");
-Read("ModularGroup/lib/ModularSubgroups.gi");
-```
 
-__Usage example:__ The main object of this package is called `ModularSubgroup`. It represents a finite-index subgroup of _SL(2,Z)_ which is given by the action of the generator matrices _S_ and _T_ on the right cosets. Such an object can be constructed in two different ways:
+__Usage example:__ The two main objects of this package are called `ModularSubgroup` and `ProjectiveModularSubgroup`. A `ModularSubgroup` can be constructed in two different ways:
 - either by specifying the action as permutations `s` and `t` and calling the constructor as follows:
 ```GAP
 G := ModularSubgroup(s,t);
@@ -28,7 +29,16 @@ G := ModularSubgroup([ ... ]);
 
 The former option is recommended since the latter implicitly computes the coset graph from the generators which might be time-consuming (for more on this, consult the documentation in `doc/manual.pdf`).
 
-Having constructed a modular subgroup, you can apply the various operations this package implements (such as testing if the given group is a congruence subgroup via `IsCongruenceSubgroup(G)`). For more details and a full list of the provided operations, please refer to the documentation in `doc/manual.pdf`. One explicit example is given below:
+Projective modular subgroups can be constructed either by specifying permutations like above and executing:
+```GAP
+G := ProjectiveModularSubgroup(s,t);
+```
+Or they can be derived from subgroups in _SL(2,Z)_ by projecting them to _PSL(2,Z)_ via
+```GAP
+H := Projection(G);
+```
+
+Having constructed a (projective) modular subgroup, you can apply the various operations this package implements (such as testing if the given group is a congruence subgroup via `IsCongruenceSubgroup(G)`). For more details and a full list of the provided operations, please refer to the documentation in `doc/manual.pdf`. One explicit example is given below:
 
 ```GAP
 # it is assumed that the package has been loaded as described above
