@@ -157,6 +157,38 @@ InstallMethod(Cusps, [IsProjectiveModularSubgroup], function(G)
   return cusps;
 end);
 
+InstallMethod(CuspWidth, [IsRat, IsProjectiveModularSubgroup], function(c, G)
+  local p, q, gcd, g, w, F2, S, T, PSL2Z, reps, r, s, t, k;
+
+  p := NumeratorRat(c);
+  q := DenominatorRat(c);
+  gcd := Gcdex(q, -p);
+  g := [[gcd.coeff1, p], [gcd.coeff2, q]] * [[0,-1], [1,0]];
+  w := STDecomposition(g);
+
+  F2 := FreeGroup("S", "T");
+  S := F2.1; T := F2.2;
+  PSL2Z := F2 / ParseRelators([S,T], "S^2, (S*T)^3");
+  w := ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(w)));
+
+  reps := ShallowCopy(RightCosetRepresentatives(G));
+  Apply(reps, r -> ElementOfFpGroup(FamilyObj(One(PSL2Z)), ObjByExtRep(FamilyObj(S), ExtRepOfObj(r))));
+  s := SAction(G);
+  t := TAction(G);
+  k := 1;
+  for r in reps do
+    if 1^MappedWord(w*r^-1, [PSL2Z.1,PSL2Z.2], [s,t]) = 1 then
+      break;
+    fi;
+    k := k+1;
+  od;
+
+  return CycleLength(t, [1..Index(G)], k);
+end);
+InstallOtherMethod(CuspWidth, [IsInfinity, IsProjectiveModularSubgroup], function(c, G)
+  return CycleLength(TAction(G), [1..Index(G)], 1);
+end);
+
 InstallMethod(PrintObj, "for projective modular subgroups", [IsProjectiveModularSubgroup], function(G)
   Print("ProjectiveModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);

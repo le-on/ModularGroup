@@ -401,36 +401,11 @@ end);
 #!  Calculates the width of $c$ with respect to a given modular subgroup, i.e.
 #!  the smallest $k$ such that $\pm gT^{k}g^{-1} \in G$ where $g \in \mathrm{SL}(2, \mathbb{Z})$
 #!  such that $g\infty = c$.
-InstallMethod(CuspWidth, [IsRat, IsModularSubgroup], function(r, G)
-  local s, t, p, q, a, c, gcd, g, index, k;
-  s := SAction(G);
-  t := TAction(G);
-
-  p := NumeratorRat(r);
-  q := DenominatorRat(r);
-  gcd := Gcdex(q, -p);
-  g := [[gcd.coeff1, p], [gcd.coeff2, q]] * [[0,-1], [1,0]];
-  # g.oo = r
-
-  index := Index(G);
-  for k in [1..index+1] do
-    if IsElementOf(g*[[1,k],[0,1]]*g^-1, G)
-      or IsElementOf(g*[[-1,-k],[0,-1]]*g^-1, G) then
-      return k;
-    fi;
-  od;
+InstallMethod(CuspWidth, [IsRat, IsModularSubgroup], function(c, G)
+  return CuspWidth(c, Projection(G));
 end);
 InstallOtherMethod(CuspWidth, [IsInfinity, IsModularSubgroup], function(c, G)
-  local s, t, k, index;
-  s := SAction(G);
-  t := TAction(G);
-  index := Index(G);
-  for k in [1..index+1] do
-    if IsElementOf([[1,k],[0,1]], G)
-      or IsElementOf([[-1,-k],[0,-1]], G) then
-      return k;
-    fi;
-  od;
+  return CuspWidth(c, Projection(G));
 end);
 
 

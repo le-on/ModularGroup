@@ -15,11 +15,8 @@ DeclareOperation("ProjectiveModularSubgroup", [IsPerm, IsPerm]);
 DeclareOperation("SAction", [IsProjectiveModularSubgroup]);
 DeclareOperation("TAction", [IsProjectiveModularSubgroup]);
 #DeclareOperation("CosetActionFromGenerators", [IsRectangularTable]);
-#DeclareOperation("STDecomposition", [IsMatrix]);
 #DeclareOperation("IsElementOf", [IsMatrix, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspWidth", [IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("IndexModN", [IsProjectiveModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsProjectiveModularSubgroup, IsPosInt]);
-
-#DeclareOperation("MoebiusTransformation", [IsMatrix, IsRat]);
