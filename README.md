@@ -27,7 +27,8 @@ G := ModularSubgroup(s,t);
 G := ModularSubgroup([ ... ]);
 ```
 
-The former option is recommended since the latter implicitly computes the coset graph from the generators which might be time-consuming (for more on this, consult the documentation in `doc/manual.pdf`).
+The former option is recommended since the latter implicitly computes the coset graph from the generators which might be time-consuming. Moreover, no check is performed if the generated group actually has finite
+index!
 
 Projective modular subgroups can be constructed either by specifying permutations like above and executing:
 ```GAP
@@ -38,7 +39,7 @@ Or they can be derived from subgroups in _SL(2,Z)_ by projecting them to _PSL(2,
 H := Projection(G);
 ```
 
-Having constructed a (projective) modular subgroup, you can apply the various operations this package implements (such as testing if the given group is a congruence subgroup via `IsCongruenceSubgroup(G)`). For more details and a full list of the provided operations, please refer to the documentation in `doc/manual.pdf`. One explicit example is given below:
+Having constructed a (projective) modular subgroup, you can apply the various operations this package implements (such as testing if the given group is a congruence subgroup via `IsCongruenceSubgroup(G)`). For more details and a full list of the provided operations, please refer to the documentation. One explicit example is given below:
 
 ```GAP
 # it is assumed that the package has been loaded as described above
