@@ -1,5 +1,5 @@
 InstallMethod(ProjectiveModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
-  local G, type, tab, index;
+  local G, type, tab, H;
 
   if not DefinesProjectiveCosetAction(sp, tp) then
     Error("<s> and <t> do not describe the action of the generators S and T on the cosets of a finite-index subgroup of PSL(2,Z)");
@@ -13,8 +13,8 @@ InstallMethod(ProjectiveModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
     IsFinitelyGeneratedGroup and
     IsDefaultProjectiveModularSubgroup);
 
-  index := Maximum(LargestMovedPoint([sp, tp]), 1);
-  tab := [ListPerm(sp, index), ListPerm(sp^-1, index), ListPerm(tp, index), ListPerm(tp^-1, index)];
+  H := Group(sp, tp);
+  tab := CosetTableBySubgroup(H, Stabilizer(H, 1));
   StandardizeTable(tab);
 
   G := Objectify(type, rec(
