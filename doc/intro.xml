@@ -1,0 +1,62 @@
+<Chapter Label="Intro">
+<Heading>Introduction</Heading>
+
+<Section Label="IntroAims">
+<Heading>General aims of the &ModularGroup; package</Heading>
+This &GAP; package provides methods for computing with finite-index subgroups of
+the modular groups <M>SL_2(&ZZ;)</M> and <M>PSL_2(&ZZ;)</M>. This includes,
+but is not limited to, computation of the generalized level, index or cusp widths.
+It also implements algorithms described in <Cite Key="hsu_1996"/> and
+<Cite Key="hamilton_loeffler_2014"/> for testing if a given group is a congruence
+subgroup.
+</Section>
+
+<Section Label="IntroInstall">
+<Heading>Installation</Heading>
+<!-- TODO -->
+</Section>
+
+<Section Label="IntroTech">
+<Heading>Technicalities</Heading>
+A convenient way to represent finite-index subgroups of <M>SL_2(&ZZ;)</M> is by
+specifying the action of generator matrices on the right cosets by right
+multiplication. For example, one could choose the generators
+<Alt Only="LaTeX">
+  <![CDATA[
+  \[
+        S =
+        \left(
+           \begin{array}{rr}
+              0 & -1 \\
+              1 & 0
+           \end{array}
+        \right)
+        \quad
+        T =
+        \left(
+           \begin{array}{rr}
+              1 & 1 \\
+              0 & 1
+           \end{array}
+        \right)
+  \]
+  ]]>
+</Alt>
+<Alt Only="Text,HTML"><Verb><![CDATA[
+                 [ 0 -1 ]           [ 1  1 ]
+             S = [ 1  0 ]       T = [ 0  1 ]
+]]></Verb></Alt>
+and represent a subgroup as a tuple of transitive permutations
+<M>(\sigma_S,\sigma_T)</M> describing the action of <M>S</M> and <M>T</M>.
+This is exactly the way this package internally treats such subgroups. We employ
+the convention that <M>1</M> corresponds to the coset of the identity matrix.
+<P/>
+
+The choice of generator matrices of <M>SL_2(&ZZ;)</M> is quite arbitrary and the
+fact that we work with <M>S</M> and <M>T</M> as above only reflects our personal
+preferences. Therefore this package also implements methods for displaying
+results and inputting data in terms of different generators.
+</Section>
+
+
+</Chapter>

@@ -1,10 +1,2 @@
 doc/*
-!doc/*.pdf
-!doc/*.txt
 !doc/*.xml
-!doc/*.html
-!doc/*.js
-!doc/*.css
-!doc/*.six
-!doc/*.lab
-!doc/*.tex

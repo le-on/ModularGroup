@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE Book SYSTEM "gapdoc.dtd"
+    [ <!ENTITY ModularGroup "<Package>ModularGroup</Package>">
+      <#Include Label="PKGVERSIONDATA">
+    ] >
+
+<Book Name="ModularGroup">
+
+<TitlePage>
+  <Title>The <Package>ModularGroup</Package> Package</Title>
+  <Subtitle>Finite-index subgroups of <M>(P)SL_2(&ZZ;)</M></Subtitle>
+  <Date>&RELEASEDATE;</Date>
+  <Version>Version &VERSION;</Version>
+  <Author>Luca Leon Junk<Br/>
+    <Email>junk@math.uni-sb.de</Email>
+    <Homepage>http://www.math.uni-sb.de/ag/weitze/</Homepage>
+    <Address>
+      AG Weitze-Schmithüsen<Br/>
+      FR 6.1 Mathematik<Br/>
+      Universität des Saarlandes<Br/>
+      D-66041 Saarbrücken<Br/>
+    </Address>
+  </Author>
+
+  <Copyright>&copyright; &RELEASEYEAR; by Luca L. Junk
+  </Copyright>
+
+  <Acknowledgements>
+    Supported by Project I.8 of SFB-TRR 195 'Symbolic Tools in Mathematics and
+    their Application' of the German Research Foundation (DFG).
+  </Acknowledgements>
+
+
+</TitlePage>
+
+<TableOfContents/>
+
+<Body>
+  <#Include SYSTEM "intro.xml">
+  <#Include SYSTEM "sl2z.xml">
+  <#Include SYSTEM "psl2z.xml">
+</Body>
+
+<Bibliography Databases="manual"/>
+
+<TheIndex/>
+
+</Book>

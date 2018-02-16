@@ -1,0 +1,8 @@
+<Chapter Label="SL2Z">
+<Heading>Subgroups of <M>SL_2(&ZZ;)</M></Heading>
+
+For representing finite-index subgroups of <M>SL_2(&ZZ;)</M>, this package
+introduces the new type <C>ModularSubgroup</C>. As stated in the introduction,
+a <C>ModularSubgroup</C> essentially consists of the two 
+
+</Chapter>

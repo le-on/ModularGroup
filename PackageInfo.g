@@ -1,15 +1,21 @@
-#############################################################################
-##
-##  PackageInfo.g for the package `ModularGroup'                          Author 1
-##                                                                   Author 2
-
+################################################################################
+##                                                                            ##
+##  PackageInfo.g        The `ModularGroup' package                 Luca Junk ##
+##                                                                            ##
+################################################################################
 
 SetPackageInfo( rec(
 
 PackageName := "ModularGroup",
-Subtitle := "Computing with finite-index subgroups of (P)SL(2,Z)",
+Subtitle := "Finite-index subgroups of (P)SL(2,Integers)",
 Version := "0.0.1",
-Date := "10/01/2018", ## dd/mm/yyyy
+Date := "16/02/2018", ## dd/mm/yyyy
+
+##  <#GAPDoc Label="PKGVERSIONDATA">
+##  <!ENTITY VERSION "0.0.1">
+##  <!ENTITY RELEASEDATE "16 February 2018">
+##  <!ENTITY RELEASEYEAR "2018">
+##  <#/GAPDoc>
 
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
