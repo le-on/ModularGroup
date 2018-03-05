@@ -18,5 +18,6 @@ DeclareOperation("TAction", [IsProjectiveModularSubgroup]);
 #DeclareOperation("IsElementOf", [IsMatrix, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspWidth", [IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsProjectiveModularSubgroup]);
+DeclareOperation("LiftToSL2Z", [IsProjectiveModularSubgroup]);
 DeclareOperation("IndexModN", [IsProjectiveModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsProjectiveModularSubgroup, IsPosInt]);
