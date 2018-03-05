@@ -1,18 +1,3 @@
-#! @Chapter The Modular Group and its subgroups
-#! This package contains methods for computing with finite-index subgroups of the
-#! modular group $\mathrm{SL}(2, \mathbb{Z})$ which are given by a coset permutation
-#! representation with respect to the generators
-#! @BeginLatexOnly
-#! $$ S = \left( {\begin{array}{cc} 0 & -1 \\ 1 & 0 \\ \end{array} } \right)  \quad T = \left( {\begin{array}{cc} 1 & 1 \\ 0 & 1 \\ \end{array} } \right) $$
-#! @EndLatexOnly
-#! We will call these subgroups 'modular subgroups'.
-
-
-#! @Section Construction of modular subgroups
-#! In this section we describe how to construct modular subgroups from a given
-#! coset permutation representation or from a list of generator matrices and
-#! some related methods.
-
 #! @Arguments s, t
 #! @Returns an object representing a modular subgroup
 #! @Label for two permutations
@@ -20,7 +5,7 @@
 #!  This method constructs a modular subgroup from two given permutations
 #!  (provided they describe a coset action).
 InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
-  local G, type, H, tab;
+  local G, type, tab, index;
 
   if not DefinesCosetAction(sp, tp) then
     Error("<s> and <t> do not describe the action of the generators S and T on the cosets of a finite-index subgroup of SL(2,Z)");
@@ -34,8 +19,8 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
     IsFinitelyGeneratedGroup and # finite-index subgroups of finitely generated groups are finitely generated
     IsDefaultModularSubgroup);
 
-  H := Group(sp, tp);
-  tab := CosetTableBySubgroup(H, Stabilizer(H, 1));
+  index := Maximum(LargestMovedPoint([sp,tp]), 1);
+  tab := [ListPerm(sp, index), ListPerm(sp^-1, index), ListPerm(tp, index), ListPerm(tp^-1, index)];
   StandardizeTable(tab);
 
   G := Objectify(type, rec(
@@ -61,6 +46,10 @@ end);
 #!  constructing a modular subgroup in this way is that it will alreasy know its
 #!  generators. So future computations with this group involving generators will
 #!  most likely be faster.
+
+##  <#GAPDoc Label="ModularSubgroupConstructorGens">
+##  construction via generators
+##  <#/GAPDoc>
 InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
   local G, a;
   if Length(gens) = 0 then
@@ -262,7 +251,7 @@ end);
 #!  Calculates a list of representatives of the right cosets of a given
 #!  modular subgroup.
 InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
-  local s, t, F2, SL2Z, S, T, hom, H;
+  local s, t, F2, SL2Z, S, T, index, H, coset_table;
   s := SAction(G);
   t := TAction(G);
 
@@ -271,8 +260,14 @@ InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
   T := F2.2;
   SL2Z := F2 / ParseRelators([S, T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
 
-  hom := GroupHomomorphismByImagesNC(SL2Z, Group([s,t]), [SL2Z.1,SL2Z.2], [s,t]);
-  H := PreImage(hom, Stabilizer(Image(hom), 1));
+  index := Index(G);
+  coset_table := [ListPerm(s, index), ListPerm(s^-1, index), ListPerm(t, index), ListPerm(t^-1, index)];
+  H := SubgroupOfWholeGroupByCosetTable(FamilyObj(SL2Z), coset_table);
+
+  # this is a slicker way to do this without having to explicitly mention a coset
+  # table but computing the stabilizer becomes really slow for large (>1000) index
+  #hom := GroupHomomorphismByImagesNC(SL2Z, Group([s,t]), [SL2Z.1,SL2Z.2], [s,t]);
+  #H := PreImage(hom, Stabilizer(Image(hom), 1));
 
   return AsList(RightTransversal(SL2Z, H));
 end);
