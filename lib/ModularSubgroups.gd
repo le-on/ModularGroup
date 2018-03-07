@@ -14,6 +14,7 @@ DeclareOperation("DefinesCosetAction", [IsPerm, IsPerm]);
 DeclareOperation("ModularSubgroup", [IsPerm, IsPerm]);
 DeclareOperation("SAction", [IsModularSubgroup]);
 DeclareOperation("TAction", [IsModularSubgroup]);
+DeclareOperation("CosetActionOf", [IsMatrix, IsModularSubgroup]);
 DeclareOperation("CosetActionFromGenerators", [IsRectangularTable]);
 DeclareOperation("STDecomposition", [IsMatrix]);
 DeclareOperation("IsElementOf", [IsMatrix, IsModularSubgroup]);

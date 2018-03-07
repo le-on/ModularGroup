@@ -177,6 +177,18 @@ InstallMethod(TAction, [IsModularSubgroup], function(G)
   return G!.t;
 end);
 
+InstallMethod(CosetActionOf, [IsMatrix, IsModularSubgroup], function(A, G)
+  local w, F2;
+  if not A in SL(2, Integers) then
+    Error("<A> has to be an element of SL(2,Z)");
+  fi;
+
+  w := STDecomposition(A);
+  F2 := FreeGroup(2);
+  w := ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(w));
+  return MappedWord(w, [F2.1, F2.2], [SAction(G), TAction(G)]);
+end);
+
 
 #! @Section Computations with modular subgroups
 #! In this section we describe the implemented method for computing with
