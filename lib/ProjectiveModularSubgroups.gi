@@ -280,7 +280,11 @@ InstallOtherMethod(CuspsEquivalent, [IsInfinity, IsInfinity, IsProjectiveModular
   return true;
 end);
 
-InstallMethod(LiftToSL2Z, [IsProjectiveModularSubgroup], function(G)
+InstallMethod(LiftToSL2ZEven, [IsProjectiveModularSubgroup], function(G)
+  return ModularSubgroup(SAction(G), TAction(G));
+end);
+
+InstallMethod(LiftToSL2ZOdd, [IsProjectiveModularSubgroup], function(G)
   local gens, F2, S, T;
   gens := ShallowCopy(GeneratorsOfGroup(G));
   F2 := FreeGroup("S", "T");
@@ -292,20 +296,8 @@ end);
 
 InstallMethod(IndexModN, [IsProjectiveModularSubgroup, IsPosInt], function(G, N)
   local lift, gens, SL2Zn, H;
-  lift := LiftToSL2Z(G);
-  gens := ShallowCopy(GeneratorsOfGroup(lift));
-  Apply(gens, M ->
-    [[ZmodnZObj(M[1][1], N), ZmodnZObj(M[1][2], N)],
-     [ZmodnZObj(M[2][1], N), ZmodnZObj(M[2][2], N)]]
-  );
-  SL2Zn := SL(2, Integers mod N);
-  H := Subgroup(SL2Zn, gens);
-  if [[ZmodnZObj(-1, N), ZmodnZObj( 0, N)],
-      [ZmodnZObj( 0, N), ZmodnZObj(-1, N)]] in H then
-    return IndexModN(lift, N);
-  else
-    return IndexModN(lift, N)/2;
-  fi;
+  lift := LiftToSL2ZEven(G);
+  return IndexModN(lift, N);
 end);
 
 InstallMethod(Deficiency, [IsProjectiveModularSubgroup, IsPosInt], function(G, N)
