@@ -295,7 +295,7 @@ InstallMethod(LiftToSL2ZOdd, [IsProjectiveModularSubgroup], function(G)
 end);
 
 InstallMethod(IndexModN, [IsProjectiveModularSubgroup, IsPosInt], function(G, N)
-  local lift, gens, SL2Zn, H;
+  local lift;
   lift := LiftToSL2ZEven(G);
   return IndexModN(lift, N);
 end);

@@ -93,10 +93,15 @@ end);
 #!  representation of the generated subgroup. The same warning as above applies:
 #!  No check is performed if the generated subgroup actually has finite index.
 InstallMethod(CosetActionFromGenerators, [IsRectangularTable], function(gens)
-  local F2, S, T, SL2Z, gen_words, decomp, coset_table, i;
-  if not (IsMatrix(gens[1]) and gens[1] in SL(2,Integers)) then
+  local A, F2, S, T, SL2Z, gen_words, decomp, coset_table, i;
+  if IsEmpty(gens) or not IsMatrix(gens[1]) then
     Error("<gens> needs to be a non-empty list of matrices in SL(2,Z)");
   fi;
+  for A in gens do
+    if not A in SL(2,Integers) then
+      Error("<gens> needs to be a non-empty list of matrices in SL(2,Z)");
+    fi;
+  od;
 
 
   # GAP can only enumerate cosets in the setting of finitely presented groups, so we must use a presentation
