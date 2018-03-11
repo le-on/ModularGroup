@@ -328,43 +328,31 @@ end);
 #!  duplicates). This calculation involves enumerating the cosets of the given
 #!  group and might become very slow for large index.
 InstallMethod(GeneratorsOfGroup, [IsModularSubgroup], function(G)
-  local s, t, F2, S, T, SL2Z_fp, MatS, MatT, SL2Z, iso, coset_table, H, gens, index;
+  local s, t, F2, S, T, SL2Z, coset_table, H, index;
 
   s := SAction(G);
   t := TAction(G);
-  # Since GAP can only reconstruct generators of a group which is given by a coset graph if the
-  # group is a subgroup of a finitely presented group, we need a presentation of SL(2,Z).
-  # We will use the following one:
+
   F2 := FreeGroup("S", "T");
   S := F2.S;
   T := F2.T;
-  SL2Z_fp := F2 / ParseRelators([S,T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
-  # "S^4, (S^-1*T^-1)^3*S^-2"
+  SL2Z := F2 / ParseRelators([S,T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
 
-  # SL(2,Z) as matrix group.
-  MatS := [[0,-1],[1,0]];
-  MatT := [[1,1],[0,1]];
-  SL2Z := Group([MatS, MatT]);
-
-  # This is an explicit isomorphism between the above presentation of SL(2,Z) and SL(2,Z) as a matrix group.
-  iso := GroupHomomorphismByImagesNC(SL2Z_fp, SL2Z, GeneratorsOfGroup(SL2Z_fp), [MatS,MatT]);
-
-  # In order to compute generators of a subgroup, GAP needs a coset table in terms of generators of the whole
-  # group in a specific form. For details, see
-  # https://www.gap-system.org/Manuals/doc/ref/chap47.html#X857F239583AFE0B7 and
-  # https://www.gap-system.org/Manuals/doc/ref/chap47.html#X7F7F31E47D7F6EF8
   index := Index(G);
   coset_table := [ListPerm(s, index), ListPerm(s^-1, index), ListPerm(t, index), ListPerm(t^-1, index)];
-  H := SubgroupOfWholeGroupByCosetTable(FamilyObj(SL2Z_fp), coset_table);
+  H := SubgroupOfWholeGroupByCosetTable(FamilyObj(SL2Z), coset_table);
 
-  # The method 'Apply' used below requires its argument to be a mutable list, but 'GeneratorsOfGroup' returns
-  # an immutable list, so we need to make a mutable copy of it.
-  gens := ShallowCopy(GeneratorsOfGroup(H));
+  return GeneratorsOfGroup(H);
+end);
 
-  # Now we apply the isomorphism defined above to get the generators as matrices in SL(2,Z) rather than
-  # words in S and T.
-  Apply(gens, x -> Image(iso, x));
-
+InstallMethod(MatrixGeneratorsOfGroup, [IsModularSubgroup], function(G)
+  local gens, F2, MatS, MatT;
+  gens := ShallowCopy(GeneratorsOfGroup(G));
+  F2 := FreeGroup("S", "T");
+  MatS := [[0,-1],[1,0]];
+  MatT := [[1,1],[0,1]];
+  Apply(gens, w -> ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(w)));
+  Apply(gens, w -> MappedWord(w, [F2.1, F2.2], [MatS, MatT]));
   return gens;
 end);
 

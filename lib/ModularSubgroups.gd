@@ -9,6 +9,7 @@ DeclareAttribute("Cusps", IsModularSubgroup);
 DeclareAttribute("RightCosetRepresentatives", IsModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsModularSubgroup);
 DeclareAttribute("GeneratorsOfGroup", IsModularSubgroup);
+DeclareAttribute("MatrixGeneratorsOfGroup", IsModularSubgroup);
 
 DeclareOperation("DefinesCosetAction", [IsPerm, IsPerm]);
 DeclareOperation("ModularSubgroup", [IsPerm, IsPerm]);
