@@ -54,8 +54,8 @@ the convention that <M>1</M> corresponds to the coset of the identity matrix.
 
 The choice of generator matrices of <M>SL_2(&ZZ;)</M> is quite arbitrary and the
 fact that we work with <M>S</M> and <M>T</M> as above only reflects our personal
-preferences. Therefore this package also implements methods for displaying
-results and inputting data in terms of different generators.
+preferences. Therefore we plan to implement methods for displaying results and
+inputting data in terms of different generators in the near future.
 </Section>
 
 
