@@ -471,7 +471,7 @@ end);
 #!  $$\pi_N : \mathrm{SL}(2,\mathbb{Z}) \rightarrow \mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})$$
 InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
   local gens, SL2Zn, H;
-  gens := ShallowCopy(GeneratorsOfGroup(G));
+  gens := ShallowCopy(MatrixGeneratorsOfGroup(G));
   Apply(gens, M ->
     [[ZmodnZObj(M[1][1], N), ZmodnZObj(M[1][2], N)],
      [ZmodnZObj(M[2][1], N), ZmodnZObj(M[2][2], N)]]
