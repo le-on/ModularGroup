@@ -61,7 +61,7 @@ InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
 
   a := CosetActionFromGenerators(gens);
   G := ModularSubgroup(a[1], a[2]);
-  SetGeneratorsOfGroup(G, gens);
+  SetMatrixGeneratorsOfGroup(G, gens);
   return G;
 end);
 
