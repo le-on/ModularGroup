@@ -1,9 +1,3 @@
-#! @Arguments s, t
-#! @Returns an object representing a modular subgroup
-#! @Label for two permutations
-#! @Description
-#!  This method constructs a modular subgroup from two given permutations
-#!  (provided they describe a coset action).
 InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
   local G, type, tab, index;
 
@@ -30,26 +24,6 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
   return G;
 end);
 
-#! @Arguments gens
-#! @Returns an object representing a modular subgroup
-#! @Label for a list of matrices
-#! @Description
-#!  This is another constructor for a modular subgroup, with the difference that it
-#!  takes a list of generator matrices as input and calculates the coset graph of
-#!  the generated group. One has to be careful though when using this method,
-#!  because no check is performed if the generated group has finite index!
-#!  Internally, when trying to calculate the coset graph, we just enumerate all
-#!  cosets until we are done or some limit fixed is reached. This also exposes
-#!  another weakness of this method: The coset enumeration might be very
-#!  time-consuming, so constructing modular subgroups from a list of generators
-#!  is not always feasible. On the other hand, the clear advantage of
-#!  constructing a modular subgroup in this way is that it will alreasy know its
-#!  generators. So future computations with this group involving generators will
-#!  most likely be faster.
-
-##  <#GAPDoc Label="ModularSubgroupConstructorGens">
-##  construction via generators
-##  <#/GAPDoc>
 InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
   local G, a;
   if Length(gens) = 0 then
@@ -65,14 +39,6 @@ InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
   return G;
 end);
 
-#! @Arguments s, t
-#! @Returns true or false
-#! @Label for two permutations
-#! @Description
-#!  This is an auxiliary method that takes two permutations as input and checks
-#!  if they describe the action of the generators $S$ and $T$ on the cosets of
-#!  some group. This check is for example performed in the constructor for
-#!  a modular subgroup.
 InstallMethod(DefinesCosetAction, [IsPerm, IsPerm], function(s, t)
   local index;
 
@@ -85,13 +51,6 @@ InstallMethod(DefinesCosetAction, [IsPerm, IsPerm], function(s, t)
   return IsTransitive(Group(s,t), [1..index]);
 end);
 
-#! @Arguments gens
-#! @Returns two permutations
-#! @Label for a list of generator matrices
-#! @Description
-#!  Takes a list of generator matrices and calculates the coset permutation
-#!  representation of the generated subgroup. The same warning as above applies:
-#!  No check is performed if the generated subgroup actually has finite index.
 InstallMethod(CosetActionFromGenerators, [IsRectangularTable], function(gens)
   local A, F2, S, T, SL2Z, gen_words, decomp, coset_table, i;
   if IsEmpty(gens) or not IsMatrix(gens[1]) then
@@ -123,12 +82,6 @@ InstallMethod(CosetActionFromGenerators, [IsRectangularTable], function(gens)
   return [coset_table[1], coset_table[3]];
 end);
 
-#! @Arguments M
-#! @Returns a word in $S$ and $T$
-#! @Label for a matrix in SL(2,Z)
-#! @Description
-#!  Takes a matrix in $\mathrm{SL}(2, \mathbb{Z})$ and decomposes it in a word
-#!  in the generators $S$ and $T$.
 InstallMethod(STDecomposition, [IsMatrix], function(M)
   local MatS, MatT, F2, S, T, SL2Z, decomposition, k;
 
@@ -162,22 +115,10 @@ InstallMethod(STDecomposition, [IsMatrix], function(M)
   return decomposition;
 end);
 
-#! @Arguments G
-#! @Returns a permutation
-#! @Label for a modular subgroup
-#! @Description
-#!  Takes a modular subgroup and returns a permutation corresponding to the
-#!  action of the generator matrix $S$.
 InstallMethod(SAction, [IsModularSubgroup], function(G)
   return G!.s;
 end);
 
-#! @Arguments G
-#! @Returns a permutation
-#! @Label for a modular subgroup
-#! @Description
-#!  Takes a modular subgroup and returns a permutation corresponding to the
-#!  action of the generator matrix $T$.
 InstallMethod(TAction, [IsModularSubgroup], function(G)
   return G!.t;
 end);
@@ -195,15 +136,6 @@ InstallMethod(CosetActionOf, [IsMatrix, IsModularSubgroup], function(A, G)
 end);
 
 
-#! @Section Computations with modular subgroups
-#! In this section we describe the implemented method for computing with
-#! modular subgroups.
-
-#! @Arguments G
-#! @Returns a natural number
-#! @Label for a modular subgroup
-#! @Description
-#!  Takes a modular subgroup and returns its index in $\mathrm{SL}(2, \mathbb{Z})$.
 InstallMethod(Index, "for a modular subgroup", [IsModularSubgroup], function(G)
   local s, t;
   s := SAction(G);
@@ -211,11 +143,6 @@ InstallMethod(Index, "for a modular subgroup", [IsModularSubgroup], function(G)
   return Maximum(LargestMovedPoint([s, t]), 1);
 end);
 
-#! @Arguments G
-#! @Returns true or false
-#! @Label for a modular subgroup
-#! @Description
-#!  Tests whether a given modular subgroup is a congruence subgroup.
 InstallMethod(IsCongruenceSubgroup, "for a modular subgroup", [IsModularSubgroup], function(G)
   local s, t, r, L, N, e, m, a, b, c, d, p, q, u;
 
@@ -261,12 +188,6 @@ InstallMethod(IsCongruenceSubgroup, "for a modular subgroup", [IsModularSubgroup
   fi;
 end);
 
-#! @Arguments G
-#! @Returns a list of matrices
-#! @Label for a modular subgroup
-#! @Description
-#!  Calculates a list of representatives of the right cosets of a given
-#!  modular subgroup.
 InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
   local s, t, F2, SL2Z, S, T, index, H, coset_table;
   s := SAction(G);
@@ -289,12 +210,6 @@ InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
   return AsList(RightTransversal(SL2Z, H));
 end);
 
-#! @Arguments G
-#! @Returns a natural number
-#! @Label for a modular subgroup
-#! @Description
-#!  Computes the generalized level (i.e. the lowest common multiple of all cusp
-#!  widths) of a given modular subgroup.
 InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
   local s, t, i, ind, orbits, plist, p, k;
   s := SAction(G);
@@ -319,14 +234,6 @@ InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
   return Order(p);
 end);
 
-#! @Arguments G
-#! @Returns
-#! @Label for a modular subgroup
-#! @Description
-#!  Calculates a list of generators for a given modular subgroup.
-#!  Note: The returned list might contain redundant generators (or even
-#!  duplicates). This calculation involves enumerating the cosets of the given
-#!  group and might become very slow for large index.
 InstallMethod(GeneratorsOfGroup, [IsModularSubgroup], function(G)
   local s, t, F2, S, T, SL2Z, coset_table, H, index;
 
@@ -356,12 +263,6 @@ InstallMethod(MatrixGeneratorsOfGroup, [IsModularSubgroup], function(G)
   return gens;
 end);
 
-#! @Arguments A, G
-#! @Returns true or false
-#! @Label for a matrix in SL(2,Z) and a modular subgroup
-#! @Description
-#!  This is a membership test for modular subgroups given by a coset permutation
-#!  representation.
 InstallMethod(IsElementOf, [IsMatrix, IsModularSubgroup], function(A, G)
   local s, t, decomp, rep, p, i;
 
@@ -394,13 +295,6 @@ InstallMethod(IsElementOf, [IsMatrix, IsModularSubgroup], function(A, G)
   return 1^p = 1;
 end);
 
-#! @Arguments c, G
-#! @Returns a natural number
-#! @Label for a rational number or infinity and a modular subgroup
-#! @Description
-#!  Calculates the width of $c$ with respect to a given modular subgroup, i.e.
-#!  the smallest $k$ such that $\pm gT^{k}g^{-1} \in G$ where $g \in \mathrm{SL}(2, \mathbb{Z})$
-#!  such that $g\infty = c$.
 InstallMethod(CuspWidth, [IsRat, IsModularSubgroup], function(c, G)
   return CuspWidth(c, Projection(G));
 end);
@@ -408,12 +302,6 @@ InstallOtherMethod(CuspWidth, [IsInfinity, IsModularSubgroup], function(c, G)
   return CuspWidth(c, Projection(G));
 end);
 
-
-#! @Arguments c1, c2, G
-#! @Returns true or false
-#! @Label for two cusps (i.e. rational numbers or infinity) and a modular subgroup
-#! @Description
-#!  Checks if two cusps are equivalent with respect to a given modular subgroup.
 InstallMethod(CuspsEquivalent, [IsRat, IsRat, IsModularSubgroup], function(c1, c2, G)
   return CuspsEquivalent(c1, c2, Projection(G));
 end);
@@ -427,11 +315,6 @@ InstallOtherMethod(CuspsEquivalent, [IsInfinity, IsInfinity, IsModularSubgroup],
   return true;
 end);
 
-#! @Arguments G
-#! @Returns a list of cusps
-#! @Label for a modular subgroup
-#! @Description
-#!  Calculates a list of inequivalent cusp representative for a given modular subgroup.
 InstallMethod(Cusps, [IsModularSubgroup], function(G)
   return Cusps(Projection(G));
 end);
@@ -462,13 +345,6 @@ InstallOtherMethod(MoebiusTransformation, [IsMatrix, IsInfinity], function(A, i)
   return A[1][1]/A[2][1];
 end);
 
-#! @Arguments G, N
-#! @Returns a natural number
-#! @Label for a modular subgroup and a natural number > 1
-#! @Description
-#!  This method computes the index of the image of $G$ in $\mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})$
-#!  under the projection
-#!  $$\pi_N : \mathrm{SL}(2,\mathbb{Z}) \rightarrow \mathrm{SL}(2, \mathbb{Z}/N\mathbb{Z})$$
 InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
   local gens, SL2Zn, H;
   gens := ShallowCopy(MatrixGeneratorsOfGroup(G));
@@ -481,12 +357,6 @@ InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
   return Index(SL2Zn, H);
 end);
 
-#! @Arguments G, N
-#! @Returns a natural number
-#! @Label for a modular subgroup and a natural number > 1
-#! @Description
-#!  This method calculates the so-called deficiency $f_N$ of a modular subgroup,
-#!  i.e. the index $[ \Gamma(N) : \Gamma(N) \cap G ]$.
 InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
   return Index(G) / IndexModN(G, N);
 end);
