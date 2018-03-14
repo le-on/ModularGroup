@@ -63,8 +63,9 @@ InstallMethod(CosetActionFromGenerators, [IsRectangularTable], function(gens)
   od;
 
 
-  # GAP can only enumerate cosets in the setting of finitely presented groups, so we must use a presentation
-  # of SL(2,Z) and write every generator matrix as a word in S and T.
+  # GAP can only enumerate cosets in the setting of finitely presented groups,
+  # so we need to use a presentation of SL(2,Z) and write every generator matrix
+  # as a word in S and T
   F2 := FreeGroup("S", "T");
   S := F2.1; T := F2.2;
   SL2Z := F2 / ParseRelators([S,T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
@@ -129,12 +130,13 @@ InstallMethod(CosetActionOf, [IsMatrix, IsModularSubgroup], function(A, G)
     Error("<A> has to be an element of SL(2,Z)");
   fi;
 
+  # By writing A as a word in S and T we can compute its action on the cosets
+  # from the actions of S and T.
   w := STDecomposition(A);
   F2 := FreeGroup(2);
   w := ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(w));
   return MappedWord(w, [F2.1, F2.2], [SAction(G), TAction(G)]);
 end);
-
 
 InstallMethod(Index, "for a modular subgroup", [IsModularSubgroup], function(G)
   local s, t;
@@ -144,6 +146,9 @@ InstallMethod(Index, "for a modular subgroup", [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(IsCongruenceSubgroup, "for a modular subgroup", [IsModularSubgroup], function(G)
+  # This is an implementation of an algorithm described by Thomas Hamilton
+  # and David Loeffler (https://doi.org/10.1112/S1461157013000338)
+
   local s, t, r, L, N, e, m, a, b, c, d, p, q, u;
 
   s := SAction(G);
@@ -202,10 +207,11 @@ InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
   coset_table := [ListPerm(s, index), ListPerm(s^-1, index), ListPerm(t, index), ListPerm(t^-1, index)];
   H := SubgroupOfWholeGroupByCosetTable(FamilyObj(SL2Z), coset_table);
 
-  # this is a slicker way to do this without having to explicitly mention a coset
-  # table but computing the stabilizer becomes really slow for large (>1000) index
+  # A slicker way to do this without having to explicitly mention a coset table
+  # is the following:
   #hom := GroupHomomorphismByImagesNC(SL2Z, Group([s,t]), [SL2Z.1,SL2Z.2], [s,t]);
   #H := PreImage(hom, Stabilizer(Image(hom), 1));
+  # Unfortunately though, computing the stabilizer becomes really slow for large (>1000) index
 
   return AsList(RightTransversal(SL2Z, H));
 end);
@@ -264,34 +270,14 @@ InstallMethod(MatrixGeneratorsOfGroup, [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(IsElementOf, [IsMatrix, IsModularSubgroup], function(A, G)
-  local s, t, decomp, rep, p, i;
-
+  local p;
+  
   if not A in SL(2,Integers) then
     Error("<A> has to be an element of SL(2,Z)");
   fi;
 
-  s := SAction(G);
-  t := TAction(G);
-
-  # A matrix A is in the group if and only if it does not permute the identity coset.
-  # Hence, we write A as a word in S and T (the action of which we know)
-  # and compute from that the action of A.
-
-  decomp := STDecomposition(A);
-  rep := ExtRepOfObj(decomp);
-
-  if Length(rep) = 0 then
-    return s = () and t = ();
-  fi;
-
-  p := ();
-  for i in [1, 3 .. Length(rep)-1] do
-    if rep[i] = 1 then
-      p := p * s^rep[i+1]; # the action is from the right
-    else
-      p := p * t^rep[i+1];
-    fi;
-  od;
+  # A matrix A is in the group G if and only if it does not permute the identity coset.
+  p := CosetActionOf(A, G);
   return 1^p = 1;
 end);
 
