@@ -330,6 +330,54 @@ matrices as generators.
   </Description>
 </ManSection>
 
+<ManSection>
+  <Oper Name="IsElementOf" Arg="A, G" />
+  <Returns>True or false.</Returns>
+  <Description>
+    This function checks if a given matrix <A>A</A> is an element of the modular
+    subgroup <A>G</A>.
+  </Description>
+</ManSection>
+
+</Section>
+
+<Section Label="ModularSubgroupMisc">
+<Heading>Miscellaneous</Heading>
+
+The following functions are mostly helper functions used internally and are only
+documented for sake of completeness.
+
+<ManSection>
+  <Oper Name="DefinesCosetAction" Arg="s, t" />
+  <Returns>True or false.</Returns>
+  <Description>
+    Checks if two given permutations <A>s</A> and <A>t</A> describe
+    the action of the generator matrices <M>S</M> and <M>T</M> on the cosets of
+    some subgroup. This is the case if they satisfy the relations
+    <Display>s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</Display>
+    and act transitively.
+  </Description>
+</ManSection>
+
+<ManSection>
+  <Oper Name="CosetActionFromGenerators" Arg="gens" />
+  <Returns>A tuple of permutations.</Returns>
+  <Description>
+    Takes a list of generator matrices and calculates the coset graph (as two
+    permutations <M>\sigma_S</M> and <M>\sigma_T</M>) of the generated subgroup
+    of <M>SL_2(&ZZ;)</M>.
+  </Description>
+</ManSection>
+
+<ManSection>
+  <Oper Name="STDecomposition" Arg="A" />
+  <Returns>A word in <M>S</M> and <M>T</M>.</Returns>
+  <Description>
+    Takes a matrix <M><A>A</A> \in SL_2(&ZZ;)</M> and decomposes it into a word
+    in the generator matrices <M>S</M> and <M>T</M>.
+  </Description>
+</ManSection>
+
 
 </Section>
 
