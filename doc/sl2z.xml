@@ -331,6 +331,15 @@ matrices as generators.
 </ManSection>
 
 <ManSection>
+  <Oper Name="NormalCore" Arg="G" />
+  <Returns>A modular subgroup.</Returns>
+  <Description>
+    Calculates the normal core of <A>G</A> in <M>SL_2(&ZZ;)</M>, i.e. the maximal
+    subgroup of <A>G</A> that is normal in <M>SL_2(&ZZ;)</M>.
+  </Description>
+</ManSection>
+
+<ManSection>
   <Oper Name="IsElementOf" Arg="A, G" />
   <Returns>True or false.</Returns>
   <Description>
