@@ -25,5 +25,6 @@ DeclareOperation("IndexModN", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Projection", [IsModularSubgroup]);
 DeclareOperation("NormalCore", [IsModularSubgroup]);
+DeclareOperation("QuotientByNormalCore", [IsModularSubgroup]);
 
 DeclareOperation("MoebiusTransformation", [IsMatrix, IsRat]);

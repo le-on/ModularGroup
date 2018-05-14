@@ -390,7 +390,7 @@ InstallMethod(Projection, [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(NormalCore, [IsModularSubgroup], function(G)
-  local s, t, F2, S, T, SL2Z, index, coset_table, H, core, gens;
+  local s, t, F2, S, T, SL2Z, index, m, Sd, core, coset_table;
 
   s := SAction(G);
   t := TAction(G);
@@ -399,18 +399,35 @@ InstallMethod(NormalCore, [IsModularSubgroup], function(G)
   S := F2.S;
   T := F2.T;
   SL2Z := F2 / ParseRelators([S,T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
+  S := SL2Z.1;
+  T := SL2Z.2;
 
   index := Index(G);
+  Sd := SymmetricGroup(index);
+
+  m := GroupHomomorphismByImagesNC(SL2Z, Sd, [S,T], [s,t]);
+  core := Kernel(m);
+  coset_table := CosetTableBySubgroup(SL2Z, core);
+  return ModularSubgroup(PermList(coset_table[1]), PermList(coset_table[3]));
+end);
+
+InstallMethod(QuotientByNormalCore, [IsModularSubgroup], function(G)
+  local NC, s, t, F2, S, T, SL2Z, index, coset_table, H;
+
+  NC := NormalCore(G);
+  s := SAction(NC);
+  t := TAction(NC);
+
+  F2 := FreeGroup("S", "T");
+  S := F2.S;
+  T := F2.T;
+  SL2Z := F2 / ParseRelators([S,T], "S^4, (S^3*T)^3, S^2*T*S^-2*T^-1");
+
+  index := Index(NC);
   coset_table := [ListPerm(s, index), ListPerm(s^-1, index), ListPerm(t, index), ListPerm(t^-1, index)];
   H := SubgroupOfWholeGroupByCosetTable(FamilyObj(SL2Z), coset_table);
 
-  core := Core(SL2Z, H);
-  gens := ShallowCopy(GeneratorsOfGroup(core));
-  Apply(gens, function(g)
-    g := ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(g));
-    return MappedWord(g, [F2.1, F2.2], [[[0,-1],[1,0]], [[1,1],[0,1]]]);
-  end);
-  return ModularSubgroup(gens);
+  return FactorGroupNC(SL2Z, H);
 end);
 
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)

@@ -340,6 +340,14 @@ matrices as generators.
 </ManSection>
 
 <ManSection>
+  <Oper Name="QuotientByNormalCore" Arg="G" />
+  <Returns>A finite group.</Returns>
+  <Description>
+    Calculates the quotient of <M>SL_2(&ZZ;)</M> by the normal core of <A>G</A>.
+  </Description>
+</ManSection>
+
+<ManSection>
   <Oper Name="IsElementOf" Arg="A, G" />
   <Returns>True or false.</Returns>
   <Description>
