@@ -1,5 +1,5 @@
 InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
-  local G, type, tab, index;
+  local G, type, tab, index, l1, l2, l3, l4;
 
   if not DefinesCosetAction(sp, tp) then
     Error("<s> and <t> do not describe the action of the generators S and T on the cosets of a finite-index subgroup of SL(2,Z)");
@@ -14,7 +14,11 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
     IsDefaultModularSubgroup);
 
   index := Maximum(LargestMovedPoint([sp,tp]), 1);
-  tab := [ListPerm(sp, index), ListPerm(sp^-1, index), ListPerm(tp, index), ListPerm(tp^-1, index)];
+  l1 := ListPerm(sp, index);    l1[1] := l1[1];
+  l2 := ListPerm(sp^-1, index); l2[1] := l2[1];
+  l3 := ListPerm(tp, index);    l3[1] := l3[1];
+  l4 := ListPerm(tp^-1, index); l4[1] := l4[1];
+  tab := [l1, l2, l3, l4];
   StandardizeTable(tab);
 
   G := Objectify(type, rec(
