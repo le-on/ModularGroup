@@ -10,6 +10,9 @@ DeclareAttribute("RightCosetRepresentatives", IsModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsModularSubgroup);
 DeclareAttribute("GeneratorsOfGroup", IsModularSubgroup);
 DeclareAttribute("MatrixGeneratorsOfGroup", IsModularSubgroup);
+DeclareAttribute("NormalCore", IsModularSubgroup);
+DeclareAttribute("QuotientByNormalCore", IsModularSubgroup);
+DeclareAttribute("AssociatedCharacterTable", IsModularSubgroup);
 
 DeclareOperation("DefinesCosetAction", [IsPerm, IsPerm]);
 DeclareOperation("ModularSubgroup", [IsPerm, IsPerm]);
@@ -24,7 +27,5 @@ DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsModularSubgroup]);
 DeclareOperation("IndexModN", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Projection", [IsModularSubgroup]);
-DeclareOperation("NormalCore", [IsModularSubgroup]);
-DeclareOperation("QuotientByNormalCore", [IsModularSubgroup]);
 
 DeclareOperation("MoebiusTransformation", [IsMatrix, IsRat]);

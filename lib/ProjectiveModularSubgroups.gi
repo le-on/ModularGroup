@@ -304,6 +304,53 @@ InstallMethod(Deficiency, [IsProjectiveModularSubgroup, IsPosInt], function(G, N
   return Index(G) / IndexModN(G, N);
 end);
 
+InstallMethod(NormalCore, [IsProjectiveModularSubgroup], function(G)
+  local s, t, F2, S, T, PSL2Z, index, m, Sd, core, coset_table;
+
+  s := SAction(G);
+  t := TAction(G);
+
+  F2 := FreeGroup("S", "T");
+  S := F2.S;
+  T := F2.T;
+  PSL2Z := F2 / ParseRelators([S,T], "S^2, (S*T)^3");
+  S := PSL2Z.1;
+  T := PSL2Z.2;
+
+  index := Index(G);
+  Sd := SymmetricGroup(index);
+
+  m := GroupHomomorphismByImagesNC(PSL2Z, Sd, [S,T], [s,t]);
+  core := Kernel(m);
+  coset_table := CosetTableBySubgroup(PSL2Z, core);
+  return ProjectiveModularSubgroup(PermList(coset_table[1]), PermList(coset_table[3]));
+end);
+
+InstallMethod(QuotientByNormalCore, [IsProjectiveModularSubgroup], function(G)
+  local NC, s, t, F2, S, T, PSL2Z, index, coset_table, H;
+
+  NC := NormalCore(G);
+  s := SAction(NC);
+  t := TAction(NC);
+
+  F2 := FreeGroup("S", "T");
+  S := F2.S;
+  T := F2.T;
+  PSL2Z := F2 / ParseRelators([S,T], "S^4, (S*T)^3");
+
+  index := Index(NC);
+  coset_table := [ListPerm(s, index), ListPerm(s^-1, index), ListPerm(t, index), ListPerm(t^-1, index)];
+  H := SubgroupOfWholeGroupByCosetTable(FamilyObj(PSL2Z), coset_table);
+
+  return FactorGroupNC(PSL2Z, H);
+end);
+
+InstallMethod(AssociatedCharacterTable, [IsProjectiveModularSubgroup], function(G)
+  local F;
+  F := QuotientByNormalCore(G);
+  return CharacterTable(F);
+end);
+
 InstallMethod(PrintObj, "for projective modular subgroups", [IsProjectiveModularSubgroup], function(G)
   Print("ProjectiveModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);

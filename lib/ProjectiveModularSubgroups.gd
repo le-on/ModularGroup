@@ -9,6 +9,9 @@ DeclareAttribute("Cusps", IsProjectiveModularSubgroup);
 DeclareAttribute("RightCosetRepresentatives", IsProjectiveModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsProjectiveModularSubgroup);
 DeclareAttribute("GeneratorsOfGroup", IsProjectiveModularSubgroup);
+DeclareAttribute("NormalCore", IsProjectiveModularSubgroup);
+DeclareAttribute("QuotientByNormalCore", IsProjectiveModularSubgroup);
+DeclareAttribute("AssociatedCharacterTable", IsProjectiveModularSubgroup);
 
 DeclareOperation("DefinesProjectiveCosetAction", [IsPerm, IsPerm]);
 DeclareOperation("ProjectiveModularSubgroup", [IsPerm, IsPerm]);

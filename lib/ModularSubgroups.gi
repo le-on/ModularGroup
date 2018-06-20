@@ -434,6 +434,12 @@ InstallMethod(QuotientByNormalCore, [IsModularSubgroup], function(G)
   return FactorGroupNC(SL2Z, H);
 end);
 
+InstallMethod(AssociatedCharacterTable, [IsModularSubgroup], function(G)
+  local F;
+  F := QuotientByNormalCore(G);
+  return CharacterTable(F);
+end);
+
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
   Print("ModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);
