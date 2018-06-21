@@ -12,7 +12,6 @@ InstallMethod(LiftToSL2Z, [IsMatrix, IsPosInt], function(M, n)
 
   SL2Z := Group([MatS,MatT]);
   SL2Zn := Group([MatS_, MatT_]);
-  Display(M in SL2Zn);
 
   w := Factorization(SL2Zn, M);
   F2 := FreeGroup(2);
