@@ -51,7 +51,7 @@ InstallMethod(Index, "for a projective modular subgroup", [IsProjectiveModularSu
   return Maximum(LargestMovedPoint([s, s^-1, t, t^-1]), 1);
 end);
 
-InstallMethod(IsCongruenceSubgroup, [IsProjectiveModularSubgroup], function(G)
+InstallMethod(IsCongruence, [IsProjectiveModularSubgroup], function(G)
   local L, R, N, e, m, S, c, d, a, b, l, r, s;
   L := TAction(G);
   R := L*SAction(G)*L;

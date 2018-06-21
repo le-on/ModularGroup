@@ -4,7 +4,7 @@ DeclareSynonym("IsDefaultProjectiveModularSubgroup", IsProjectiveModularSubgroup
 
 
 DeclareAttribute("Index", IsProjectiveModularSubgroup);
-DeclareAttribute("IsCongruenceSubgroup", IsProjectiveModularSubgroup);
+DeclareAttribute("IsCongruence", IsProjectiveModularSubgroup);
 DeclareAttribute("Cusps", IsProjectiveModularSubgroup);
 DeclareAttribute("RightCosetRepresentatives", IsProjectiveModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsProjectiveModularSubgroup);

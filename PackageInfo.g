@@ -235,7 +235,7 @@ Dependencies := rec(
   # insensitive, exact version denoted with '=' prepended to version string.
   # without these, the package will not load
   # NeededOtherPackages := [["GAPDoc", "1.5"]],
-  NeededOtherPackages := [["GAPDoc", "1.5"], ["CTblLib", "1.2.2"]],
+  NeededOtherPackages := [["GAPDoc", ">= 1.5"], ["CTblLib", ">= 1.2.2"], ["Congruence", ">= 1.1.1"]],
 
   SuggestedOtherPackages := [],
 

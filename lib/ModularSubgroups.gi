@@ -149,7 +149,7 @@ InstallMethod(Index, "for a modular subgroup", [IsModularSubgroup], function(G)
   return Maximum(LargestMovedPoint([s, t]), 1);
 end);
 
-InstallMethod(IsCongruenceSubgroup, "for a modular subgroup", [IsModularSubgroup], function(G)
+InstallMethod(IsCongruence, "for a modular subgroup", [IsModularSubgroup], function(G)
   # This is an implementation of an algorithm described by Thomas Hamilton
   # and David Loeffler (https://doi.org/10.1112/S1461157013000338)
 

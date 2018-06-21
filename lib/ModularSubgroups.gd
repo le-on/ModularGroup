@@ -4,7 +4,7 @@ DeclareSynonym("IsDefaultModularSubgroup", IsModularSubgroup and IsModularSubgro
 
 
 DeclareAttribute("Index", IsModularSubgroup);
-DeclareAttribute("IsCongruenceSubgroup", IsModularSubgroup);
+DeclareAttribute("IsCongruence", IsModularSubgroup);
 DeclareAttribute("Cusps", IsModularSubgroup);
 DeclareAttribute("RightCosetRepresentatives", IsModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsModularSubgroup);
