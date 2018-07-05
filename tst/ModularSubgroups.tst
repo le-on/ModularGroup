@@ -3,7 +3,7 @@ gap> G := ModularSubgroup([
 > [[1,0],[2,1]]
 > ]);
 <modular subgroup of index 12>
-gap> IsCongruenceSubgroup(G);
+gap> IsCongruence(G);
 true
 gap> Cusps(G);
 [ infinity, 0, 1 ]

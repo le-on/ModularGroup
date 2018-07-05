@@ -198,7 +198,7 @@ matrices as generators.
 </Example>
 
 <ManSection>
-  <Attr Name="IsCongruenceSubgroup" Arg="G" />
+  <Attr Name="IsCongruence" Arg="G" />
   <Returns>True or false.</Returns>
   <Description>
     This method test whether a given modular subgroup <A>G</A> is a congruence
@@ -213,7 +213,7 @@ matrices as generators.
   > [[1,0],[2,1]]
   > ]);
   <modular subgroup of index 12>
-  gap> IsCongruenceSubgroup(G);
+  gap> IsCongruence(G);
   true
   ]]>
 </Example>
@@ -331,7 +331,7 @@ matrices as generators.
 </ManSection>
 
 <ManSection>
-  <Oper Name="NormalCore" Arg="G" />
+  <Attr Name="NormalCore" Arg="G" />
   <Returns>A modular subgroup.</Returns>
   <Description>
     Calculates the normal core of <A>G</A> in <M>SL_2(&ZZ;)</M>, i.e. the maximal
@@ -340,10 +340,19 @@ matrices as generators.
 </ManSection>
 
 <ManSection>
-  <Oper Name="QuotientByNormalCore" Arg="G" />
+  <Attr Name="QuotientByNormalCore" Arg="G" />
   <Returns>A finite group.</Returns>
   <Description>
     Calculates the quotient of <M>SL_2(&ZZ;)</M> by the normal core of <A>G</A>.
+  </Description>
+</ManSection>
+
+<ManSection>
+  <Attr Name="AssociatedCharacterTable" Arg="G" />
+  <Returns>A character table.</Returns>
+  <Description>
+    Returns the character table of <M>SL_2(&ZZ;)/N</M> where <M>N</M> is the normal core
+    of <A>G</A>.
   </Description>
 </ManSection>
 
