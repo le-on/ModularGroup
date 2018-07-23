@@ -403,6 +403,31 @@ documented for sake of completeness.
     in the generator matrices <M>S</M> and <M>T</M>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap> STDecomposition(M);
+  S^2*T^-1*S^-1*T^2*S^-1*T^-1*S^-1
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="STDecompositionAsList" Arg="A" />
+  <Returns>A list representing a word in <M>S</M> and <M>T</M>.</Returns>
+  <Description>
+    Takes a matrix <M><A>A</A> \in SL_2(&ZZ;)</M> and decomposes it into a word
+    in the generator matrices <M>S</M> and <M>T</M>. The word is represented
+    as a list in the format [[generator, exponent], ... ]
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap> STDecompositionAsList(M);
+  [ [ "S", 2 ], [ "T", -1 ], [ "S", -1 ], [ "T", 2 ], [ "S", -1 ], [ "T", -1 ],
+    [ "S", -1 ], [ "T", 0 ] ]
+  ]]>
+</Example>
 
 
 </Section>

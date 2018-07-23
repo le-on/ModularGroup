@@ -120,6 +120,34 @@ InstallMethod(STDecomposition, [IsMatrix], function(M)
   return decomposition;
 end);
 
+InstallMethod(STDecompositionAsList, [IsMatrix], function(M)
+  local MatS, MatT, decomposition, k;
+
+  if not M in SL(2,Integers) then
+    Error("<M> needs to be in SL(2,Z)");
+  fi;
+
+  MatS := [[0,-1],[1,0]]; MatT := [[1,1],[0,1]];
+
+  decomposition := [];
+
+  while M[2][1] <> 0 do
+    k := QuoInt(M[2][2], M[2][1]);
+    decomposition := Concatenation([["S", -1], ["T", k]], decomposition);
+    M := M * MatT^-k * MatS;
+  od;
+
+  # now M[2][1] = 0 and since det M = 1, we have M = +/- T^r
+  # where r = M[1][2]
+  if M[1][1] = 1 then
+    decomposition := Concatenation([["T", M[1][2]]], decomposition);
+  else
+    decomposition := Concatenation([["S", 2], ["T", -M[1][2]]], decomposition);
+  fi;
+
+  return decomposition;
+end);
+
 InstallMethod(SAction, [IsModularSubgroup], function(G)
   return G!.s;
 end);

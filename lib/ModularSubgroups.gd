@@ -21,6 +21,7 @@ DeclareOperation("TAction", [IsModularSubgroup]);
 DeclareOperation("CosetActionOf", [IsMatrix, IsModularSubgroup]);
 DeclareOperation("CosetActionFromGenerators", [IsRectangularTable]);
 DeclareOperation("STDecomposition", [IsMatrix]);
+DeclareOperation("STDecompositionAsList", [IsMatrix]);
 DeclareOperation("IsElementOf", [IsMatrix, IsModularSubgroup]);
 DeclareOperation("CuspWidth", [IsRat, IsModularSubgroup]);
 DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsModularSubgroup]);
