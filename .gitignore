@@ -1,3 +1,4 @@
 doc/*
 !doc/*.xml
 !doc/*.bib
+!doc/*.pdf
