@@ -1,7 +1,7 @@
 InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
   local G, type, tab, index, l1, l2, l3, l4;
 
-  if not DefinesCosetAction(sp, tp) then
+  if not DefinesCosetActionST(sp, tp) then
     Error("<s> and <t> do not describe the action of the generators S and T on the cosets of a finite-index subgroup of SL(2,Z)");
   fi;
 
@@ -10,7 +10,7 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
     #IsMatrixGroup and
     IsAttributeStoringRep and
     IsComponentObjectRep and
-    IsFinitelyGeneratedGroup and # finite-index subgroups of finitely generated groups are finitely generated
+    IsFinitelyGeneratedGroup and
     IsDefaultModularSubgroup);
 
   index := Maximum(LargestMovedPoint([sp,tp]), 1);
@@ -21,11 +21,32 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
   tab := [l1, l2, l3, l4];
   StandardizeTable(tab);
 
+  sp := PermList(tab[1]);
+  tp := PermList(tab[3]);
+
   G := Objectify(type, rec(
-    s := PermList(tab[1]),
-    t := PermList(tab[3])
+    s := sp,
+    t := tp,
+    r := sp^-1*tp^-1*sp,
+    j := sp^-1*tp^-1
   ));
   return G;
+end);
+
+InstallMethod(ModularSubgroupST, [IsPerm, IsPerm], function(sp, tp)
+  return ModularSubgroup(sp, tp);
+end);
+
+InstallMethod(ModularSubgroupRT, [IsPerm, IsPerm], function(rp, tp)
+  local sp;
+  sp := rp*tp^-1*rp;
+  return ModularSubgroup(sp, tp);
+end);
+
+InstallMethod(ModularSubgroupSJ, [IsPerm, IsPerm], function(sp, jp)
+  local tp;
+  tp := jp^-1*sp^-1;
+  return ModularSubgroup(sp, tp);
 end);
 
 InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
@@ -43,7 +64,7 @@ InstallOtherMethod(ModularSubgroup, [IsList], function(gens)
   return G;
 end);
 
-InstallMethod(DefinesCosetAction, [IsPerm, IsPerm], function(s, t)
+InstallMethod(DefinesCosetActionST, [IsPerm, IsPerm], function(s, t)
   local index;
 
   # check relations
@@ -53,6 +74,30 @@ InstallMethod(DefinesCosetAction, [IsPerm, IsPerm], function(s, t)
   # this check can be quite costly, so we do it last
   index := Maximum(LargestMovedPoint([s, t]), 1);
   return IsTransitive(Group(s,t), [1..index]);
+end);
+
+InstallMethod(DefinesCosetActionRT, [IsPerm, IsPerm], function(r, t)
+  local index;
+
+  # check relations
+  if (r*t^-1*r)^4 <> () or ((r*t^-1*r)^3*t)^3 <> () or (r*t^-1*r)^2*t*(r*t^-1*r)^-2*t^-1 <> () then return false; fi;
+
+  # check if the generated subgroup acts transitively
+  # this check can be quite costly, so we do it last
+  index := Maximum(LargestMovedPoint([r, t]), 1);
+  return IsTransitive(Group(r,t), [1..index]);
+end);
+
+InstallMethod(DefinesCosetActionSJ, [IsPerm, IsPerm], function(s, j)
+  local index;
+
+  # check relations
+  if s^4 <> () or (s^3*j^-1*s^-1)^3 <> () or s^2*j^-1*s^-2*j <> () then return false; fi;
+
+  # check if the generated subgroup acts transitively
+  # this check can be quite costly, so we do it last
+  index := Maximum(LargestMovedPoint([s, j]), 1);
+  return IsTransitive(Group(s,j), [1..index]);
 end);
 
 InstallMethod(CosetActionFromGenerators, [IsRectangularTable], function(gens)
@@ -120,6 +165,30 @@ InstallMethod(STDecomposition, [IsMatrix], function(M)
   return decomposition;
 end);
 
+InstallMethod(RTDecomposition, [IsMatrix], function(M)
+  local w, F2ST, F2RT;
+
+  w := STDecomposition(M);
+
+  F2ST := FreeGroup("S", "T");
+  F2RT := FreeGroup("R", "T");
+
+  w := ObjByExtRep(FamilyObj(F2ST.1), ExtRepOfObj(w));
+  return MappedWord(w, [F2ST.1, F2ST.2], [F2RT.1*F2RT.2^-1*F2RT.1, F2RT.2]);
+end);
+
+InstallMethod(SJDecomposition, [IsMatrix], function(M)
+  local w, F2ST, F2SJ;
+
+  w := STDecomposition(M);
+
+  F2ST := FreeGroup("S", "T");
+  F2SJ := FreeGroup("S", "J");
+
+  w := ObjByExtRep(FamilyObj(F2ST.1), ExtRepOfObj(w));
+  return MappedWord(w, [F2ST.1, F2ST.2], [F2SJ.1, F2SJ.2^-1*F2SJ.1^-1]);
+end);
+
 InstallMethod(STDecompositionAsList, [IsMatrix], function(M)
   local MatS, MatT, decomposition, k;
 
@@ -154,6 +223,14 @@ end);
 
 InstallMethod(TAction, [IsModularSubgroup], function(G)
   return G!.t;
+end);
+
+InstallMethod(RAction, [IsModularSubgroup], function(G)
+  return G!.r;
+end);
+
+InstallMethod(JAction, [IsModularSubgroup], function(G)
+  return G!.j;
 end);
 
 InstallMethod(CosetActionOf, [IsMatrix, IsModularSubgroup], function(A, G)
@@ -469,7 +546,12 @@ InstallMethod(AssociatedCharacterTable, [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
-  Print("ModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
+  Print("ModularSubgroup(",
+          "\n  S : ", SAction(G),
+          "\n  T : ", TAction(G),
+          "\n  R : ", RAction(G),
+          "\n  J : ", JAction(G),
+        " )");
 end);
 
 InstallMethod(ViewObj, "for modular subgroups", [IsModularSubgroup], function(G)

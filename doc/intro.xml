@@ -50,12 +50,7 @@ and represent a subgroup as a tuple of transitive permutations
 <M>(\sigma_S,\sigma_T)</M> describing the action of <M>S</M> and <M>T</M>.
 This is exactly the way this package internally treats such subgroups. We employ
 the convention that <M>1</M> corresponds to the coset of the identity matrix.
-<P/>
 
-
-Our choice of <M>S</M> and <M>T</M> as generators of <M>SL_2(&ZZ;)</M> is quite
-arbitrary, but we plan to implement methods for displaying results and
-inputting data in terms of different generators in the near future.
 </Section>
 
 

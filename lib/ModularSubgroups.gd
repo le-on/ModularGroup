@@ -1,5 +1,5 @@
 DeclareCategory("IsModularSubgroup", IsObject);
-DeclareRepresentation("IsModularSubgroupRepresentation", IsComponentObjectRep, ["s", "t"]);
+DeclareRepresentation("IsModularSubgroupRepresentation", IsComponentObjectRep, ["s", "t", "r", "j"]);
 DeclareSynonym("IsDefaultModularSubgroup", IsModularSubgroup and IsModularSubgroupRepresentation);
 
 
@@ -14,13 +14,22 @@ DeclareAttribute("NormalCore", IsModularSubgroup);
 DeclareAttribute("QuotientByNormalCore", IsModularSubgroup);
 DeclareAttribute("AssociatedCharacterTable", IsModularSubgroup);
 
-DeclareOperation("DefinesCosetAction", [IsPerm, IsPerm]);
+DeclareOperation("DefinesCosetActionST", [IsPerm, IsPerm]);
+DeclareOperation("DefinesCosetActionRT", [IsPerm, IsPerm]);
+DeclareOperation("DefinesCosetActionSJ", [IsPerm, IsPerm]);
 DeclareOperation("ModularSubgroup", [IsPerm, IsPerm]);
+DeclareOperation("ModularSubgroupST", [IsPerm, IsPerm]);
+DeclareOperation("ModularSubgroupRT", [IsPerm, IsPerm]);
+DeclareOperation("ModularSubgroupSJ", [IsPerm, IsPerm]);
 DeclareOperation("SAction", [IsModularSubgroup]);
 DeclareOperation("TAction", [IsModularSubgroup]);
+DeclareOperation("RAction", [IsModularSubgroup]);
+DeclareOperation("JAction", [IsModularSubgroup]);
 DeclareOperation("CosetActionOf", [IsMatrix, IsModularSubgroup]);
 DeclareOperation("CosetActionFromGenerators", [IsRectangularTable]);
 DeclareOperation("STDecomposition", [IsMatrix]);
+DeclareOperation("RTDecomposition", [IsMatrix]);
+DeclareOperation("SJDecomposition", [IsMatrix]);
 DeclareOperation("STDecompositionAsList", [IsMatrix]);
 DeclareOperation("IsElementOf", [IsMatrix, IsModularSubgroup]);
 DeclareOperation("CuspWidth", [IsRat, IsModularSubgroup]);

@@ -9,10 +9,10 @@ to the generator matrices <M>S</M> and <M>T</M> (with the convention that <M>1</
 corresponds to the identity coset). So explicitly specifying these permutations
 is the canonical way to construct a <C>ModularSubgroup</C>. <Br/>
 Though you might not always have a coset graph of your subgroup at hand, but
-rather a list of generator matrices. Therefore we implement two different
-constructors for <C>ModularSubgroup</C>, one that takes as input two permutations
-describing the coset graph, and one that takes a list of <M>SL_2(&ZZ;)</M>
-matrices as generators.
+rather a list of generator matrices. Therefore we implement multiple
+constructors for <C>ModularSubgroup</C>: three that take as input two permutations
+describing the coset graph with respect to different pairs of generators, and one
+that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
 
 <Section Label="ModularSubgroupConstr">
 <Heading>Construction of modular subgroups</Heading>
@@ -57,7 +57,7 @@ matrices as generators.
     <Display>s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</Display>
 
     Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
-    to make the internal interaction with extisting &GAP; methods easier.
+    to make the internal interaction with existing &GAP; methods easier.
 
     <Example>
     <![CDATA[
@@ -66,7 +66,109 @@ matrices as generators.
     > (1,4)(2,5,9,10,8)(3,7,6));
     <modular subgroup of index 10>
     ]]>
-  </Example>
+    </Example>
+  </Description>
+
+  <Oper Name="ModularSubgroupST" Arg="s, t" />
+  <Returns>A modular subgroup.</Returns>
+  <Description>
+    Synonymous for <C>ModularSubgroup</C> (see above).
+  </Description>
+
+  <Oper Name="ModularSubgroupRT" Arg="r, t" />
+  <Returns>A modular subgroup.</Returns>
+  <Description>
+    Constructs a <C>ModularSubgroup</C> object corresponding to the finite-index
+    subgroup of <M>SL_2(&ZZ;)</M> determined by the permutations <A>r</A> and
+    <A>t</A> which describe the action of the matrices
+    <Alt Only="LaTeX">
+      <![CDATA[
+      \[
+            R =
+            \left(
+               \begin{array}{rr}
+                  1 & 0 \\
+                  1 & 1
+               \end{array}
+            \right)
+            \quad
+            T =
+            \left(
+               \begin{array}{rr}
+                  1 & 1 \\
+                  0 & 1
+               \end{array}
+            \right)
+      \]
+      ]]>
+    </Alt>
+    <Alt Only="Text,HTML"><Verb><![CDATA[
+                     [ 1  0 ]           [ 1  1 ]
+                 R = [ 1  1 ]       T = [ 0  1 ]
+    ]]></Verb></Alt>
+    on the right cosets. <Br/>
+    A check is performed if the permutations actually describe such an action
+    on the cosets of some subgroup. <Br/>
+
+    Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
+    to make the internal interaction with existing &GAP; methods easier.
+
+    <Example>
+    <![CDATA[
+    gap> G := ModularSubgroupRT(
+    > (1,9,8,10,7)(2,6)(3,4,5),
+    > (1,4)(2,5,9,10,8)(3,7,6));
+    <modular subgroup of index 10>
+    ]]>
+    </Example>
+  </Description>
+
+  <Oper Name="ModularSubgrouSJ" Arg="s, j" />
+  <Returns>A modular subgroup.</Returns>
+  <Description>
+    Constructs a <C>ModularSubgroup</C> object corresponding to the finite-index
+    subgroup of <M>SL_2(&ZZ;)</M> determined by the permutations <A>s</A> and
+    <A>j</A> which describe the action of the matrices
+    <Alt Only="LaTeX">
+      <![CDATA[
+      \[
+            S =
+            \left(
+               \begin{array}{rr}
+                  0 & -1 \\
+                  1 &  0
+               \end{array}
+            \right)
+            \quad
+            J =
+            \left(
+               \begin{array}{rr}
+                  0  & 1 \\
+                  -1 & 1
+               \end{array}
+            \right)
+      \]
+      ]]>
+    </Alt>
+    <Alt Only="Text,HTML"><Verb><![CDATA[
+                     [ 0 -1 ]           [  0  1 ]
+                 S = [ 1  0 ]       J = [ -1  1 ]
+    ]]></Verb></Alt>
+    on the right cosets. <Br/>
+    A check is performed if the permutations actually describe such an action
+    on the cosets of some subgroup. <Br/>
+
+    Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
+    to make the internal interaction with existing &GAP; methods easier.
+
+    <Example>
+    <![CDATA[
+    gap> G := ModularSubgroupSJ(
+    > (1,2)(3,6)(4,7)(5,9)(8,10),
+    > (1,5,6)(2,3,7)(4,9,10));
+    <modular subgroup of index 10>
+    ]]>
+    </Example>
   </Description>
 
   <Oper Name="ModularSubgroup" Arg="gens" />
@@ -108,6 +210,20 @@ matrices as generators.
   <Description>
     Returns the permutation <M>\sigma_T</M> describing the action of the matrix
     <M>T</M> on the cosets of <A>G</A>.
+  </Description>
+
+  <Oper Name="RAction" Arg="G" />
+  <Returns>A permutation.</Returns>
+  <Description>
+    Returns the permutation <M>\sigma_R</M> describing the action of the matrix
+    <M>R</M> on the cosets of <A>G</A>.
+  </Description>
+
+  <Oper Name="JAction" Arg="G" />
+  <Returns>A permutation.</Returns>
+  <Description>
+    Returns the permutation <M>\sigma_J</M> describing the action of the matrix
+    <M>J</M> on the cosets of <A>G</A>.
   </Description>
 
   <Oper Name="CosetActionOf" Arg="A, G" />
@@ -374,13 +490,37 @@ The following functions are mostly helper functions used internally and are only
 documented for sake of completeness.
 
 <ManSection>
-  <Oper Name="DefinesCosetAction" Arg="s, t" />
+  <Oper Name="DefinesCosetActionST" Arg="s, t" />
   <Returns>True or false.</Returns>
   <Description>
     Checks if two given permutations <A>s</A> and <A>t</A> describe
     the action of the generator matrices <M>S</M> and <M>T</M> on the cosets of
     some subgroup. This is the case if they satisfy the relations
     <Display>s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</Display>
+    and act transitively.
+  </Description>
+</ManSection>
+
+<ManSection>
+  <Oper Name="DefinesCosetActionRT" Arg="r, t" />
+  <Returns>True or false.</Returns>
+  <Description>
+    Checks if two given permutations <A>r</A> and <A>t</A> describe
+    the action of the generator matrices <M>R</M> and <M>T</M> on the cosets of
+    some subgroup. This is the case if they satisfy the relations
+    <Display>(r t^-1 r)^4 = ((r t^-1 r)^3 t)^3 = (r t^-1 r)^2 t (r t^-1 r)^{-2} t^{-1} = 1</Display>
+    and act transitively.
+  </Description>
+</ManSection>
+
+<ManSection>
+  <Oper Name="DefinesCosetActionSJ" Arg="s, j" />
+  <Returns>True or false.</Returns>
+  <Description>
+    Checks if two given permutations <A>s</A> and <A>j</A> describe
+    the action of the generator matrices <M>S</M> and <M>J</M> on the cosets of
+    some subgroup. This is the case if they satisfy the relations
+    <Display>s^4 = (s^3 j^-1 s^-1)^3 = s^2 j^-1 s^{-2} j = 1</Display>
     and act transitively.
   </Description>
 </ManSection>
@@ -408,6 +548,38 @@ documented for sake of completeness.
   gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;
   gap> STDecomposition(M);
   S^2*T^-1*S^-1*T^2*S^-1*T^-1*S^-1
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="RTDecomposition" Arg="A" />
+  <Returns>A word in <M>R</M> and <M>T</M>.</Returns>
+  <Description>
+    Takes a matrix <M><A>A</A> \in SL_2(&ZZ;)</M> and decomposes it into a word
+    in the generator matrices <M>R</M> and <M>T</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap> RTDecomposition(M);
+  (R*T^-1*R)^2*T^-1*R^-1*(T*R^-1*T)^2*R^-1*T^-1*R^-1*T*R^-1
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="SJDecomposition" Arg="A" />
+  <Returns>A word in <M>S</M> and <M>J</M>.</Returns>
+  <Description>
+    Takes a matrix <M><A>A</A> \in SL_2(&ZZ;)</M> and decomposes it into a word
+    in the generator matrices <M>S</M> and <M>J</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap> SJDecomposition(M);
+  S^3*J*(S^-1*J^-1)^2*S^-1*J*S^-1
   ]]>
 </Example>
 
