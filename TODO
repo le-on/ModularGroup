@@ -1,9 +1,4 @@
 - make modular subgroup object immutable
-- add references to papers
-- cusp object?
-- more examples in documentation
-- tests
-- implement möbius transformations as group action?
-- smarter coset representative computation?
-- documentation: alternative to latex in command line help
-- resolve name clash with 'congruence' package
+- implement möbius transformations as group action? (is this possible?)
+- clean up code duplication
+- possibility to choose different generators of (P)SL(2,Z)
