@@ -39,7 +39,7 @@ Or they can be derived from subgroups in _SL(2,Z)_ by projecting them to _PSL(2,
 H := Projection(G);
 ```
 
-Having constructed a (projective) modular subgroup, you can apply the various operations this package implements (such as testing if the given group is a congruence subgroup via `IsCongruenceSubgroup(G)`). For more details and a full list of the provided operations, please refer to the documentation. One explicit example is given below:
+Having constructed a (projective) modular subgroup, you can apply the various operations this package implements (such as testing if the given group is a congruence subgroup via `IsCongruence(G)`). For more details and a full list of the provided operations, please refer to the documentation. One explicit example is given below:
 
 ```GAP
 # it is assumed that the package has been loaded as described above
@@ -48,7 +48,7 @@ gap> G := ModularSubgroup(
 > (1,4)(2,6)(3,7)(5,10)(8,12,9,11)
 > );
 <modular subgroup of index 12>
-gap> IsCongruenceSubgroup(G);
+gap> IsCongruence(G);
 true
 gap> GeneratorsOfGroup(G);
 [ [ [ 1, -2 ], [ 0, 1 ] ], [ [ 1, 0 ], [ 2, 1 ] ] ]
