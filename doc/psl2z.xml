@@ -1,4 +1,390 @@
 <Chapter Label="PSL2Z">
 <Heading>Subgroups of <M>PSL_2(&ZZ;)</M></Heading>
 
+Analogous to finite-index subgroups of <M>SL_2(&ZZ;)</M>, we define a new type
+<C>ProjectiveModularSubgroup</C> for representing subgroups of <M>PSL_2(&ZZ;)</M>.
+It consists essentially of two permutations <M>\sigma_{\overline{S}}</M> and
+<M>\sigma_{\overline{T}}</M> describing the action of <M>\overline{S}</M> and
+<M>\overline{T}</M> on the cosets of the given subgroup, where <M>\overline{S}</M>
+and <M>\overline{T}</M> are the images of <M>S</M> and <M>T</M> in <M>PSL_2(&ZZ;)</M>.
+<Br/>
+The methods implemented for <M>PSL_2(&ZZ;)</M> subgroups are mostly the
+same as for <M>SL_2(&ZZ;)</M> subgroups and behave more or less identically.
+Nevertheless we list them here.
+
+<Section Label="ProjectiveModularSubgroupConstr">
+<Heading>Construction of projective modular subgroups</Heading>
+
+<ManSection>
+  <Heading>Constructors</Heading>
+
+  <Oper Name="ProjectiveModularSubgroup" Arg="s, t" />
+  <Returns>A projective modular subgroup.</Returns>
+  <Description>
+    Constructs a <C>ProjectiveModularSubgroup</C> object corresponding to the
+    finite-index subgroup of <M>PSL_2(&ZZ;)</M> described by the permutations
+    <A>s</A> and <A>t</A>. <Br/>
+    This constructor tests if the given permutations actually describe the
+    coset action of <M>\overline{S}</M> and <M>\overline{T}</M> on some subgroup
+    by checking that they act transitively and satisfy the relations
+    <Display>s^2 = (s t)^3 = 1</Display>
+
+    Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
+    to make the internal interaction with extisting &GAP; methods easier.
+
+    <Example>
+    <![CDATA[
+    gap> G := ProjectiveModularSubgroup(
+    > (1,2)(3,4)(5,6)(7,8)(9,10),
+    > (1,4)(2,5,9,10,8)(3,7,6));
+    <projective modular subgroup of index 10>
+    ]]>
+    </Example>
+
+    If you want to construct a <C>ProjectiveModularSubgroup</C> from a list of
+    generators, you can lift each generator to a matrix in <M>SL_2(&ZZ;)</M>,
+    construct from these a <C>ModularSubgroup</C>, and then project it to
+    <M>PSL_2(&ZZ;)</M> via <C>Projection</C>.
+  </Description>
+
+</ManSection>
+
+<ManSection>
+  <Heading>Getters for the coset action</Heading>
+
+  <Oper Name="SAction" Arg="G" />
+  <Returns>A permutation.</Returns>
+  <Description>
+    Returns the permutation <M>\sigma_{\overline{S}}</M> describing the action of
+    <M>\overline{S}</M> on the cosets of <A>G</A>.
+  </Description>
+
+  <Oper Name="TAction" Arg="G" />
+  <Returns>A permutation.</Returns>
+  <Description>
+    Returns the permutation <M>\sigma_{\overline{T}}</M> describing the action of
+    <M>\overline{T}</M> on the cosets of <A>G</A>.
+  </Description>
+
+</ManSection>
+</Section>
+
+<Section Label="ProjectiveModularSubgroupAlgs">
+<Heading>Computing with projective modular subgroups</Heading>
+
+<ManSection>
+  <Attr Name="Index" Arg="G" />
+  <Returns>A natural number.</Returns>
+  <Description>
+    For a given projective modular subgroup <A>G</A> this method returns its index in
+    <M>PSL_2(&ZZ;)</M>. As <A>G</A> is internally stored as permutations
+    <M>(s,t)</M> this is just
+    <Verb>
+      LargestMovedPoint(s,t)
+    </Verb>
+    (or <M>1</M> if the permutations are trivial).
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup((1,2),(2,3));
+  <projective modular subgroup of index 3>
+  gap> Index(G);
+  3
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="GeneralizedLevel" Arg="G" />
+  <Returns>A natural number.</Returns>
+  <Description>
+    This method calculates the general Wohlfahrt level (i.e. the lowest common
+    multiple of all cusp widths) of <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> GeneralizedLevel(G);
+  12
+  ]]>
+</Example>
+
+
+<ManSection>
+  <Attr Name="RightCosetRepresentatives" Arg="G" />
+  <Returns>A list of words.</Returns>
+  <Description>
+    This function returns a list of representatives of the (right) cosets of
+    <A>G</A> as words in <M>\overline{S}</M> and <M>\overline{T}</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup((1,2),(2,3));
+  <projective modular subgroup of index 3>
+  gap> RightCosetRepresentatives(G);
+  [ <identity ...>, S, S*T ]
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="GeneratorsOfGroup" Arg="G" />
+  <Returns>A list of words.</Returns>
+  <Description>
+    Calculates a list of generators (as words in <M>\overline{S}</M> and
+    <M>\overline{T}</M>) of <A>G</A>.
+    This list might include redundant generators.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  <projective modular subgroup of index 6>
+  gap> GeneratorsOfGroup(G);
+  [ T^-2, S*T^-2*S^-1 ]
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="IsCongruence" Arg="G" />
+  <Returns>True or false.</Returns>
+  <Description>
+    This method test whether a given modular subgroup <A>G</A> is a congruence
+    subgroup. It is essentially an implementation of an algorithm described in
+    <Cite Key="hsu_1996"/>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,5)(4,6),
+  > (1,3)(2,4)(5,6)
+  > );
+  <projective modular subgroup of index 6>
+  gap> IsCongruence(G);
+  true
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="Cusps" Arg="G" />
+  <Returns>A list of rational numbers and infinity.</Returns>
+  <Description>
+    This method computes a list of inequivalent cusp representatives with respect
+    to <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> Cusps(G);
+  [ infinity, 0, 1, 2, 3/2, 5/3 ]
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="CuspWidth" Arg="c, G" />
+  <Returns>A natural number.</Returns>
+  <Description>
+    This method takes as input a cusp <A>c</A> (a rational number or infinity)
+    and a modular group <A>G</A> and calculates the width of this cusp with
+    respect to <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),
+  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)
+  > );
+  <projective modular subgroup of index 12>
+  gap> CuspWidth(-1, G);
+  3
+  gap> CuspWidth(infinity, G);
+  3
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="CuspsEquivalent" Arg="p, q, G" />
+  <Returns>True or false.</Returns>
+  <Description>
+    Takes two cusps <A>p</A> and <A>q</A> and a projective modular subgroup <A>G</A> and
+    checks if they are equivalent modulo <A>G</A>, i.e. if there exists
+    <M>A \in G</M> with <M>Ap = q</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),
+  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)
+  > );
+  <projective modular subgroup of index 12>
+  gap> CuspsEquivalent(infinity, 1, G);
+  false
+  gap> CuspsEquivalent(-1, 1/2, G);
+  true
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="LiftToSL2ZEven" Arg="G" />
+  <Returns>A modular subgroup.</Returns>
+  <Description>
+    Lifts a given subgroup <A>G</A> of <M>PSL_2(&ZZ;)</M> to an even subgroup of
+    <M>SL_2(&ZZ;)</M>, i.e. a group that contains <M>-1</M> and whose projection
+    to <M>PSL_2(&ZZ;)</M> is <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),
+  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)
+  > );
+  <projective modular subgroup of index 12>
+  gap> LiftToSL2ZOdd(G);
+  <modular subgroup of index 12>
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="LiftToSL2ZOdd" Arg="G" />
+  <Returns>A modular subgroup.</Returns>
+  <Description>
+    Lifts a given subgroup <A>G</A> of <M>PSL_2(&ZZ;)</M> to an odd subgroup of
+    <M>SL_2(&ZZ;)</M>, i.e. a group that does not contain <M>-1</M> and whose
+    projection to <M>PSL_2(&ZZ;)</M> is <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),
+  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)
+  > );
+  <projective modular subgroup of index 12>
+  gap> LiftToSL2ZOdd(G);
+  <modular subgroup of index 24>
+  ]]>
+</Example>
+
+<ManSection>
+  <Oper Name="IndexModN" Arg="G, N" />
+  <Returns>A natural number.</Returns>
+  <Description>
+    For a projective modular subgroup <A>G</A> and a natural number <A>N</A> this method
+    calculates the index of the projection <M>\bar{G}</M> of <M>G</M> in
+    <M>PSL_2(&ZZ;/N&ZZ;)</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> IndexModN(G, 2);
+  6
+  ]]>
+</Example>
+
+
+<ManSection>
+  <Oper Name="Deficiency" Arg="G, N" />
+  <Returns>A natural number.</Returns>
+  <Description>
+    For a projective modular subgroup <A>G</A> and a natural number <A>N</A> this method
+    calculates the so-called <Emph>deficiency</Emph> of <A>G</A> from being a
+    congruence subgroup of level <A>N</A>. <Br/>
+    The deficiency of a finite-index subgroup <M>\Gamma</M> of <M>PSL_2(&ZZ;)</M>
+    was introduced in <Cite Key="weitze_schmithuesen_deficiency" />. It is defined
+    as the index <M>[\Gamma(N) \colon \Gamma(N) \cap \Gamma]</M> where <M>\Gamma(N)</M>
+    is the principal congruence subgroup of level <M>N</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> Deficiency(G, 2);
+  4
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="NormalCore" Arg="G" />
+  <Returns>A projective modular subgroup.</Returns>
+  <Description>
+    Calculates the normal core of <A>G</A> in <M>PSL_2(&ZZ;)</M>, i.e. the maximal
+    subgroup of <A>G</A> that is normal in <M>PSL_2(&ZZ;)</M>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> NormalCore(G);
+  <projective modular subgroup of index 3456>
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="QuotientByNormalCore" Arg="G" />
+  <Returns>A finite group.</Returns>
+  <Description>
+    Calculates the quotient of <M>PSL_2(&ZZ;)</M> by the normal core of <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> QuotientByNormalCore(G);
+  <permutation group with 2 generators>
+  ]]>
+</Example>
+
+<ManSection>
+  <Attr Name="AssociatedCharacterTable" Arg="G" />
+  <Returns>A character table.</Returns>
+  <Description>
+    Returns the character table of <M>PSL_2(&ZZ;)/N</M> where <M>N</M> is the normal core
+    of <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup(
+  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  > );
+  <projective modular subgroup of index 24>
+  gap> AssociatedCharacterTable(G);
+  CharacterTable( <permutation group of size 3456 with 2 generators> )
+  ]]>
+</Example>
+
+</Section>
+
 </Chapter>
