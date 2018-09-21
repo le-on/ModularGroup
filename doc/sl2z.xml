@@ -252,6 +252,14 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     (or <M>1</M> if the permutations are trivial).
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  <modular subgroup of index 6>
+  gap> Index(G);
+  6
+  ]]>
+</Example>
 
 <ManSection>
   <Attr Name="GeneralizedLevel" Arg="G" />
@@ -261,6 +269,14 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     multiple of all cusp widths) of <A>G</A>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  <modular subgroup of index 6>
+  gap> GeneralizedLevel(G);
+  2
+  ]]>
+</Example>
 
 <ManSection>
   <Attr Name="RightCosetRepresentatives" Arg="G" />
@@ -409,6 +425,14 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     <M>SL_2(&ZZ;/N&ZZ;)</M>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  <modular subgroup of index 6>
+  gap> IndexModN(G, 2);
+  6
+  ]]>
+</Example>
 
 <ManSection>
   <Oper Name="Deficiency" Arg="G, N" />
@@ -445,6 +469,17 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     <M>\bar{<A>G</A>}</M> under the projection <M>\pi \colon SL_2(&ZZ;) \rightarrow PSL_2(&ZZ;)</M>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  <modular subgroup of index 12>
+  gap> Projection(G);
+  <projective modular subgroup of index 6>
+  ]]>
+</Example>
 
 <ManSection>
   <Attr Name="NormalCore" Arg="G" />
@@ -454,6 +489,17 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     subgroup of <A>G</A> that is normal in <M>SL_2(&ZZ;)</M>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  <modular subgroup of index 12>
+  gap> NormalCore(G);
+  <modular subgroup of index 48>
+  ]]>
+</Example>
 
 <ManSection>
   <Attr Name="QuotientByNormalCore" Arg="G" />
@@ -462,6 +508,18 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     Calculates the quotient of <M>SL_2(&ZZ;)</M> by the normal core of <A>G</A>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  <modular subgroup of index 12>
+  gap> QuotientByNormalCore(G);
+  <permutation group with 2 generators>
+  ]]>
+</Example>
+
 
 <ManSection>
   <Attr Name="AssociatedCharacterTable" Arg="G" />
@@ -471,6 +529,18 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     of <A>G</A>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  <modular subgroup of index 12>
+  gap> AssociatedCharacterTable(G);
+  CharacterTable( <permutation group of size 48 with 2 generators> )
+  ]]>
+</Example>
+
 
 <ManSection>
   <Oper Name="IsElementOf" Arg="A, G" />
@@ -480,6 +550,19 @@ that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
     subgroup <A>G</A>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  <modular subgroup of index 12>
+  gap> IsElementOf([[-1,0],[0,-1]], G);
+  false
+  gap> IsElementOf([[1,4],[0,1]], G);
+  true
+  ]]>
+</Example>
 
 </Section>
 
