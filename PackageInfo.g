@@ -8,8 +8,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModularGroup",
 Subtitle := "Finite-index subgroups of (P)SL(2,Integers)",
-Version := "0.0.2",
-Date := "20/09/2018", ## dd/mm/yyyy
+Version := "1.0.0",
+Date := "27/10/2018", ## dd/mm/yyyy
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "0.0.2">
@@ -18,14 +18,14 @@ Date := "20/09/2018", ## dd/mm/yyyy
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
-  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
+  Concatenation( "https://github.com/le-on/", ~.PackageName ),
 
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/le-on/", LowercaseString( ~.PackageName ) ),
+    URL := Concatenation( "https://github.com/le-on/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-SupportEmail := "",
+SupportEmail := "junk@math.uni-sb.de",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.tar.gz' or '-win.zip', which are given next.
@@ -117,7 +117,7 @@ ArchiveFormats := ".tar.gz",
 Persons := [
   rec(
     LastName      := "Junk",
-    FirstNames    := "Luca",
+    FirstNames    := "Luca Leon",
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "junk@math.uni-sb.de",
@@ -165,7 +165,7 @@ Status := "dev",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL :=
-  Concatenation( ~.PackageWWWHome, "/README" ),
+  Concatenation( ~.PackageWWWHome, "/README.md" ),
 PackageInfoURL :=
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
@@ -181,7 +181,7 @@ PackageInfoURL :=
 # utilities.",
 AbstractHTML :=
   "This package provides a collection of algorithms for computing with \
-  subgroups of (P)SL(2,Z) of finite index.",
+  finit-index subgroups of (P)SL(2,Z).",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the

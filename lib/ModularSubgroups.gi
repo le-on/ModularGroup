@@ -71,7 +71,6 @@ InstallMethod(DefinesCosetActionST, [IsPerm, IsPerm], function(s, t)
   if s^4 <> () or (s^3*t)^3 <> () or s^2*t*s^-2*t^-1 <> () then return false; fi;
 
   # check if the generated subgroup acts transitively
-  # this check can be quite costly, so we do it last
   index := Maximum(LargestMovedPoint([s, t]), 1);
   return IsTransitive(Group(s,t), [1..index]);
 end);
@@ -83,7 +82,6 @@ InstallMethod(DefinesCosetActionRT, [IsPerm, IsPerm], function(r, t)
   if (r*t^-1*r)^4 <> () or ((r*t^-1*r)^3*t)^3 <> () or (r*t^-1*r)^2*t*(r*t^-1*r)^-2*t^-1 <> () then return false; fi;
 
   # check if the generated subgroup acts transitively
-  # this check can be quite costly, so we do it last
   index := Maximum(LargestMovedPoint([r, t]), 1);
   return IsTransitive(Group(r,t), [1..index]);
 end);
@@ -95,7 +93,6 @@ InstallMethod(DefinesCosetActionSJ, [IsPerm, IsPerm], function(s, j)
   if s^4 <> () or (s^3*j^-1*s^-1)^3 <> () or s^2*j^-1*s^-2*j <> () then return false; fi;
 
   # check if the generated subgroup acts transitively
-  # this check can be quite costly, so we do it last
   index := Maximum(LargestMovedPoint([s, j]), 1);
   return IsTransitive(Group(s,j), [1..index]);
 end);

@@ -11,16 +11,11 @@ It also implements algorithms described in <Cite Key="hsu_1996"/> and
 subgroup.
 </Section>
 
-<Section Label="IntroInstall">
-<Heading>Installation</Heading>
-<!-- TODO -->
-</Section>
-
 <Section Label="IntroTech">
 <Heading>Technicalities</Heading>
 A convenient way to represent finite-index subgroups of <M>SL_2(&ZZ;)</M> is by
-specifying the action of generator matrices on the right cosets by right
-multiplication. For example, one could choose the generators
+specifying the action of generator matrices of <M>SL_2(&ZZ;)</M> on the right
+cosets by right multiplication. For example, one could choose the generators
 <Alt Only="LaTeX">
   <![CDATA[
   \[

@@ -11,8 +11,9 @@ is the canonical way to construct a <C>ModularSubgroup</C>. <Br/>
 Though you might not always have a coset graph of your subgroup at hand, but
 rather a list of generator matrices. Therefore we implement multiple
 constructors for <C>ModularSubgroup</C>: three that take as input two permutations
-describing the coset graph with respect to different pairs of generators, and one
-that takes a list of <M>SL_2(&ZZ;)</M> matrices as generators.
+describing the coset graph with respect to different pairs of generators of
+<M>SL_2(&ZZ;)</M>, and one that takes a list of <M>SL_2(&ZZ;)</M> matrices as
+generators.
 
 <Section Label="ModularSubgroupConstr">
 <Heading>Construction of modular subgroups</Heading>
@@ -583,6 +584,14 @@ documented for sake of completeness.
     and act transitively.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> s := (1,2)(3,4)(5,6)(7,8)(9,10);;
+  gap> t := (1,4)(2,5,9,10,8)(3,7,6);;
+  gap> DefinesCosetActionST(s,t);
+  true
+  ]]>
+</Example>
 
 <ManSection>
   <Oper Name="DefinesCosetActionRT" Arg="r, t" />
@@ -591,10 +600,18 @@ documented for sake of completeness.
     Checks if two given permutations <A>r</A> and <A>t</A> describe
     the action of the generator matrices <M>R</M> and <M>T</M> on the cosets of
     some subgroup. This is the case if they satisfy the relations
-    <Display>(r t^-1 r)^4 = ((r t^-1 r)^3 t)^3 = (r t^-1 r)^2 t (r t^-1 r)^{-2} t^{-1} = 1</Display>
+    <Display>(r t^{-1} r)^4 = ((r t^{-1} r)^3 t)^3 = (r t^{-1} r)^2 t (r t^{-1} r)^{-2} t^{-1} = 1</Display>
     and act transitively.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> r := (1,9,8,10,7)(2,6)(3,4,5);;
+  gap> t := (1,4)(2,5,9,10,8)(3,7,6);;
+  gap> DefinesCosetActionRT(r,t);
+  true
+  ]]>
+</Example>
 
 <ManSection>
   <Oper Name="DefinesCosetActionSJ" Arg="s, j" />
@@ -603,10 +620,18 @@ documented for sake of completeness.
     Checks if two given permutations <A>s</A> and <A>j</A> describe
     the action of the generator matrices <M>S</M> and <M>J</M> on the cosets of
     some subgroup. This is the case if they satisfy the relations
-    <Display>s^4 = (s^3 j^-1 s^-1)^3 = s^2 j^-1 s^{-2} j = 1</Display>
+    <Display>s^4 = (s^3 j^{-1} s^{-1})^3 = s^2 j^{-1} s^{-2} j = 1</Display>
     and act transitively.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> s := (1,2)(3,4)(5,6)(7,8)(9,10);;
+  gap> j := (1,5,6)(2,3,7)(4,9,10);;
+  gap> DefinesCosetActionSJ(s,j);
+  true
+  ]]>
+</Example>
 
 <ManSection>
   <Oper Name="CosetActionFromGenerators" Arg="gens" />
@@ -617,6 +642,15 @@ documented for sake of completeness.
     of <M>SL_2(&ZZ;)</M>.
   </Description>
 </ManSection>
+<Example>
+  <![CDATA[
+  gap> CosetActionFromGenerators([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  [ (1,2,5,3)(4,8,10,9)(6,11,7,12), (1,4)(2,6)(3,7)(5,10)(8,12,9,11) ]
+  ]]>
+</Example>
 
 <ManSection>
   <Oper Name="STDecomposition" Arg="A" />

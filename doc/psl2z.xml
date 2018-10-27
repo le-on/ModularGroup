@@ -57,6 +57,7 @@ Nevertheless we list them here.
   <Description>
     Returns the permutation <M>\sigma_{\overline{S}}</M> describing the action of
     <M>\overline{S}</M> on the cosets of <A>G</A>.
+    <Br/>
   </Description>
 
   <Oper Name="TAction" Arg="G" />
