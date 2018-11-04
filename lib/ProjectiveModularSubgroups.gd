@@ -1,4 +1,4 @@
-DeclareCategory("IsProjectiveModularSubgroup", IsObject);
+DeclareCategory("IsProjectiveModularSubgroup", IsFinitelyGeneratedGroup);
 DeclareRepresentation("IsProjectiveModularSubgroupRepresentation", IsComponentObjectRep, ["s", "t"]);
 DeclareSynonym("IsDefaultProjectiveModularSubgroup", IsProjectiveModularSubgroup and IsProjectiveModularSubgroupRepresentation);
 

@@ -7,7 +7,7 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
 
   type := NewType(FamilyObj(One(SL(2,Integers))),
     IsObject and
-    #IsMatrixGroup and
+    IsMatrixGroup and
     IsAttributeStoringRep and
     IsComponentObjectRep and
     IsFinitelyGeneratedGroup and

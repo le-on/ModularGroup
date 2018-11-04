@@ -1,4 +1,4 @@
-DeclareCategory("IsModularSubgroup", IsObject);
+DeclareCategory("IsModularSubgroup", IsMatrixGroup);
 DeclareRepresentation("IsModularSubgroupRepresentation", IsComponentObjectRep, ["s", "t", "r", "j"]);
 DeclareSynonym("IsDefaultModularSubgroup", IsModularSubgroup and IsModularSubgroupRepresentation);
 
