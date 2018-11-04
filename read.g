@@ -1,3 +1,5 @@
 ReadPackage("ModularGroup/lib/ModularSubgroups.gi");
 ReadPackage("ModularGroup/lib/ProjectiveModularSubgroups.gi");
-ReadPackage("ModularGroup/lib/misc.gi");
+if TestPackageAvailability("Congruence", ">=1.1.1") <> fail then
+  ReadPackage("ModularGroup/lib/misc.gi");
+fi;

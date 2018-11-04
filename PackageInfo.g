@@ -235,9 +235,9 @@ Dependencies := rec(
   # insensitive, exact version denoted with '=' prepended to version string.
   # without these, the package will not load
   # NeededOtherPackages := [["GAPDoc", "1.5"]],
-  NeededOtherPackages := [["GAPDoc", ">= 1.5"], ["CTblLib", ">= 1.2.2"], ["Congruence", ">= 1.1.1"]],
+  NeededOtherPackages := [["GAPDoc", ">= 1.5"], ["CTblLib", ">= 1.2.2"]],
 
-  SuggestedOtherPackages := [],
+  SuggestedOtherPackages := [["Congruence", ">=1.1.1"]],
 
   ExternalConditions := []
 
@@ -266,7 +266,7 @@ BannerString := Concatenation(
 ##  if the file contains the string 'gap> START_TEST('.
 ##  For deposited packages, these tests are run regularly, as a part of the
 ##  standard GAP test suite.
-TestFile := "tst/testall.tst",
+TestFile := "tst/testall.g",
 
 Keywords := ["PSL(2,Z)", "PSL2Z", "SL(2,Z)", "SL2Z", "modular group", "congruence subgroup"]
 
