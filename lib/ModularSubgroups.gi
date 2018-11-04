@@ -346,7 +346,7 @@ InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
   return Order(p);
 end);
 
-InstallMethod(GeneratorsOfGroup, [IsModularSubgroup], function(G)
+InstallOtherMethod(GeneratorsOfGroup, [IsModularSubgroup], function(G)
   local s, t, F2, S, T, SL2Z, coset_table, H, index;
 
   s := SAction(G);

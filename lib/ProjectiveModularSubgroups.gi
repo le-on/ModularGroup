@@ -112,7 +112,7 @@ InstallMethod(RightCosetRepresentatives, [IsProjectiveModularSubgroup], function
   return AsList(RightTransversal(PSL2Z, H));
 end);
 
-InstallMethod(GeneratorsOfGroup, [IsProjectiveModularSubgroup], function(G)
+InstallOtherMethod(GeneratorsOfGroup, [IsProjectiveModularSubgroup], function(G)
   local s, t, F2, S, T, PSL2Z, coset_table, H, index;
 
   s := SAction(G);
