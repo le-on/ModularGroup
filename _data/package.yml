@@ -36,7 +36,7 @@ downloads:
       url: https://github.com/le-on/ModularGroup/releases/download/v1.0.0/ModularGroup-1.0.0.tar.gz
 
 abstract: |
-    This package provides a collection of algorithms for computing with   finit-index subgroups of (P)SL(2,Z).
+    This package provides a collection of algorithms for computing with   finite-index subgroups of (P)SL(2,Z).
 
 status: dev
 doc-html: doc/chap0.html
