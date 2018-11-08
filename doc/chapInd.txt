@@ -1,0 +1,43 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XAssociatedCharacterTable[102X 2.2-15  3.2-15 
+  [2XCosetActionFromGenerators[102X 2.3-4 
+  [2XCosetActionOf[102X 2.1-2 
+  [2XCusps[102X 2.2-7  3.2-6 
+  [2XCuspsEquivalent[102X 2.2-9  3.2-8 
+  [2XCuspWidth[102X 2.2-8  3.2-7 
+  [2XDeficiency[102X 2.2-11  3.2-12 
+  [2XDefinesCosetActionRT[102X 2.3-2 
+  [2XDefinesCosetActionSJ[102X 2.3-3 
+  [2XDefinesCosetActionST[102X 2.3-1 
+  [2XGeneralizedLevel[102X 2.2-2  3.2-2 
+  [2XGeneratorsOfGroup[102X 2.2-4  3.2-4 
+  [2XIndex[102X 2.2-1  3.2-1 
+  [2XIndexModN[102X 2.2-10  3.2-11 
+  [2XIsCongruence[102X 2.2-6  3.2-5 
+  [2XIsElementOf[102X 2.2-16 
+  [2XJAction[102X 2.1-2 
+  [2XLiftToSL2ZEven[102X 3.2-9 
+  [2XLiftToSL2ZOdd[102X 3.2-10 
+  [2XMatrixGeneratorsOfGroup[102X 2.2-5 
+  [2XModularSubgroup[102X 2.1-1  2.1-1 
+  [2XModularSubgroupRT[102X 2.1-1 
+  [2XModularSubgroupST[102X 2.1-1 
+  [2XModularSubgrouSJ[102X 2.1-1 
+  [2XNormalCore[102X 2.2-13  3.2-13 
+  [2XProjection[102X 2.2-12 
+  [2XProjectiveModularSubgroup[102X 3.1-1 
+  [2XQuotientByNormalCore[102X 2.2-14  3.2-14 
+  [2XRAction[102X 2.1-2 
+  [2XRightCosetRepresentatives[102X 2.2-3  3.2-3 
+  [2XRTDecomposition[102X 2.3-6 
+  [2XSAction[102X 2.1-2  3.1-2 
+  [2XSJDecomposition[102X 2.3-7 
+  [2XSTDecomposition[102X 2.3-5 
+  [2XSTDecompositionAsList[102X 2.3-8 
+  [2XTAction[102X 2.1-2  3.1-2 
+  
+  
+  -------------------------------------------------------

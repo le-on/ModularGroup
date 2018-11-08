@@ -1,0 +1,657 @@
+  
+  [1X2 [33X[0;0YSubgroups of [22XSL_2(ℤ)[122X[101X[1X[133X[101X
+  
+  [33X[0;0YFor  representing finite-index subgroups of [22XSL_2(ℤ)[122X, this package introduces
+  the   new   type   [10XModularSubgroup[110X.   As   stated  in  the  introduction,  a
+  [10XModularSubgroup[110X  essentially  consists  of  the two permutations [22Xσ_S[122X and [22Xσ_T[122X
+  describing  the  coset  graph with respect to the generator matrices [22XS[122X and [22XT[122X
+  (with  the  convention  that  [22X1[122X  corresponds  to  the  identity  coset).  So
+  explicitly specifying these permutations is the canonical way to construct a
+  [10XModularSubgroup[110X.[133X
+  [33X[0;0YThough you might not always have a coset graph of your subgroup at hand, but
+  rather  a  list  of  generator  matrices.  Therefore  we  implement multiple
+  constructors  for [10XModularSubgroup[110X: three that take as input two permutations
+  describing  the coset graph with respect to different pairs of generators of
+  [22XSL_2(ℤ)[122X, and one that takes a list of [22XSL_2(ℤ)[122X matrices as generators.[133X
+  
+  
+  [1X2.1 [33X[0;0YConstruction of modular subgroups[133X[101X
+  
+  
+  [1X2.1-1 [33X[0;0YConstructors[133X[101X
+  
+  [29X[2XModularSubgroup[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
+  subgroup of [22XSL_2(ℤ)[122X described by the permutations [3Xs[103X and [3Xt[103X.[133X
+  [33X[0;0YThis constructor tests if the given permutations actually describe the coset
+  action of the matrices[133X
+  
+                       [ 0 -1 ]           [ 1  1 ]
+                   S = [ 1  0 ]       T = [ 0  1 ]
+      
+  
+  [33X[0;0Yby checking that they act transitively and satisfy the relations[133X
+  
+  
+  [24X[33X[0;6Ys^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1[133X
+  
+  [124X
+  
+  [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
+  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
+  to make the internal interaction with existing [5XGAP[105X methods easier.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    gap> G := ModularSubgroup([128X[104X
+    [4X[28X    > (1,2)(3,4)(5,6)(7,8)(9,10),[128X[104X
+    [4X[28X    > (1,4)(2,5,9,10,8)(3,7,6));[128X[104X
+    [4X[28X    <modular subgroup of index 10>[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    [128X[104X
+  [4X[32X[104X
+  
+  [29X[2XModularSubgroupST[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YSynonymous for [10XModularSubgroup[110X (see above).[133X
+  
+  [29X[2XModularSubgroupRT[102X( [3Xr[103X, [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
+  subgroup  of  [22XSL_2(ℤ)[122X  determined by the permutations [3Xr[103X and [3Xt[103X which describe
+  the action of the matrices[133X
+  
+                       [ 1  0 ]           [ 1  1 ]
+                   R = [ 1  1 ]       T = [ 0  1 ]
+      
+  
+  [33X[0;0Yon the right cosets.[133X
+  [33X[0;0YA check is performed if the permutations actually describe such an action on
+  the cosets of some subgroup.[133X
+  [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
+  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
+  to make the internal interaction with existing [5XGAP[105X methods easier.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    gap> G := ModularSubgroupRT([128X[104X
+    [4X[28X    > (1,9,8,10,7)(2,6)(3,4,5),[128X[104X
+    [4X[28X    > (1,4)(2,5,9,10,8)(3,7,6));[128X[104X
+    [4X[28X    <modular subgroup of index 10>[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    [128X[104X
+  [4X[32X[104X
+  
+  [29X[2XModularSubgrouSJ[102X( [3Xs[103X, [3Xj[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
+  subgroup  of  [22XSL_2(ℤ)[122X  determined by the permutations [3Xs[103X and [3Xj[103X which describe
+  the action of the matrices[133X
+  
+                       [ 0 -1 ]           [  0  1 ]
+                   S = [ 1  0 ]       J = [ -1  1 ]
+      
+  
+  [33X[0;0Yon the right cosets.[133X
+  [33X[0;0YA check is performed if the permutations actually describe such an action on
+  the cosets of some subgroup.[133X
+  [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
+  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
+  to make the internal interaction with existing [5XGAP[105X methods easier.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    gap> G := ModularSubgroupSJ([128X[104X
+    [4X[28X    > (1,2)(3,6)(4,7)(5,9)(8,10),[128X[104X
+    [4X[28X    > (1,5,6)(2,3,7)(4,9,10));[128X[104X
+    [4X[28X    <modular subgroup of index 10>[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    [128X[104X
+  [4X[32X[104X
+  
+  [29X[2XModularSubgroup[102X( [3Xgens[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
+  subgroup of [22XSL_2(ℤ)[122X generated by the matrices in [3Xgens[103X.[133X
+  [33X[0;0YNo  test is performed to check if the generated subgroup actually has finite
+  index![133X
+  [33X[0;0YThis constructor implicitly computes a coset table of the subgroup. Hence it
+  might be slow for very large index subgroups.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    gap> G := ModularSubgroup([[128X[104X
+    [4X[28X    > [[1,2], [0,1]],[128X[104X
+    [4X[28X    > [[1,0], [2,1]],[128X[104X
+    [4X[28X    > [[-1,0], [0,-1]][128X[104X
+    [4X[28X    > ]);[128X[104X
+    [4X[28X    <modular subgroup of index 6>[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.1-2 [33X[0;0YGetters for the coset action[133X[101X
+  
+  [29X[2XSAction[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the  permutation  [22Xσ_S[122X  describing the action of the matrix [22XS[122X on the
+  cosets of [3XG[103X.[133X
+  
+  [29X[2XTAction[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the  permutation  [22Xσ_T[122X  describing the action of the matrix [22XT[122X on the
+  cosets of [3XG[103X.[133X
+  
+  [29X[2XRAction[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the  permutation  [22Xσ_R[122X  describing the action of the matrix [22XR[122X on the
+  cosets of [3XG[103X.[133X
+  
+  [29X[2XJAction[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the  permutation  [22Xσ_J[122X  describing the action of the matrix [22XJ[122X on the
+  cosets of [3XG[103X.[133X
+  
+  [29X[2XCosetActionOf[102X( [3XA[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the permutation [22Xσ_A[122X describing the action of the matrix [22XA ∈ SL_2(ℤ)[122X
+  on the cosets of [3XG[103X.[133X
+  
+  
+  [1X2.2 [33X[0;0YComputing with modular subgroups[133X[101X
+  
+  [1X2.2-1 Index[101X
+  
+  [29X[2XIndex[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YFor  a given modular subgroup [3XG[103X this method returns its index in [22XSL_2(ℤ)[122X. As
+  [3XG[103X is internally stored as permutations [22X(s,t)[122X this is just[133X
+  
+        LargestMovedPoint(s,t)
+      
+  
+  [33X[0;0Y(or [22X1[122X if the permutations are trivial).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));[128X[104X
+    [4X[28X  <modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> Index(G);[128X[104X
+    [4X[28X  6[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-2 GeneralizedLevel[101X
+  
+  [29X[2XGeneralizedLevel[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YThis  method  calculates the general Wohlfahrt level (i.e. the lowest common
+  multiple of all cusp widths) of [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));[128X[104X
+    [4X[28X  <modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> GeneralizedLevel(G);[128X[104X
+    [4X[28X  2[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-3 RightCosetRepresentatives[101X
+  
+  [29X[2XRightCosetRepresentatives[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of words.[133X
+  
+  [33X[0;0YThis  function  returns a list of representatives of the (right) cosets of [3XG[103X
+  as words in [22XS[122X and [22XT[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup((1,2),(2,3));[128X[104X
+    [4X[28X  <modular subgroup of index 3>[128X[104X
+    [4X[28X  gap> RightCosetRepresentatives(G);[128X[104X
+    [4X[28X  [ <identity ...>, S, S*T ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-4 GeneratorsOfGroup[101X
+  
+  [29X[2XGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of words.[133X
+  
+  [33X[0;0YCalculates  a list of generators (as words in [22XS[122X and [22XT[122X) of [3XG[103X. This list might
+  include redundant generators (or even duplicates).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));[128X[104X
+    [4X[28X  <modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> GeneratorsOfGroup(G);[128X[104X
+    [4X[28X  [ S^-2, T^-2, S*T^-2*S^-1 ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-5 MatrixGeneratorsOfGroup[101X
+  
+  [29X[2XMatrixGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of matrices.[133X
+  
+  [33X[0;0YCalculates  a  list  of  generator  matrices  of  [3XG[103X. This list might include
+  redundant generators (or even duplicates).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));[128X[104X
+    [4X[28X  <modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> MatrixGeneratorsOfGroup(G);[128X[104X
+    [4X[28X  [ [ [ -1, 0 ], [ 0, -1 ] ], [ [ 1, -2 ], [ 0, 1 ] ], [ [ 1, 0 ], [ 2, 1 ] ] ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-6 IsCongruence[101X
+  
+  [29X[2XIsCongruence[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YThis  method  test  whether  a  given  modular  subgroup  [3XG[103X  is a congruence
+  subgroup.  It  is essentially an implementation of an algorithm described in
+  [HL14].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> IsCongruence(G);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-7 Cusps[101X
+  
+  [29X[2XCusps[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of rational numbers and infinity.[133X
+  
+  [33X[0;0YThis  method  computes  a  list  of  inequivalent  cusp representatives with
+  respect to [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> Cusps(G);[128X[104X
+    [4X[28X  [ infinity, 0, 1, 2, 3/2, 5/3 ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-8 CuspWidth[101X
+  
+  [29X[2XCuspWidth[102X( [3Xc[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YThis  method  takes  as input a cusp [3Xc[103X (a rational number or infinity) and a
+  modular group [3XG[103X and calculates the width of this cusp with respect to [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([128X[104X
+    [4X[28X  > (1,2,6,3)(4,11,15,12)(5,13,16,14)(7,17,9,18)(8,19,10,20)(21,24,22,23),[128X[104X
+    [4X[28X  > (1,4,5)(2,7,8)(3,9,10)(6,15,16)(11,20,21)(12,19,22)(13,23,17)(14,24,18)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> CuspWidth(-1, G);[128X[104X
+    [4X[28X  3[128X[104X
+    [4X[28X  gap> CuspWidth(infinity, G);[128X[104X
+    [4X[28X  3[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-9 CuspsEquivalent[101X
+  
+  [29X[2XCuspsEquivalent[102X( [3Xp[103X, [3Xq[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YTakes  two  cusps  [3Xp[103X  and  [3Xq[103X and a modular subgroup [3XG[103X and checks if they are
+  equivalent modulo [3XG[103X, i.e. if there exists a matrix [22XA ∈ G[122X with [22XAp = q[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([128X[104X
+    [4X[28X  > (1,2,6,3)(4,11,15,12)(5,13,16,14)(7,17,9,18)(8,19,10,20)(21,24,22,23),[128X[104X
+    [4X[28X  > (1,4,5)(2,7,8)(3,9,10)(6,15,16)(11,20,21)(12,19,22)(13,23,17)(14,24,18)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> CuspsEquivalent(infinity, 1, G);[128X[104X
+    [4X[28X  false[128X[104X
+    [4X[28X  gap> CuspsEquivalent(-1, 1/2, G);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-10 IndexModN[101X
+  
+  [29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YFor  a  modular subgroup [3XG[103X and a natural number [3XN[103X this method calculates the
+  index of the projection [22XbarG[122X of [22XG[122X in [22XSL_2(ℤ/Nℤ)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));[128X[104X
+    [4X[28X  <modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> IndexModN(G, 2);[128X[104X
+    [4X[28X  6[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-11 Deficiency[101X
+  
+  [29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YFor  a  modular subgroup [3XG[103X and a natural number [3XN[103X this method calculates the
+  so-called [13Xdeficiency[113X of [3XG[103X from being a congruence subgroup of level [3XN[103X.[133X
+  [33X[0;0YThe  deficiency  of  a  finite-index subgroup [22XΓ[122X of [22XSL_2(ℤ)[122X was introduced in
+  [WS15].  It  is  defined  as  the  index [22X[Γ(N) : Γ(N) ∩ Γ][122X where [22XΓ(N)[122X is the
+  principal congruence subgroup of level [22XN[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> Deficiency(G, 2);[128X[104X
+    [4X[28X  2[128X[104X
+    [4X[28X  gap> Deficiency(G, 4);[128X[104X
+    [4X[28X  1[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-12 Projection[101X
+  
+  [29X[2XProjection[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
+  
+  [33X[0;0YFor a given modular subgroup [3XG[103X this function calculates its image [22Xbar[3XG[103X[122X under
+  the projection [22Xπ : SL_2(ℤ) → PSL_2(ℤ)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> Projection(G);[128X[104X
+    [4X[28X  <projective modular subgroup of index 6>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-13 NormalCore[101X
+  
+  [29X[2XNormalCore[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YCalculates  the  normal core of [3XG[103X in [22XSL_2(ℤ)[122X, i.e. the maximal subgroup of [3XG[103X
+  that is normal in [22XSL_2(ℤ)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> NormalCore(G);[128X[104X
+    [4X[28X  <modular subgroup of index 48>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-14 QuotientByNormalCore[101X
+  
+  [29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA finite group.[133X
+  
+  [33X[0;0YCalculates the quotient of [22XSL_2(ℤ)[122X by the normal core of [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> QuotientByNormalCore(G);[128X[104X
+    [4X[28X  <permutation group with 2 generators>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-15 AssociatedCharacterTable[101X
+  
+  [29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA character table.[133X
+  
+  [33X[0;0YReturns the character table of [22XSL_2(ℤ)/N[122X where [22XN[122X is the normal core of [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> AssociatedCharacterTable(G);[128X[104X
+    [4X[28X  CharacterTable( <permutation group of size 48 with 2 generators> )[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-16 IsElementOf[101X
+  
+  [29X[2XIsElementOf[102X( [3XA[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YThis  function  checks  if  a  given  matrix  [3XA[103X is an element of the modular
+  subgroup [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> IsElementOf([[-1,0],[0,-1]], G);[128X[104X
+    [4X[28X  false[128X[104X
+    [4X[28X  gap> IsElementOf([[1,4],[0,1]], G);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.3 [33X[0;0YMiscellaneous[133X[101X
+  
+  [33X[0;0YThe  following functions are mostly helper functions used internally and are
+  only documented for sake of completeness.[133X
+  
+  [1X2.3-1 DefinesCosetActionST[101X
+  
+  [29X[2XDefinesCosetActionST[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YChecks  if  two  given  permutations  [3Xs[103X  and  [3Xt[103X  describe  the action of the
+  generator  matrices [22XS[122X and [22XT[122X on the cosets of some subgroup. This is the case
+  if they satisfy the relations[133X
+  
+  
+  [24X[33X[0;6Ys^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1[133X
+  
+  [124X
+  
+  [33X[0;0Yand act transitively.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> s := (1,2)(3,4)(5,6)(7,8)(9,10);;[128X[104X
+    [4X[28X  gap> t := (1,4)(2,5,9,10,8)(3,7,6);;[128X[104X
+    [4X[28X  gap> DefinesCosetActionST(s,t);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-2 DefinesCosetActionRT[101X
+  
+  [29X[2XDefinesCosetActionRT[102X( [3Xr[103X, [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YChecks  if  two  given  permutations  [3Xr[103X  and  [3Xt[103X  describe  the action of the
+  generator  matrices [22XR[122X and [22XT[122X on the cosets of some subgroup. This is the case
+  if they satisfy the relations[133X
+  
+  
+  [24X[33X[0;6Y(r  t^{-1}  r)^4 = ((r t^{-1} r)^3 t)^3 = (r t^{-1} r)^2 t (r t^{-1} r)^{-2}
+  t^{-1} = 1[133X
+  
+  [124X
+  
+  [33X[0;0Yand act transitively.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> r := (1,9,8,10,7)(2,6)(3,4,5);;[128X[104X
+    [4X[28X  gap> t := (1,4)(2,5,9,10,8)(3,7,6);;[128X[104X
+    [4X[28X  gap> DefinesCosetActionRT(r,t);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-3 DefinesCosetActionSJ[101X
+  
+  [29X[2XDefinesCosetActionSJ[102X( [3Xs[103X, [3Xj[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YChecks  if  two  given  permutations  [3Xs[103X  and  [3Xj[103X  describe  the action of the
+  generator  matrices [22XS[122X and [22XJ[122X on the cosets of some subgroup. This is the case
+  if they satisfy the relations[133X
+  
+  
+  [24X[33X[0;6Ys^4 = (s^3 j^{-1} s^{-1})^3 = s^2 j^{-1} s^{-2} j = 1[133X
+  
+  [124X
+  
+  [33X[0;0Yand act transitively.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> s := (1,2)(3,4)(5,6)(7,8)(9,10);;[128X[104X
+    [4X[28X  gap> j := (1,5,6)(2,3,7)(4,9,10);;[128X[104X
+    [4X[28X  gap> DefinesCosetActionSJ(s,j);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-4 CosetActionFromGenerators[101X
+  
+  [29X[2XCosetActionFromGenerators[102X( [3Xgens[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA tuple of permutations.[133X
+  
+  [33X[0;0YTakes  a  list  of generator matrices and calculates the coset graph (as two
+  permutations [22Xσ_S[122X and [22Xσ_T[122X) of the generated subgroup of [22XSL_2(ℤ)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> CosetActionFromGenerators([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  [ (1,2,5,3)(4,8,10,9)(6,11,7,12), (1,4)(2,6)(3,7)(5,10)(8,12,9,11) ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-5 STDecomposition[101X
+  
+  [29X[2XSTDecomposition[102X( [3XA[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA word in [22XS[122X and [22XT[122X.[133X
+  
+  [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
+  matrices [22XS[122X and [22XT[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;[128X[104X
+    [4X[28X  gap> STDecomposition(M);[128X[104X
+    [4X[28X  S^2*T^-1*S^-1*T^2*S^-1*T^-1*S^-1[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-6 RTDecomposition[101X
+  
+  [29X[2XRTDecomposition[102X( [3XA[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA word in [22XR[122X and [22XT[122X.[133X
+  
+  [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
+  matrices [22XR[122X and [22XT[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;[128X[104X
+    [4X[28X  gap> RTDecomposition(M);[128X[104X
+    [4X[28X  (R*T^-1*R)^2*T^-1*R^-1*(T*R^-1*T)^2*R^-1*T^-1*R^-1*T*R^-1[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-7 SJDecomposition[101X
+  
+  [29X[2XSJDecomposition[102X( [3XA[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA word in [22XS[122X and [22XJ[122X.[133X
+  
+  [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
+  matrices [22XS[122X and [22XJ[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;[128X[104X
+    [4X[28X  gap> SJDecomposition(M);[128X[104X
+    [4X[28X  S^3*J*(S^-1*J^-1)^2*S^-1*J*S^-1[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.3-8 STDecompositionAsList[101X
+  
+  [29X[2XSTDecompositionAsList[102X( [3XA[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA list representing a word in [22XS[122X and [22XT[122X.[133X
+  
+  [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
+  matrices  [22XS[122X  and  [22XT[122X.  The  word  is  represented  as  a  list  in the format
+  [[generator, exponent], ... ][133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> M := [ [ 4, 3 ], [ -3, -2 ] ];;[128X[104X
+    [4X[28X  gap> STDecompositionAsList(M);[128X[104X
+    [4X[28X  [ [ "S", 2 ], [ "T", -1 ], [ "S", -1 ], [ "T", 2 ], [ "S", -1 ], [ "T", -1 ],[128X[104X
+    [4X[28X    [ "S", -1 ], [ "T", 0 ] ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  

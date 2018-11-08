@@ -1,1 +1,100 @@
-Placeholder
+  
+  
+                            [1XThe [5XModularGroup[105X Package[101X
+  
+  
+                      [1XFinite-index subgroups of [22X(P)SL_2(ℤ)[122X[101X
+  
+  
+                                 Version 0.0.2
+  
+  
+                               20 September 2018
+  
+  
+                                  Luca L. Junk
+  
+  
+  
+  Luca L. Junk
+      Email:    [7Xmailto:junk@math.uni-sb.de[107X
+      Homepage: [7Xhttp://www.math.uni-sb.de/ag/weitze/[107X
+      Address:  [33X[0;14YAG Weitze-Schmithüsen[133X
+                [33X[0;14YFR 6.1 Mathematik[133X
+                [33X[0;14YUniversität des Saarlandes[133X
+                [33X[0;14YD-66041 Saarbrücken[133X
+  
+  
+  
+  -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y© 2018 by Luca L. Junk[133X
+  
+  
+  -------------------------------------------------------
+  [1XAcknowledgements[101X
+  [33X[0;0YSupported  by  Project I.8 of SFB-TRR 195 'Symbolic Tools in Mathematics and
+  their Application' of the German Research Foundation (DFG).[133X
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (ModularGroup)[101X
+  
+  1 [33X[0;0YIntroduction[133X
+    1.1 [33X[0;0YGeneral aims of the [5XModularGroup[105X package[133X
+    1.2 [33X[0;0YTechnicalities[133X
+  2 [33X[0;0YSubgroups of [22XSL_2(ℤ)[122X[133X
+    2.1 [33X[0;0YConstruction of modular subgroups[133X
+      2.1-1 [33X[0;0YConstructors[133X
+      2.1-2 [33X[0;0YGetters for the coset action[133X
+    2.2 [33X[0;0YComputing with modular subgroups[133X
+      2.2-1 Index
+      2.2-2 GeneralizedLevel
+      2.2-3 RightCosetRepresentatives
+      2.2-4 GeneratorsOfGroup
+      2.2-5 MatrixGeneratorsOfGroup
+      2.2-6 IsCongruence
+      2.2-7 Cusps
+      2.2-8 CuspWidth
+      2.2-9 CuspsEquivalent
+      2.2-10 IndexModN
+      2.2-11 Deficiency
+      2.2-12 Projection
+      2.2-13 NormalCore
+      2.2-14 QuotientByNormalCore
+      2.2-15 AssociatedCharacterTable
+      2.2-16 IsElementOf
+    2.3 [33X[0;0YMiscellaneous[133X
+      2.3-1 DefinesCosetActionST
+      2.3-2 DefinesCosetActionRT
+      2.3-3 DefinesCosetActionSJ
+      2.3-4 CosetActionFromGenerators
+      2.3-5 STDecomposition
+      2.3-6 RTDecomposition
+      2.3-7 SJDecomposition
+      2.3-8 STDecompositionAsList
+  3 [33X[0;0YSubgroups of [22XPSL_2(ℤ)[122X[133X
+    3.1 [33X[0;0YConstruction of projective modular subgroups[133X
+      3.1-1 [33X[0;0YConstructors[133X
+      3.1-2 [33X[0;0YGetters for the coset action[133X
+    3.2 [33X[0;0YComputing with projective modular subgroups[133X
+      3.2-1 Index
+      3.2-2 GeneralizedLevel
+      3.2-3 RightCosetRepresentatives
+      3.2-4 GeneratorsOfGroup
+      3.2-5 IsCongruence
+      3.2-6 Cusps
+      3.2-7 CuspWidth
+      3.2-8 CuspsEquivalent
+      3.2-9 LiftToSL2ZEven
+      3.2-10 LiftToSL2ZOdd
+      3.2-11 IndexModN
+      3.2-12 Deficiency
+      3.2-13 NormalCore
+      3.2-14 QuotientByNormalCore
+      3.2-15 AssociatedCharacterTable
+  
+  
+  [32X

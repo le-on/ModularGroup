@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (ModularGroup) - Chapter 2: Subgroups of SL_2(ℤ)</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"></p>
+<p><a id="X8708256C7CDEDC88" name="X8708256C7CDEDC88"></a></p>
+<div class="ChapSects"><a href="chap2.html#X8708256C7CDEDC88">2 <span class="Heading">Subgroups of <span class="SimpleMath">SL_2(ℤ)</span></span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X82B1267A8369ABC3">2.1 <span class="Heading">Construction of modular subgroups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86EC0F0A78ECBC10">2.1-1 <span class="Heading">Constructors</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A38ED567DB2C5EC">2.1-2 <span class="Heading">Getters for the coset action</span></a>
+</span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7B2F1C71867A167F">2.2 <span class="Heading">Computing with modular subgroups</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83A0356F839C696F">2.2-1 Index</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CE2FE418516FCA2">2.2-2 GeneralizedLevel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C695A958767E7A0">2.2-3 RightCosetRepresentatives</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79C44528864044C5">2.2-4 GeneratorsOfGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82AD0E5183415EFB">2.2-5 MatrixGeneratorsOfGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FB43748844627A0">2.2-6 IsCongruence</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84EA514A8795B973">2.2-7 Cusps</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D7C4EE87A52AC4F">2.2-8 CuspWidth</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7889FB917AD4F4FF">2.2-9 CuspsEquivalent</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8309F200786003DB">2.2-10 IndexModN</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E0B89537CF0589B">2.2-11 Deficiency</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8769E8DA80BC96C1">2.2-12 Projection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78853F068422CD4F">2.2-13 NormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B48B55A85A00675">2.2-14 QuotientByNormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85654474795E1A69">2.2-15 AssociatedCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E87C71487EADF4A">2.2-16 IsElementOf</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C5563A37D566DA5">2.3 <span class="Heading">Miscellaneous</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DF96C8184DCF28E">2.3-1 DefinesCosetActionST</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C68DF9579A2DA8B">2.3-2 DefinesCosetActionRT</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82599F577B4F1C8A">2.3-3 DefinesCosetActionSJ</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D96A4DE84701927">2.3-4 CosetActionFromGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CC5EB727FF9442E">2.3-5 STDecomposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X875A56CC78893727">2.3-6 RTDecomposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86177DEC82BD57D3">2.3-7 SJDecomposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AFE18407D135E5D">2.3-8 STDecompositionAsList</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Subgroups of <span class="SimpleMath">SL_2(ℤ)</span></span></h3>
+
+<p>For representing finite-index subgroups of <span class="SimpleMath">SL_2(ℤ)</span>, this package introduces the new type <code class="code">ModularSubgroup</code>. As stated in the introduction, a <code class="code">ModularSubgroup</code> essentially consists of the two permutations <span class="SimpleMath">σ_S</span> and <span class="SimpleMath">σ_T</span> describing the coset graph with respect to the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span> (with the convention that <span class="SimpleMath">1</span> corresponds to the identity coset). So explicitly specifying these permutations is the canonical way to construct a <code class="code">ModularSubgroup</code>. <br /> Though you might not always have a coset graph of your subgroup at hand, but rather a list of generator matrices. Therefore we implement multiple constructors for <code class="code">ModularSubgroup</code>: three that take as input two permutations describing the coset graph with respect to different pairs of generators of <span class="SimpleMath">SL_2(ℤ)</span>, and one that takes a list of <span class="SimpleMath">SL_2(ℤ)</span> matrices as generators.</p>
+
+<p><a id="X82B1267A8369ABC3" name="X82B1267A8369ABC3"></a></p>
+
+<h4>2.1 <span class="Heading">Construction of modular subgroups</span></h4>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h5>2.1-1 <span class="Heading">Constructors</span></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgroup</code>( <var class="Arg">s</var>, <var class="Arg">t</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A modular subgroup.</p>
+
+<p>Constructs a <code class="code">ModularSubgroup</code> object corresponding to the finite-index subgroup of <span class="SimpleMath">SL_2(ℤ)</span> described by the permutations <var class="Arg">s</var> and <var class="Arg">t</var>. <br /> This constructor tests if the given permutations actually describe the coset action of the matrices</p>
+
+
+<pre class="normal">
+
+                     [ 0 -1 ]           [ 1  1 ]
+                 S = [ 1  0 ]       T = [ 0  1 ]
+    
+</pre>
+
+<p>by checking that they act transitively and satisfy the relations</p>
+
+<p class="pcenter">s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</p>
+
+<p>Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier.</p>
+
+
+<div class="example"><pre>
+    
+    gap&gt; G := ModularSubgroup(
+    &gt; (1,2)(3,4)(5,6)(7,8)(9,10),
+    &gt; (1,4)(2,5,9,10,8)(3,7,6));
+    &lt;modular subgroup of index 10&gt;
+    
+    </pre></div>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgroupST</code>( <var class="Arg">s</var>, <var class="Arg">t</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A modular subgroup.</p>
+
+<p>Synonymous for <code class="code">ModularSubgroup</code> (see above).</p>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgroupRT</code>( <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A modular subgroup.</p>
+
+<p>Constructs a <code class="code">ModularSubgroup</code> object corresponding to the finite-index subgroup of <span class="SimpleMath">SL_2(ℤ)</span> determined by the permutations <var class="Arg">r</var> and <var class="Arg">t</var> which describe the action of the matrices</p>
+
+
+<pre class="normal">
+
+                     [ 1  0 ]           [ 1  1 ]
+                 R = [ 1  1 ]       T = [ 0  1 ]
+    
+</pre>
+
+<p>on the right cosets. <br /> A check is performed if the permutations actually describe such an action on the cosets of some subgroup. <br /> Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier.</p>
+
+
+<div class="example"><pre>
+    
+    gap&gt; G := ModularSubgroupRT(
+    &gt; (1,9,8,10,7)(2,6)(3,4,5),
+    &gt; (1,4)(2,5,9,10,8)(3,7,6));
+    &lt;modular subgroup of index 10&gt;
+    
+    </pre></div>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgrouSJ</code>( <var class="Arg">s</var>, <var class="Arg">j</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A modular subgroup.</p>
+
+<p>Constructs a <code class="code">ModularSubgroup</code> object corresponding to the finite-index subgroup of <span class="SimpleMath">SL_2(ℤ)</span> determined by the permutations <var class="Arg">s</var> and <var class="Arg">j</var> which describe the action of the matrices</p>
+
+
+<pre class="normal">
+
+                     [ 0 -1 ]           [  0  1 ]
+                 S = [ 1  0 ]       J = [ -1  1 ]
+    
+</pre>
+
+<p>on the right cosets. <br /> A check is performed if the permutations actually describe such an action on the cosets of some subgroup. <br /> Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier.</p>
+
+
+<div class="example"><pre>
+    
+    gap&gt; G := ModularSubgroupSJ(
+    &gt; (1,2)(3,6)(4,7)(5,9)(8,10),
+    &gt; (1,5,6)(2,3,7)(4,9,10));
+    &lt;modular subgroup of index 10&gt;
+    
+    </pre></div>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ModularSubgroup</code>( <var class="Arg">gens</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A modular subgroup.</p>
+
+<p>Constructs a <code class="code">ModularSubgroup</code> object corresponding to the finite-index subgroup of <span class="SimpleMath">SL_2(ℤ)</span> generated by the matrices in <var class="Arg">gens</var>. <br /> No test is performed to check if the generated subgroup actually has finite index! <br /> This constructor implicitly computes a coset table of the subgroup. Hence it might be slow for very large index subgroups.</p>
+
+
+<div class="example"><pre>
+    
+    gap&gt; G := ModularSubgroup([
+    &gt; [[1,2], [0,1]],
+    &gt; [[1,0], [2,1]],
+    &gt; [[-1,0], [0,-1]]
+    &gt; ]);
+    &lt;modular subgroup of index 6&gt;
+    
+  </pre></div>
+
+<p><a id="X7A38ED567DB2C5EC" name="X7A38ED567DB2C5EC"></a></p>
+
+<h5>2.1-2 <span class="Heading">Getters for the coset action</span></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SAction</code>( <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A permutation.</p>
+
+<p>Returns the permutation <span class="SimpleMath">σ_S</span> describing the action of the matrix <span class="SimpleMath">S</span> on the cosets of <var class="Arg">G</var>.</p>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TAction</code>( <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A permutation.</p>
+
+<p>Returns the permutation <span class="SimpleMath">σ_T</span> describing the action of the matrix <span class="SimpleMath">T</span> on the cosets of <var class="Arg">G</var>.</p>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RAction</code>( <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A permutation.</p>
+
+<p>Returns the permutation <span class="SimpleMath">σ_R</span> describing the action of the matrix <span class="SimpleMath">R</span> on the cosets of <var class="Arg">G</var>.</p>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; JAction</code>( <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A permutation.</p>
+
+<p>Returns the permutation <span class="SimpleMath">σ_J</span> describing the action of the matrix <span class="SimpleMath">J</span> on the cosets of <var class="Arg">G</var>.</p>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CosetActionOf</code>( <var class="Arg">A</var>, <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A permutation.</p>
+
+<p>Returns the permutation <span class="SimpleMath">σ_A</span> describing the action of the matrix <span class="SimpleMath">A ∈ SL_2(ℤ)</span> on the cosets of <var class="Arg">G</var>.</p>
+
+<p><a id="X7B2F1C71867A167F" name="X7B2F1C71867A167F"></a></p>
+
+<h4>2.2 <span class="Heading">Computing with modular subgroups</span></h4>
+
+<p><a id="X83A0356F839C696F" name="X83A0356F839C696F"></a></p>
+
+<h5>2.2-1 Index</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Index</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A natural number.</p>
+
+<p>For a given modular subgroup <var class="Arg">G</var> this method returns its index in <span class="SimpleMath">SL_2(ℤ)</span>. As <var class="Arg">G</var> is internally stored as permutations <span class="SimpleMath">(s,t)</span> this is just</p>
+
+
+<pre class="normal">
+
+      LargestMovedPoint(s,t)
+    
+</pre>
+
+<p>(or <span class="SimpleMath">1</span> if the permutations are trivial).</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  &lt;modular subgroup of index 6&gt;
+  gap&gt; Index(G);
+  6
+  
+</pre></div>
+
+<p><a id="X7CE2FE418516FCA2" name="X7CE2FE418516FCA2"></a></p>
+
+<h5>2.2-2 GeneralizedLevel</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneralizedLevel</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A natural number.</p>
+
+<p>This method calculates the general Wohlfahrt level (i.e. the lowest common multiple of all cusp widths) of <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  &lt;modular subgroup of index 6&gt;
+  gap&gt; GeneralizedLevel(G);
+  2
+  
+</pre></div>
+
+<p><a id="X7C695A958767E7A0" name="X7C695A958767E7A0"></a></p>
+
+<h5>2.2-3 RightCosetRepresentatives</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightCosetRepresentatives</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A list of words.</p>
+
+<p>This function returns a list of representatives of the (right) cosets of <var class="Arg">G</var> as words in <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2),(2,3));
+  &lt;modular subgroup of index 3&gt;
+  gap&gt; RightCosetRepresentatives(G);
+  [ &lt;identity ...&gt;, S, S*T ]
+  
+</pre></div>
+
+<p><a id="X79C44528864044C5" name="X79C44528864044C5"></a></p>
+
+<h5>2.2-4 GeneratorsOfGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GeneratorsOfGroup</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A list of words.</p>
+
+<p>Calculates a list of generators (as words in <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span>) of <var class="Arg">G</var>. This list might include redundant generators (or even duplicates).</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  &lt;modular subgroup of index 6&gt;
+  gap&gt; GeneratorsOfGroup(G);
+  [ S^-2, T^-2, S*T^-2*S^-1 ]
+  
+</pre></div>
+
+<p><a id="X82AD0E5183415EFB" name="X82AD0E5183415EFB"></a></p>
+
+<h5>2.2-5 MatrixGeneratorsOfGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatrixGeneratorsOfGroup</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A list of matrices.</p>
+
+<p>Calculates a list of generator matrices of <var class="Arg">G</var>. This list might include redundant generators (or even duplicates).</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  &lt;modular subgroup of index 6&gt;
+  gap&gt; MatrixGeneratorsOfGroup(G);
+  [ [ [ -1, 0 ], [ 0, -1 ] ], [ [ 1, -2 ], [ 0, 1 ] ], [ [ 1, 0 ], [ 2, 1 ] ] ]
+  
+</pre></div>
+
+<p><a id="X7FB43748844627A0" name="X7FB43748844627A0"></a></p>
+
+<h5>2.2-6 IsCongruence</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCongruence</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>This method test whether a given modular subgroup <var class="Arg">G</var> is a congruence subgroup. It is essentially an implementation of an algorithm described in <a href="chapBib.html#biBhamilton_loeffler_2014">[HL14]</a>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; IsCongruence(G);
+  true
+  
+</pre></div>
+
+<p><a id="X84EA514A8795B973" name="X84EA514A8795B973"></a></p>
+
+<h5>2.2-7 Cusps</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Cusps</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A list of rational numbers and infinity.</p>
+
+<p>This method computes a list of inequivalent cusp representatives with respect to <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup(
+  &gt; (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),
+  &gt; (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)
+  &gt; );
+  &lt;modular subgroup of index 24&gt;
+  gap&gt; Cusps(G);
+  [ infinity, 0, 1, 2, 3/2, 5/3 ]
+  
+</pre></div>
+
+<p><a id="X7D7C4EE87A52AC4F" name="X7D7C4EE87A52AC4F"></a></p>
+
+<h5>2.2-8 CuspWidth</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CuspWidth</code>( <var class="Arg">c</var>, <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A natural number.</p>
+
+<p>This method takes as input a cusp <var class="Arg">c</var> (a rational number or infinity) and a modular group <var class="Arg">G</var> and calculates the width of this cusp with respect to <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup(
+  &gt; (1,2,6,3)(4,11,15,12)(5,13,16,14)(7,17,9,18)(8,19,10,20)(21,24,22,23),
+  &gt; (1,4,5)(2,7,8)(3,9,10)(6,15,16)(11,20,21)(12,19,22)(13,23,17)(14,24,18)
+  &gt; );
+  &lt;modular subgroup of index 24&gt;
+  gap&gt; CuspWidth(-1, G);
+  3
+  gap&gt; CuspWidth(infinity, G);
+  3
+  
+</pre></div>
+
+<p><a id="X7889FB917AD4F4FF" name="X7889FB917AD4F4FF"></a></p>
+
+<h5>2.2-9 CuspsEquivalent</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CuspsEquivalent</code>( <var class="Arg">p</var>, <var class="Arg">q</var>, <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>Takes two cusps <var class="Arg">p</var> and <var class="Arg">q</var> and a modular subgroup <var class="Arg">G</var> and checks if they are equivalent modulo <var class="Arg">G</var>, i.e. if there exists a matrix <span class="SimpleMath">A ∈ G</span> with <span class="SimpleMath">Ap = q</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup(
+  &gt; (1,2,6,3)(4,11,15,12)(5,13,16,14)(7,17,9,18)(8,19,10,20)(21,24,22,23),
+  &gt; (1,4,5)(2,7,8)(3,9,10)(6,15,16)(11,20,21)(12,19,22)(13,23,17)(14,24,18)
+  &gt; );
+  &lt;modular subgroup of index 24&gt;
+  gap&gt; CuspsEquivalent(infinity, 1, G);
+  false
+  gap&gt; CuspsEquivalent(-1, 1/2, G);
+  true
+  
+</pre></div>
+
+<p><a id="X8309F200786003DB" name="X8309F200786003DB"></a></p>
+
+<h5>2.2-10 IndexModN</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndexModN</code>( <var class="Arg">G</var>, <var class="Arg">N</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A natural number.</p>
+
+<p>For a modular subgroup <var class="Arg">G</var> and a natural number <var class="Arg">N</var> this method calculates the index of the projection <span class="SimpleMath">barG</span> of <span class="SimpleMath">G</span> in <span class="SimpleMath">SL_2(ℤ/Nℤ)</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));
+  &lt;modular subgroup of index 6&gt;
+  gap&gt; IndexModN(G, 2);
+  6
+  
+</pre></div>
+
+<p><a id="X7E0B89537CF0589B" name="X7E0B89537CF0589B"></a></p>
+
+<h5>2.2-11 Deficiency</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Deficiency</code>( <var class="Arg">G</var>, <var class="Arg">N</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A natural number.</p>
+
+<p>For a modular subgroup <var class="Arg">G</var> and a natural number <var class="Arg">N</var> this method calculates the so-called <em>deficiency</em> of <var class="Arg">G</var> from being a congruence subgroup of level <var class="Arg">N</var>. <br /> The deficiency of a finite-index subgroup <span class="SimpleMath">Γ</span> of <span class="SimpleMath">SL_2(ℤ)</span> was introduced in <a href="chapBib.html#biBweitze_schmithuesen_deficiency">[WS15]</a>. It is defined as the index <span class="SimpleMath">[Γ(N) : Γ(N) ∩ Γ]</span> where <span class="SimpleMath">Γ(N)</span> is the principal congruence subgroup of level <span class="SimpleMath">N</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; Deficiency(G, 2);
+  2
+  gap&gt; Deficiency(G, 4);
+  1
+  
+</pre></div>
+
+<p><a id="X8769E8DA80BC96C1" name="X8769E8DA80BC96C1"></a></p>
+
+<h5>2.2-12 Projection</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Projection</code>( <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A projective modular subgroup.</p>
+
+<p>For a given modular subgroup <var class="Arg">G</var> this function calculates its image <span class="SimpleMath">bar<var class="Arg">G</var></span> under the projection <span class="SimpleMath">π : SL_2(ℤ) → PSL_2(ℤ)</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; Projection(G);
+  &lt;projective modular subgroup of index 6&gt;
+  
+</pre></div>
+
+<p><a id="X78853F068422CD4F" name="X78853F068422CD4F"></a></p>
+
+<h5>2.2-13 NormalCore</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A modular subgroup.</p>
+
+<p>Calculates the normal core of <var class="Arg">G</var> in <span class="SimpleMath">SL_2(ℤ)</span>, i.e. the maximal subgroup of <var class="Arg">G</var> that is normal in <span class="SimpleMath">SL_2(ℤ)</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; NormalCore(G);
+  &lt;modular subgroup of index 48&gt;
+  
+</pre></div>
+
+<p><a id="X7B48B55A85A00675" name="X7B48B55A85A00675"></a></p>
+
+<h5>2.2-14 QuotientByNormalCore</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientByNormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A finite group.</p>
+
+<p>Calculates the quotient of <span class="SimpleMath">SL_2(ℤ)</span> by the normal core of <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; QuotientByNormalCore(G);
+  &lt;permutation group with 2 generators&gt;
+  
+</pre></div>
+
+<p><a id="X85654474795E1A69" name="X85654474795E1A69"></a></p>
+
+<h5>2.2-15 AssociatedCharacterTable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedCharacterTable</code>( <var class="Arg">G</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<p>Returns: A character table.</p>
+
+<p>Returns the character table of <span class="SimpleMath">SL_2(ℤ)/N</span> where <span class="SimpleMath">N</span> is the normal core of <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; AssociatedCharacterTable(G);
+  CharacterTable( &lt;permutation group of size 48 with 2 generators&gt; )
+  
+</pre></div>
+
+<p><a id="X7E87C71487EADF4A" name="X7E87C71487EADF4A"></a></p>
+
+<h5>2.2-16 IsElementOf</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementOf</code>( <var class="Arg">A</var>, <var class="Arg">G</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>This function checks if a given matrix <var class="Arg">A</var> is an element of the modular subgroup <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; IsElementOf([[-1,0],[0,-1]], G);
+  false
+  gap&gt; IsElementOf([[1,4],[0,1]], G);
+  true
+  
+</pre></div>
+
+<p><a id="X7C5563A37D566DA5" name="X7C5563A37D566DA5"></a></p>
+
+<h4>2.3 <span class="Heading">Miscellaneous</span></h4>
+
+<p>The following functions are mostly helper functions used internally and are only documented for sake of completeness.</p>
+
+<p><a id="X7DF96C8184DCF28E" name="X7DF96C8184DCF28E"></a></p>
+
+<h5>2.3-1 DefinesCosetActionST</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefinesCosetActionST</code>( <var class="Arg">s</var>, <var class="Arg">t</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>Checks if two given permutations <var class="Arg">s</var> and <var class="Arg">t</var> describe the action of the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span> on the cosets of some subgroup. This is the case if they satisfy the relations</p>
+
+<p class="pcenter">s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</p>
+
+<p>and act transitively.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; s := (1,2)(3,4)(5,6)(7,8)(9,10);;
+  gap&gt; t := (1,4)(2,5,9,10,8)(3,7,6);;
+  gap&gt; DefinesCosetActionST(s,t);
+  true
+  
+</pre></div>
+
+<p><a id="X7C68DF9579A2DA8B" name="X7C68DF9579A2DA8B"></a></p>
+
+<h5>2.3-2 DefinesCosetActionRT</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefinesCosetActionRT</code>( <var class="Arg">r</var>, <var class="Arg">t</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>Checks if two given permutations <var class="Arg">r</var> and <var class="Arg">t</var> describe the action of the generator matrices <span class="SimpleMath">R</span> and <span class="SimpleMath">T</span> on the cosets of some subgroup. This is the case if they satisfy the relations</p>
+
+<p class="pcenter">(r t^{-1} r)^4 = ((r t^{-1} r)^3 t)^3 = (r t^{-1} r)^2 t (r t^{-1} r)^{-2} t^{-1} = 1</p>
+
+<p>and act transitively.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; r := (1,9,8,10,7)(2,6)(3,4,5);;
+  gap&gt; t := (1,4)(2,5,9,10,8)(3,7,6);;
+  gap&gt; DefinesCosetActionRT(r,t);
+  true
+  
+</pre></div>
+
+<p><a id="X82599F577B4F1C8A" name="X82599F577B4F1C8A"></a></p>
+
+<h5>2.3-3 DefinesCosetActionSJ</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DefinesCosetActionSJ</code>( <var class="Arg">s</var>, <var class="Arg">j</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>Checks if two given permutations <var class="Arg">s</var> and <var class="Arg">j</var> describe the action of the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">J</span> on the cosets of some subgroup. This is the case if they satisfy the relations</p>
+
+<p class="pcenter">s^4 = (s^3 j^{-1} s^{-1})^3 = s^2 j^{-1} s^{-2} j = 1</p>
+
+<p>and act transitively.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; s := (1,2)(3,4)(5,6)(7,8)(9,10);;
+  gap&gt; j := (1,5,6)(2,3,7)(4,9,10);;
+  gap&gt; DefinesCosetActionSJ(s,j);
+  true
+  
+</pre></div>
+
+<p><a id="X7D96A4DE84701927" name="X7D96A4DE84701927"></a></p>
+
+<h5>2.3-4 CosetActionFromGenerators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CosetActionFromGenerators</code>( <var class="Arg">gens</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A tuple of permutations.</p>
+
+<p>Takes a list of generator matrices and calculates the coset graph (as two permutations <span class="SimpleMath">σ_S</span> and <span class="SimpleMath">σ_T</span>) of the generated subgroup of <span class="SimpleMath">SL_2(ℤ)</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; CosetActionFromGenerators([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  [ (1,2,5,3)(4,8,10,9)(6,11,7,12), (1,4)(2,6)(3,7)(5,10)(8,12,9,11) ]
+  
+</pre></div>
+
+<p><a id="X7CC5EB727FF9442E" name="X7CC5EB727FF9442E"></a></p>
+
+<h5>2.3-5 STDecomposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; STDecomposition</code>( <var class="Arg">A</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A word in <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span>.</p>
+
+<p>Takes a matrix <span class="SimpleMath"><var class="Arg">A</var> ∈ SL_2(ℤ)</span> and decomposes it into a word in the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap&gt; STDecomposition(M);
+  S^2*T^-1*S^-1*T^2*S^-1*T^-1*S^-1
+  
+</pre></div>
+
+<p><a id="X875A56CC78893727" name="X875A56CC78893727"></a></p>
+
+<h5>2.3-6 RTDecomposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RTDecomposition</code>( <var class="Arg">A</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A word in <span class="SimpleMath">R</span> and <span class="SimpleMath">T</span>.</p>
+
+<p>Takes a matrix <span class="SimpleMath"><var class="Arg">A</var> ∈ SL_2(ℤ)</span> and decomposes it into a word in the generator matrices <span class="SimpleMath">R</span> and <span class="SimpleMath">T</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap&gt; RTDecomposition(M);
+  (R*T^-1*R)^2*T^-1*R^-1*(T*R^-1*T)^2*R^-1*T^-1*R^-1*T*R^-1
+  
+</pre></div>
+
+<p><a id="X86177DEC82BD57D3" name="X86177DEC82BD57D3"></a></p>
+
+<h5>2.3-7 SJDecomposition</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SJDecomposition</code>( <var class="Arg">A</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A word in <span class="SimpleMath">S</span> and <span class="SimpleMath">J</span>.</p>
+
+<p>Takes a matrix <span class="SimpleMath"><var class="Arg">A</var> ∈ SL_2(ℤ)</span> and decomposes it into a word in the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">J</span>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap&gt; SJDecomposition(M);
+  S^3*J*(S^-1*J^-1)^2*S^-1*J*S^-1
+  
+</pre></div>
+
+<p><a id="X7AFE18407D135E5D" name="X7AFE18407D135E5D"></a></p>
+
+<h5>2.3-8 STDecompositionAsList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; STDecompositionAsList</code>( <var class="Arg">A</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<p>Returns: A list representing a word in <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span>.</p>
+
+<p>Takes a matrix <span class="SimpleMath"><var class="Arg">A</var> ∈ SL_2(ℤ)</span> and decomposes it into a word in the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span>. The word is represented as a list in the format [[generator, exponent], ... ]</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; M := [ [ 4, 3 ], [ -3, -2 ] ];;
+  gap&gt; STDecompositionAsList(M);
+  [ [ "S", 2 ], [ "T", -1 ], [ "S", -1 ], [ "T", 2 ], [ "S", -1 ], [ "T", -1 ],
+    [ "S", -1 ], [ "T", 0 ] ]
+  
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

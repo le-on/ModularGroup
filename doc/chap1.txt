@@ -1,0 +1,27 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YGeneral aims of the [5XModularGroup[105X[101X[1X package[133X[101X
+  
+  [33X[0;0YThis  [5XGAP[105X package provides methods for computing with finite-index subgroups
+  of  the  modular  groups  [22XSL_2(ℤ)[122X  and  [22XPSL_2(ℤ)[122X.  This includes, but is not
+  limited  to,  computation of the generalized level, index or cusp widths. It
+  also  implements algorithms described in [Hsu96] and [HL14] for testing if a
+  given group is a congruence subgroup.[133X
+  
+  
+  [1X1.2 [33X[0;0YTechnicalities[133X[101X
+  
+  [33X[0;0YA  convenient  way  to  represent  finite-index  subgroups  of [22XSL_2(ℤ)[122X is by
+  specifying  the  action of generator matrices of [22XSL_2(ℤ)[122X on the right cosets
+  by right multiplication. For example, one could choose the generators[133X
+  
+                   [ 0 -1 ]           [ 1  1 ]
+               S = [ 1  0 ]       T = [ 0  1 ]
+  
+  [33X[0;0Yand  represent  a  subgroup  as a tuple of transitive permutations [22X(σ_S,σ_T)[122X
+  describing  the  action  of  [22XS[122X  and  [22XT[122X. This is exactly the way this package
+  internally   treats   such  subgroups.  We  employ  the  convention  that  [22X1[122X
+  corresponds to the coset of the identity matrix.[133X
+  

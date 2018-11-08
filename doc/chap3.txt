@@ -1,0 +1,373 @@
+  
+  [1X3 [33X[0;0YSubgroups of [22XPSL_2(ℤ)[122X[101X[1X[133X[101X
+  
+  [33X[0;0YAnalogous  to  finite-index  subgroups  of  [22XSL_2(ℤ)[122X,  we  define  a new type
+  [10XProjectiveModularSubgroup[110X   for   representing  subgroups  of  [22XPSL_2(ℤ)[122X.  It
+  consists  essentially  of  two  permutations  [22Xσ_overlineS}[122X  and [22Xσ_overlineT}[122X
+  describing  the action of [22XoverlineS[122X and [22XoverlineT[122X on the cosets of the given
+  subgroup,  where  [22XoverlineS[122X  and  [22XoverlineT[122X  are  the  images  of [22XS[122X and [22XT[122X in
+  [22XPSL_2(ℤ)[122X.[133X
+  [33X[0;0YThe  methods  implemented  for [22XPSL_2(ℤ)[122X subgroups are mostly the same as for
+  [22XSL_2(ℤ)[122X  subgroups and behave more or less identically. Nevertheless we list
+  them here.[133X
+  
+  
+  [1X3.1 [33X[0;0YConstruction of projective modular subgroups[133X[101X
+  
+  
+  [1X3.1-1 [33X[0;0YConstructors[133X[101X
+  
+  [29X[2XProjectiveModularSubgroup[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
+  
+  [33X[0;0YConstructs   a   [10XProjectiveModularSubgroup[110X   object   corresponding  to  the
+  finite-index subgroup of [22XPSL_2(ℤ)[122X described by the permutations [3Xs[103X and [3Xt[103X.[133X
+  [33X[0;0YThis constructor tests if the given permutations actually describe the coset
+  action of [22XoverlineS[122X and [22XoverlineT[122X on some subgroup by checking that they act
+  transitively and satisfy the relations[133X
+  
+  
+  [24X[33X[0;6Ys^2 = (s t)^3 = 1[133X
+  
+  [124X
+  
+  [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
+  ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
+  to make the internal interaction with extisting [5XGAP[105X methods easier.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X    > (1,2)(3,4)(5,6)(7,8)(9,10),[128X[104X
+    [4X[28X    > (1,4)(2,5,9,10,8)(3,7,6));[128X[104X
+    [4X[28X    <projective modular subgroup of index 10>[128X[104X
+    [4X[28X    [128X[104X
+    [4X[28X    [128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf  you  want  to  construct  a  [10XProjectiveModularSubgroup[110X  from  a  list of
+  generators,  you  can  lift each generator to a matrix in [22XSL_2(ℤ)[122X, construct
+  from   these  a  [10XModularSubgroup[110X,  and  then  project  it  to  [22XPSL_2(ℤ)[122X  via
+  [10XProjection[110X.[133X
+  
+  
+  [1X3.1-2 [33X[0;0YGetters for the coset action[133X[101X
+  
+  [29X[2XSAction[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the  permutation [22Xσ_overlineS}[122X describing the action of [22XoverlineS[122X on
+  the cosets of [3XG[103X.[133X
+  
+  [29X[2XTAction[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA permutation.[133X
+  
+  [33X[0;0YReturns  the  permutation [22Xσ_overlineT}[122X describing the action of [22XoverlineT[122X on
+  the cosets of [3XG[103X.[133X
+  
+  
+  [1X3.2 [33X[0;0YComputing with projective modular subgroups[133X[101X
+  
+  [1X3.2-1 Index[101X
+  
+  [29X[2XIndex[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YFor  a  given projective modular subgroup [3XG[103X this method returns its index in
+  [22XPSL_2(ℤ)[122X. As [3XG[103X is internally stored as permutations [22X(s,t)[122X this is just[133X
+  
+        LargestMovedPoint(s,t)
+      
+  
+  [33X[0;0Y(or [22X1[122X if the permutations are trivial).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup((1,2),(2,3));[128X[104X
+    [4X[28X  <projective modular subgroup of index 3>[128X[104X
+    [4X[28X  gap> Index(G);[128X[104X
+    [4X[28X  3[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-2 GeneralizedLevel[101X
+  
+  [29X[2XGeneralizedLevel[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YThis  method  calculates the general Wohlfahrt level (i.e. the lowest common
+  multiple of all cusp widths) of [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> GeneralizedLevel(G);[128X[104X
+    [4X[28X  12[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-3 RightCosetRepresentatives[101X
+  
+  [29X[2XRightCosetRepresentatives[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of words.[133X
+  
+  [33X[0;0YThis  function  returns a list of representatives of the (right) cosets of [3XG[103X
+  as words in [22XoverlineS[122X and [22XoverlineT[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup((1,2),(2,3));[128X[104X
+    [4X[28X  <projective modular subgroup of index 3>[128X[104X
+    [4X[28X  gap> RightCosetRepresentatives(G);[128X[104X
+    [4X[28X  [ <identity ...>, S, S*T ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-4 GeneratorsOfGroup[101X
+  
+  [29X[2XGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of words.[133X
+  
+  [33X[0;0YCalculates  a list of generators (as words in [22XoverlineS[122X and [22XoverlineT[122X) of [3XG[103X.
+  This list might include redundant generators.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup((1,2)(3,5)(4,6), (1,3)(2,4)(5,6));[128X[104X
+    [4X[28X  <projective modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> GeneratorsOfGroup(G);[128X[104X
+    [4X[28X  [ T^-2, S*T^-2*S^-1 ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-5 IsCongruence[101X
+  
+  [29X[2XIsCongruence[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YThis  method  test  whether  a  given  modular  subgroup  [3XG[103X  is a congruence
+  subgroup.  It  is essentially an implementation of an algorithm described in
+  [Hsu96].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,5)(4,6),[128X[104X
+    [4X[28X  > (1,3)(2,4)(5,6)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 6>[128X[104X
+    [4X[28X  gap> IsCongruence(G);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-6 Cusps[101X
+  
+  [29X[2XCusps[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA list of rational numbers and infinity.[133X
+  
+  [33X[0;0YThis  method  computes  a  list  of  inequivalent  cusp representatives with
+  respect to [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> Cusps(G);[128X[104X
+    [4X[28X  [ infinity, 0, 1, 2, 3/2, 5/3 ][128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-7 CuspWidth[101X
+  
+  [29X[2XCuspWidth[102X( [3Xc[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YThis  method  takes  as input a cusp [3Xc[103X (a rational number or infinity) and a
+  modular group [3XG[103X and calculates the width of this cusp with respect to [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),[128X[104X
+    [4X[28X  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> CuspWidth(-1, G);[128X[104X
+    [4X[28X  3[128X[104X
+    [4X[28X  gap> CuspWidth(infinity, G);[128X[104X
+    [4X[28X  3[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-8 CuspsEquivalent[101X
+  
+  [29X[2XCuspsEquivalent[102X( [3Xp[103X, [3Xq[103X, [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YTakes  two  cusps  [3Xp[103X and [3Xq[103X and a projective modular subgroup [3XG[103X and checks if
+  they are equivalent modulo [3XG[103X, i.e. if there exists [22XA ∈ G[122X with [22XAp = q[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),[128X[104X
+    [4X[28X  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> CuspsEquivalent(infinity, 1, G);[128X[104X
+    [4X[28X  false[128X[104X
+    [4X[28X  gap> CuspsEquivalent(-1, 1/2, G);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-9 LiftToSL2ZEven[101X
+  
+  [29X[2XLiftToSL2ZEven[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YLifts  a given subgroup [3XG[103X of [22XPSL_2(ℤ)[122X to an even subgroup of [22XSL_2(ℤ)[122X, i.e. a
+  group that contains [22X-1[122X and whose projection to [22XPSL_2(ℤ)[122X is [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),[128X[104X
+    [4X[28X  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> LiftToSL2ZOdd(G);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-10 LiftToSL2ZOdd[101X
+  
+  [29X[2XLiftToSL2ZOdd[102X( [3XG[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
+  
+  [33X[0;0YLifts  a  given subgroup [3XG[103X of [22XPSL_2(ℤ)[122X to an odd subgroup of [22XSL_2(ℤ)[122X, i.e. a
+  group that does not contain [22X-1[122X and whose projection to [22XPSL_2(ℤ)[122X is [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),[128X[104X
+    [4X[28X  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> LiftToSL2ZOdd(G);[128X[104X
+    [4X[28X  <modular subgroup of index 24>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-11 IndexModN[101X
+  
+  [29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YFor  a  projective  modular  subgroup  [3XG[103X  and a natural number [3XN[103X this method
+  calculates the index of the projection [22XbarG[122X of [22XG[122X in [22XPSL_2(ℤ/Nℤ)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> IndexModN(G, 2);[128X[104X
+    [4X[28X  6[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-12 Deficiency[101X
+  
+  [29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YFor  a  projective  modular  subgroup  [3XG[103X  and a natural number [3XN[103X this method
+  calculates the so-called [13Xdeficiency[113X of [3XG[103X from being a congruence subgroup of
+  level [3XN[103X.[133X
+  [33X[0;0YThe  deficiency  of  a finite-index subgroup [22XΓ[122X of [22XPSL_2(ℤ)[122X was introduced in
+  [WS15].  It  is  defined  as  the  index [22X[Γ(N) : Γ(N) ∩ Γ][122X where [22XΓ(N)[122X is the
+  principal congruence subgroup of level [22XN[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> Deficiency(G, 2);[128X[104X
+    [4X[28X  4[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-13 NormalCore[101X
+  
+  [29X[2XNormalCore[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
+  
+  [33X[0;0YCalculates  the normal core of [3XG[103X in [22XPSL_2(ℤ)[122X, i.e. the maximal subgroup of [3XG[103X
+  that is normal in [22XPSL_2(ℤ)[122X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> NormalCore(G);[128X[104X
+    [4X[28X  <projective modular subgroup of index 3456>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-14 QuotientByNormalCore[101X
+  
+  [29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA finite group.[133X
+  
+  [33X[0;0YCalculates the quotient of [22XPSL_2(ℤ)[122X by the normal core of [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> QuotientByNormalCore(G);[128X[104X
+    [4X[28X  <permutation group with 2 generators>[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-15 AssociatedCharacterTable[101X
+  
+  [29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute
+  [6XReturns:[106X  [33X[0;10YA character table.[133X
+  
+  [33X[0;0YReturns the character table of [22XPSL_2(ℤ)/N[122X where [22XN[122X is the normal core of [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,6)(4,8)(5,9)(7,11)(10,13)(12,15)(14,17)(16,19)(18,21)(20,23)(22,24),[128X[104X
+    [4X[28X  > (1,3,7,4)(2,5)(6,9,8,12,14,10)(11,13,16,20,18,15)(17,21,22,19)(23,24)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 24>[128X[104X
+    [4X[28X  gap> AssociatedCharacterTable(G);[128X[104X
+    [4X[28X  CharacterTable( <permutation group of size 3456 with 2 generators> )[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
