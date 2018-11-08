@@ -181,7 +181,7 @@ PackageInfoURL :=
 # utilities.",
 AbstractHTML :=
   "This package provides a collection of algorithms for computing with \
-  finit-index subgroups of (P)SL(2,Z).",
+  finite-index subgroups of (P)SL(2,Z).",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the
