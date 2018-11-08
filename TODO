@@ -1,4 +1,0 @@
-- make modular subgroup object immutable
-- implement möbius transformations as group action? (is this possible?)
-- clean up code duplication
-- possibility to choose different generators of (P)SL(2,Z)
