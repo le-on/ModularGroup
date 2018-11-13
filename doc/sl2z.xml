@@ -172,7 +172,7 @@ generators.
     </Example>
   </Description>
 
-  <Oper Name="ModularSubgroup" Arg="gens" />
+  <Oper Name="ModularSubgroup" Label="ModularSubgroupGens" Arg="gens" />
   <Returns>A modular subgroup.</Returns>
   <Description>
     Constructs a <C>ModularSubgroup</C> object corresponding to the finite-index
@@ -199,14 +199,14 @@ generators.
 <ManSection>
   <Heading>Getters for the coset action</Heading>
 
-  <Oper Name="SAction" Arg="G" />
+  <Oper Name="SAction" Label="SActionSL2Z" Arg="G" />
   <Returns>A permutation.</Returns>
   <Description>
     Returns the permutation <M>\sigma_S</M> describing the action of the matrix
     <M>S</M> on the cosets of <A>G</A>.
   </Description>
 
-  <Oper Name="TAction" Arg="G" />
+  <Oper Name="TAction" Label="TActionSL2Z" Arg="G" />
   <Returns>A permutation.</Returns>
   <Description>
     Returns the permutation <M>\sigma_T</M> describing the action of the matrix
@@ -241,7 +241,7 @@ generators.
 <Heading>Computing with modular subgroups</Heading>
 
 <ManSection>
-  <Attr Name="Index" Arg="G" />
+  <Attr Name="Index"  Label="IndexSL2Z" Arg="G" />
   <Returns>A natural number.</Returns>
   <Description>
     For a given modular subgroup <A>G</A> this method returns its index in
@@ -263,7 +263,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="GeneralizedLevel" Arg="G" />
+  <Attr Name="GeneralizedLevel" Label="GeneralizedLevelSL2Z" Arg="G" />
   <Returns>A natural number.</Returns>
   <Description>
     This method calculates the general Wohlfahrt level (i.e. the lowest common
@@ -280,7 +280,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="RightCosetRepresentatives" Arg="G" />
+  <Attr Name="RightCosetRepresentatives" Label="RightCosetRepresentativesSL2Z" Arg="G" />
   <Returns>A list of words.</Returns>
   <Description>
     This function returns a list of representatives of the (right) cosets of
@@ -297,7 +297,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="GeneratorsOfGroup" Arg="G" />
+  <Attr Name="GeneratorsOfGroup" Label="GeneratorsOfGroupSL2Z" Arg="G" />
   <Returns>A list of words.</Returns>
   <Description>
     Calculates a list of generators (as words in <M>S</M> and <M>T</M>) of <A>G</A>.
@@ -331,7 +331,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="IsCongruence" Arg="G" />
+  <Attr Name="IsCongruence" Label="IsCongruenceSL2Z" Arg="G" />
   <Returns>True or false.</Returns>
   <Description>
     This method test whether a given modular subgroup <A>G</A> is a congruence
@@ -352,7 +352,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="Cusps" Arg="G" />
+  <Attr Name="Cusps" Label="CuspsSL2Z" Arg="G" />
   <Returns>A list of rational numbers and infinity.</Returns>
   <Description>
     This method computes a list of inequivalent cusp representatives with respect
@@ -372,7 +372,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Oper Name="CuspWidth" Arg="c, G" />
+  <Oper Name="CuspWidth" Label="CuspWidthSL2Z" Arg="c, G" />
   <Returns>A natural number.</Returns>
   <Description>
     This method takes as input a cusp <A>c</A> (a rational number or infinity)
@@ -395,7 +395,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Oper Name="CuspsEquivalent" Arg="p, q, G" />
+  <Oper Name="CuspsEquivalent" Label="CuspsEquivalentSL2Z" Arg="p, q, G" />
   <Returns>True or false.</Returns>
   <Description>
     Takes two cusps <A>p</A> and <A>q</A> and a modular subgroup <A>G</A> and
@@ -418,7 +418,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Oper Name="IndexModN" Arg="G, N" />
+  <Oper Name="IndexModN" Label="IndexModNSL2Z" Arg="G, N" />
   <Returns>A natural number.</Returns>
   <Description>
     For a modular subgroup <A>G</A> and a natural number <A>N</A> this method
@@ -436,7 +436,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Oper Name="Deficiency" Arg="G, N" />
+  <Oper Name="Deficiency" Label="DeficiencySL2Z" Arg="G, N" />
   <Returns>A natural number.</Returns>
   <Description>
     For a modular subgroup <A>G</A> and a natural number <A>N</A> this method
@@ -483,7 +483,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="NormalCore" Arg="G" />
+  <Attr Name="NormalCore" Label="NormalCoreSL2Z" Arg="G" />
   <Returns>A modular subgroup.</Returns>
   <Description>
     Calculates the normal core of <A>G</A> in <M>SL_2(&ZZ;)</M>, i.e. the maximal
@@ -503,7 +503,7 @@ generators.
 </Example>
 
 <ManSection>
-  <Attr Name="QuotientByNormalCore" Arg="G" />
+  <Attr Name="QuotientByNormalCore" Label="QuotientByNormalCoreSL2Z" Arg="G" />
   <Returns>A finite group.</Returns>
   <Description>
     Calculates the quotient of <M>SL_2(&ZZ;)</M> by the normal core of <A>G</A>.
@@ -523,7 +523,7 @@ generators.
 
 
 <ManSection>
-  <Attr Name="AssociatedCharacterTable" Arg="G" />
+  <Attr Name="AssociatedCharacterTable" Label="AssociatedCharacterTableSL2Z" Arg="G" />
   <Returns>A character table.</Returns>
   <Description>
     Returns the character table of <M>SL_2(&ZZ;)/N</M> where <M>N</M> is the normal core

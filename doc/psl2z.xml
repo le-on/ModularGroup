@@ -52,7 +52,7 @@ Nevertheless we list them here.
 <ManSection>
   <Heading>Getters for the coset action</Heading>
 
-  <Oper Name="SAction" Arg="G" />
+  <Oper Name="SAction" Label="SActionPSL2Z" Arg="G" />
   <Returns>A permutation.</Returns>
   <Description>
     Returns the permutation <M>\sigma_{\overline{S}}</M> describing the action of
@@ -60,7 +60,7 @@ Nevertheless we list them here.
     <Br/>
   </Description>
 
-  <Oper Name="TAction" Arg="G" />
+  <Oper Name="TAction" Label="TActionPSL2Z" Arg="G" />
   <Returns>A permutation.</Returns>
   <Description>
     Returns the permutation <M>\sigma_{\overline{T}}</M> describing the action of
@@ -74,7 +74,7 @@ Nevertheless we list them here.
 <Heading>Computing with projective modular subgroups</Heading>
 
 <ManSection>
-  <Attr Name="Index" Arg="G" />
+  <Attr Name="Index"  Label="IndexPSL2Z" Arg="G" />
   <Returns>A natural number.</Returns>
   <Description>
     For a given projective modular subgroup <A>G</A> this method returns its index in
@@ -96,7 +96,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="GeneralizedLevel" Arg="G" />
+  <Attr Name="GeneralizedLevel" Label="GeneralizedLevelPSL2Z" Arg="G" />
   <Returns>A natural number.</Returns>
   <Description>
     This method calculates the general Wohlfahrt level (i.e. the lowest common
@@ -117,7 +117,7 @@ Nevertheless we list them here.
 
 
 <ManSection>
-  <Attr Name="RightCosetRepresentatives" Arg="G" />
+  <Attr Name="RightCosetRepresentatives" Label="RightCosetRepresentativesPSL2Z" Arg="G" />
   <Returns>A list of words.</Returns>
   <Description>
     This function returns a list of representatives of the (right) cosets of
@@ -134,7 +134,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="GeneratorsOfGroup" Arg="G" />
+  <Attr Name="GeneratorsOfGroup" Label="GeneratorsOfGroupPSL2Z" Arg="G" />
   <Returns>A list of words.</Returns>
   <Description>
     Calculates a list of generators (as words in <M>\overline{S}</M> and
@@ -152,7 +152,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="IsCongruence" Arg="G" />
+  <Attr Name="IsCongruence" Label="IsCongruencePSL2Z" Arg="G" />
   <Returns>True or false.</Returns>
   <Description>
     This method test whether a given modular subgroup <A>G</A> is a congruence
@@ -173,7 +173,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="Cusps" Arg="G" />
+  <Attr Name="Cusps" Label="CuspsPSL2Z" Arg="G" />
   <Returns>A list of rational numbers and infinity.</Returns>
   <Description>
     This method computes a list of inequivalent cusp representatives with respect
@@ -193,7 +193,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Oper Name="CuspWidth" Arg="c, G" />
+  <Oper Name="CuspWidth" Label="CuspWidthPSL2Z" Arg="c, G" />
   <Returns>A natural number.</Returns>
   <Description>
     This method takes as input a cusp <A>c</A> (a rational number or infinity)
@@ -216,7 +216,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Oper Name="CuspsEquivalent" Arg="p, q, G" />
+  <Oper Name="CuspsEquivalent" Label="CuspsEquivalentPSL2Z" Arg="p, q, G" />
   <Returns>True or false.</Returns>
   <Description>
     Takes two cusps <A>p</A> and <A>q</A> and a projective modular subgroup <A>G</A> and
@@ -281,7 +281,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Oper Name="IndexModN" Arg="G, N" />
+  <Oper Name="IndexModN" Label="IndexModNPSL2Z" Arg="G, N" />
   <Returns>A natural number.</Returns>
   <Description>
     For a projective modular subgroup <A>G</A> and a natural number <A>N</A> this method
@@ -303,7 +303,7 @@ Nevertheless we list them here.
 
 
 <ManSection>
-  <Oper Name="Deficiency" Arg="G, N" />
+  <Oper Name="Deficiency" Label="DeficiencyPSL2Z" Arg="G, N" />
   <Returns>A natural number.</Returns>
   <Description>
     For a projective modular subgroup <A>G</A> and a natural number <A>N</A> this method
@@ -328,7 +328,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="NormalCore" Arg="G" />
+  <Attr Name="NormalCore" Label="NormalCorePSL2Z" Arg="G" />
   <Returns>A projective modular subgroup.</Returns>
   <Description>
     Calculates the normal core of <A>G</A> in <M>PSL_2(&ZZ;)</M>, i.e. the maximal
@@ -348,7 +348,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="QuotientByNormalCore" Arg="G" />
+  <Attr Name="QuotientByNormalCore" Label="QuotientByNormalCorePSL2Z" Arg="G" />
   <Returns>A finite group.</Returns>
   <Description>
     Calculates the quotient of <M>PSL_2(&ZZ;)</M> by the normal core of <A>G</A>.
@@ -367,7 +367,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Attr Name="AssociatedCharacterTable" Arg="G" />
+  <Attr Name="AssociatedCharacterTable" Label="AssociatedCharacterTablePSL2Z" Arg="G" />
   <Returns>A character table.</Returns>
   <Description>
     Returns the character table of <M>PSL_2(&ZZ;)/N</M> where <M>N</M> is the normal core
