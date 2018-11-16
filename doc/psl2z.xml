@@ -100,7 +100,7 @@ Nevertheless we list them here.
   <Returns>A natural number.</Returns>
   <Description>
     This method calculates the general Wohlfahrt level (i.e. the lowest common
-    multiple of all cusp widths) of <A>G</A>.
+    multiple of all cusp widths) of <A>G</A> as defined in <Cite Key="wohlfahrt1964"/>.
   </Description>
 </ManSection>
 <Example>
