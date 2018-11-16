@@ -1,6 +1,6 @@
 name: ModularGroup
 version: 1.0.0
-date: 2018-10-27
+date: 2018-11-08
 description: |
     Finite-index subgroups of (P)SL(2,Integers)
 
@@ -25,11 +25,11 @@ needed-pkgs:
 suggested-pkgs:
     - name: "Congruence"
       version: ">=1.1.1"
-      url: "http://www.cs.st-andrews.ac.uk/~alexk/congruence/"
+      url: "https://gap-packages.github.io/congruence"
 
-www: https://github.com/le-on/ModularGroup
+www: https://le-on.github.io/ModularGroup
 readme: README.md
-packageinfo: https://github.com/le-on/ModularGroup/PackageInfo.g
+packageinfo: https://le-on.github.io/ModularGroup/PackageInfo.g
 
 downloads:
     - name: .tar.gz
@@ -50,7 +50,7 @@ citeas: |
              Version 1.0.0</i>
      (<span class='BibYear'>2018</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://github.com/le-on/ModularGroup">https://github.com/le-on/ModularGroup</a></span>.
+    <span class='BibHowpublished'><a href="https://le-on.github.io/ModularGroup">https://le-on.github.io/ModularGroup</a></span>.
     </p>
     
 
@@ -59,12 +59,11 @@ bibtex: |
       author =           {Junk, L. L.},
       title =            {{ModularGroup},      Finite-index     subgroups     of
                           (P)SL(2,Integers), {V}ersion 1.0.0},
-      month =            {Oct},
+      month =            {Nov},
       year =             {2018},
       note =             {GAP package},
-      howpublished =     {\href          {https://github.com/le-on/ModularGroup}
-                          {\texttt{https://github.com/}\discretionary
-                          {}{}{}\texttt{le-on/}\discretionary
+      howpublished =     {\href           {https://le-on.github.io/ModularGroup}
+                          {\texttt{https://le-on.github.io/}\discretionary
                           {}{}{}\texttt{ModularGroup}}},
       keywords =         {PSL(2,Z);   PSL2Z;   SL(2,Z);   SL2Z;  modular  group;
                           congruence subgroup},

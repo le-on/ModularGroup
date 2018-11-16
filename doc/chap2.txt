@@ -20,7 +20,7 @@
   
   [1X2.1-1 [33X[0;0YConstructors[133X[101X
   
-  [29X[2XModularSubgroup[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [33X[1;0Y[29X[2XModularSubgroup[102X( [3Xs[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
@@ -53,12 +53,12 @@
     [4X[28X    [128X[104X
   [4X[32X[104X
   
-  [29X[2XModularSubgroupST[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [33X[1;0Y[29X[2XModularSubgroupST[102X( [3Xs[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YSynonymous for [10XModularSubgroup[110X (see above).[133X
   
-  [29X[2XModularSubgroupRT[102X( [3Xr[103X, [3Xt[103X ) [32X operation
+  [33X[1;0Y[29X[2XModularSubgroupRT[102X( [3Xr[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
@@ -86,7 +86,7 @@
     [4X[28X    [128X[104X
   [4X[32X[104X
   
-  [29X[2XModularSubgrouSJ[102X( [3Xs[103X, [3Xj[103X ) [32X operation
+  [33X[1;0Y[29X[2XModularSubgrouSJ[102X( [3Xs[103X, [3Xj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
@@ -114,7 +114,7 @@
     [4X[28X    [128X[104X
   [4X[32X[104X
   
-  [29X[2XModularSubgroup[102X( [3Xgens[103X ) [32X operation
+  [33X[1;0Y[29X[2XModularSubgroup[102X( [3Xgens[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YConstructs  a  [10XModularSubgroup[110X  object  corresponding  to  the  finite-index
@@ -139,31 +139,31 @@
   
   [1X2.1-2 [33X[0;0YGetters for the coset action[133X[101X
   
-  [29X[2XSAction[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XSAction[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the  permutation  [22Xσ_S[122X  describing the action of the matrix [22XS[122X on the
   cosets of [3XG[103X.[133X
   
-  [29X[2XTAction[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XTAction[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the  permutation  [22Xσ_T[122X  describing the action of the matrix [22XT[122X on the
   cosets of [3XG[103X.[133X
   
-  [29X[2XRAction[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XRAction[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the  permutation  [22Xσ_R[122X  describing the action of the matrix [22XR[122X on the
   cosets of [3XG[103X.[133X
   
-  [29X[2XJAction[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XJAction[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the  permutation  [22Xσ_J[122X  describing the action of the matrix [22XJ[122X on the
   cosets of [3XG[103X.[133X
   
-  [29X[2XCosetActionOf[102X( [3XA[103X, [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XCosetActionOf[102X( [3XA[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the permutation [22Xσ_A[122X describing the action of the matrix [22XA ∈ SL_2(ℤ)[122X
@@ -174,7 +174,7 @@
   
   [1X2.2-1 Index[101X
   
-  [29X[2XIndex[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XIndex[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YFor  a given modular subgroup [3XG[103X this method returns its index in [22XSL_2(ℤ)[122X. As
@@ -196,11 +196,11 @@
   
   [1X2.2-2 GeneralizedLevel[101X
   
-  [29X[2XGeneralizedLevel[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedLevel[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YThis  method  calculates the general Wohlfahrt level (i.e. the lowest common
-  multiple of all cusp widths) of [3XG[103X.[133X
+  multiple of all cusp widths) of [3XG[103X as defined in [Woh64].[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X  [128X[104X
@@ -213,7 +213,7 @@
   
   [1X2.2-3 RightCosetRepresentatives[101X
   
-  [29X[2XRightCosetRepresentatives[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XRightCosetRepresentatives[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of words.[133X
   
   [33X[0;0YThis  function  returns a list of representatives of the (right) cosets of [3XG[103X
@@ -230,7 +230,7 @@
   
   [1X2.2-4 GeneratorsOfGroup[101X
   
-  [29X[2XGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of words.[133X
   
   [33X[0;0YCalculates  a list of generators (as words in [22XS[122X and [22XT[122X) of [3XG[103X. This list might
@@ -247,7 +247,7 @@
   
   [1X2.2-5 MatrixGeneratorsOfGroup[101X
   
-  [29X[2XMatrixGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XMatrixGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of matrices.[133X
   
   [33X[0;0YCalculates  a  list  of  generator  matrices  of  [3XG[103X. This list might include
@@ -264,7 +264,7 @@
   
   [1X2.2-6 IsCongruence[101X
   
-  [29X[2XIsCongruence[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XIsCongruence[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YThis  method  test  whether  a  given  modular  subgroup  [3XG[103X  is a congruence
@@ -285,7 +285,7 @@
   
   [1X2.2-7 Cusps[101X
   
-  [29X[2XCusps[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XCusps[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of rational numbers and infinity.[133X
   
   [33X[0;0YThis  method  computes  a  list  of  inequivalent  cusp representatives with
@@ -305,7 +305,7 @@
   
   [1X2.2-8 CuspWidth[101X
   
-  [29X[2XCuspWidth[102X( [3Xc[103X, [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XCuspWidth[102X( [3Xc[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YThis  method  takes  as input a cusp [3Xc[103X (a rational number or infinity) and a
@@ -327,7 +327,7 @@
   
   [1X2.2-9 CuspsEquivalent[101X
   
-  [29X[2XCuspsEquivalent[102X( [3Xp[103X, [3Xq[103X, [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XCuspsEquivalent[102X( [3Xp[103X, [3Xq[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YTakes  two  cusps  [3Xp[103X  and  [3Xq[103X and a modular subgroup [3XG[103X and checks if they are
@@ -349,7 +349,7 @@
   
   [1X2.2-10 IndexModN[101X
   
-  [29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [33X[1;0Y[29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YFor  a  modular subgroup [3XG[103X and a natural number [3XN[103X this method calculates the
@@ -366,7 +366,7 @@
   
   [1X2.2-11 Deficiency[101X
   
-  [29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [33X[1;0Y[29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YFor  a  modular subgroup [3XG[103X and a natural number [3XN[103X this method calculates the
@@ -391,7 +391,7 @@
   
   [1X2.2-12 Projection[101X
   
-  [29X[2XProjection[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XProjection[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
   
   [33X[0;0YFor a given modular subgroup [3XG[103X this function calculates its image [22Xbar[3XG[103X[122X under
@@ -411,7 +411,7 @@
   
   [1X2.2-13 NormalCore[101X
   
-  [29X[2XNormalCore[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YCalculates  the  normal core of [3XG[103X in [22XSL_2(ℤ)[122X, i.e. the maximal subgroup of [3XG[103X
@@ -431,7 +431,7 @@
   
   [1X2.2-14 QuotientByNormalCore[101X
   
-  [29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA finite group.[133X
   
   [33X[0;0YCalculates the quotient of [22XSL_2(ℤ)[122X by the normal core of [3XG[103X.[133X
@@ -450,7 +450,7 @@
   
   [1X2.2-15 AssociatedCharacterTable[101X
   
-  [29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA character table.[133X
   
   [33X[0;0YReturns the character table of [22XSL_2(ℤ)/N[122X where [22XN[122X is the normal core of [3XG[103X.[133X
@@ -469,7 +469,7 @@
   
   [1X2.2-16 IsElementOf[101X
   
-  [29X[2XIsElementOf[102X( [3XA[103X, [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XIsElementOf[102X( [3XA[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YThis  function  checks  if  a  given  matrix  [3XA[103X is an element of the modular
@@ -497,7 +497,7 @@
   
   [1X2.3-1 DefinesCosetActionST[101X
   
-  [29X[2XDefinesCosetActionST[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [33X[1;0Y[29X[2XDefinesCosetActionST[102X( [3Xs[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YChecks  if  two  given  permutations  [3Xs[103X  and  [3Xt[103X  describe  the action of the
@@ -522,7 +522,7 @@
   
   [1X2.3-2 DefinesCosetActionRT[101X
   
-  [29X[2XDefinesCosetActionRT[102X( [3Xr[103X, [3Xt[103X ) [32X operation
+  [33X[1;0Y[29X[2XDefinesCosetActionRT[102X( [3Xr[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YChecks  if  two  given  permutations  [3Xr[103X  and  [3Xt[103X  describe  the action of the
@@ -548,7 +548,7 @@
   
   [1X2.3-3 DefinesCosetActionSJ[101X
   
-  [29X[2XDefinesCosetActionSJ[102X( [3Xs[103X, [3Xj[103X ) [32X operation
+  [33X[1;0Y[29X[2XDefinesCosetActionSJ[102X( [3Xs[103X, [3Xj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YChecks  if  two  given  permutations  [3Xs[103X  and  [3Xj[103X  describe  the action of the
@@ -573,7 +573,7 @@
   
   [1X2.3-4 CosetActionFromGenerators[101X
   
-  [29X[2XCosetActionFromGenerators[102X( [3Xgens[103X ) [32X operation
+  [33X[1;0Y[29X[2XCosetActionFromGenerators[102X( [3Xgens[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA tuple of permutations.[133X
   
   [33X[0;0YTakes  a  list  of generator matrices and calculates the coset graph (as two
@@ -591,7 +591,7 @@
   
   [1X2.3-5 STDecomposition[101X
   
-  [29X[2XSTDecomposition[102X( [3XA[103X ) [32X operation
+  [33X[1;0Y[29X[2XSTDecomposition[102X( [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA word in [22XS[122X and [22XT[122X.[133X
   
   [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
@@ -607,7 +607,7 @@
   
   [1X2.3-6 RTDecomposition[101X
   
-  [29X[2XRTDecomposition[102X( [3XA[103X ) [32X operation
+  [33X[1;0Y[29X[2XRTDecomposition[102X( [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA word in [22XR[122X and [22XT[122X.[133X
   
   [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
@@ -623,7 +623,7 @@
   
   [1X2.3-7 SJDecomposition[101X
   
-  [29X[2XSJDecomposition[102X( [3XA[103X ) [32X operation
+  [33X[1;0Y[29X[2XSJDecomposition[102X( [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA word in [22XS[122X and [22XJ[122X.[133X
   
   [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator
@@ -639,7 +639,7 @@
   
   [1X2.3-8 STDecompositionAsList[101X
   
-  [29X[2XSTDecompositionAsList[102X( [3XA[103X ) [32X operation
+  [33X[1;0Y[29X[2XSTDecompositionAsList[102X( [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA list representing a word in [22XS[122X and [22XT[122X.[133X
   
   [33X[0;0YTakes  a  matrix  [22X[3XA[103X ∈ SL_2(ℤ)[122X and decomposes it into a word in the generator

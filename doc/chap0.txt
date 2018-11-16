@@ -6,10 +6,10 @@
                       [1XFinite-index subgroups of [22X(P)SL_2(ℤ)[122X[101X
   
   
-                                 Version 0.0.2
+                                 Version 1.0.0
   
   
-                               20 September 2018
+                                08 November 2018
   
   
                                   Luca L. Junk

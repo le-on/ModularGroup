@@ -17,7 +17,7 @@
   
   [1X3.1-1 [33X[0;0YConstructors[133X[101X
   
-  [29X[2XProjectiveModularSubgroup[102X( [3Xs[103X, [3Xt[103X ) [32X operation
+  [33X[1;0Y[29X[2XProjectiveModularSubgroup[102X( [3Xs[103X, [3Xt[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
   
   [33X[0;0YConstructs   a   [10XProjectiveModularSubgroup[110X   object   corresponding  to  the
@@ -53,13 +53,13 @@
   
   [1X3.1-2 [33X[0;0YGetters for the coset action[133X[101X
   
-  [29X[2XSAction[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XSAction[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the  permutation [22Xσ_overlineS}[122X describing the action of [22XoverlineS[122X on
   the cosets of [3XG[103X.[133X
   
-  [29X[2XTAction[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XTAction[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA permutation.[133X
   
   [33X[0;0YReturns  the  permutation [22Xσ_overlineT}[122X describing the action of [22XoverlineT[122X on
@@ -70,7 +70,7 @@
   
   [1X3.2-1 Index[101X
   
-  [29X[2XIndex[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XIndex[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YFor  a  given projective modular subgroup [3XG[103X this method returns its index in
@@ -92,11 +92,11 @@
   
   [1X3.2-2 GeneralizedLevel[101X
   
-  [29X[2XGeneralizedLevel[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedLevel[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YThis  method  calculates the general Wohlfahrt level (i.e. the lowest common
-  multiple of all cusp widths) of [3XG[103X.[133X
+  multiple of all cusp widths) of [3XG[103X as defined in [Woh64].[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X  [128X[104X
@@ -112,7 +112,7 @@
   
   [1X3.2-3 RightCosetRepresentatives[101X
   
-  [29X[2XRightCosetRepresentatives[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XRightCosetRepresentatives[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of words.[133X
   
   [33X[0;0YThis  function  returns a list of representatives of the (right) cosets of [3XG[103X
@@ -129,7 +129,7 @@
   
   [1X3.2-4 GeneratorsOfGroup[101X
   
-  [29X[2XGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneratorsOfGroup[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of words.[133X
   
   [33X[0;0YCalculates  a list of generators (as words in [22XoverlineS[122X and [22XoverlineT[122X) of [3XG[103X.
@@ -146,7 +146,7 @@
   
   [1X3.2-5 IsCongruence[101X
   
-  [29X[2XIsCongruence[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XIsCongruence[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YThis  method  test  whether  a  given  modular  subgroup  [3XG[103X  is a congruence
@@ -167,7 +167,7 @@
   
   [1X3.2-6 Cusps[101X
   
-  [29X[2XCusps[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XCusps[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA list of rational numbers and infinity.[133X
   
   [33X[0;0YThis  method  computes  a  list  of  inequivalent  cusp representatives with
@@ -187,7 +187,7 @@
   
   [1X3.2-7 CuspWidth[101X
   
-  [29X[2XCuspWidth[102X( [3Xc[103X, [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XCuspWidth[102X( [3Xc[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YThis  method  takes  as input a cusp [3Xc[103X (a rational number or infinity) and a
@@ -209,7 +209,7 @@
   
   [1X3.2-8 CuspsEquivalent[101X
   
-  [29X[2XCuspsEquivalent[102X( [3Xp[103X, [3Xq[103X, [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XCuspsEquivalent[102X( [3Xp[103X, [3Xq[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
   
   [33X[0;0YTakes  two  cusps  [3Xp[103X and [3Xq[103X and a projective modular subgroup [3XG[103X and checks if
@@ -231,7 +231,7 @@
   
   [1X3.2-9 LiftToSL2ZEven[101X
   
-  [29X[2XLiftToSL2ZEven[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XLiftToSL2ZEven[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YLifts  a given subgroup [3XG[103X of [22XPSL_2(ℤ)[122X to an even subgroup of [22XSL_2(ℤ)[122X, i.e. a
@@ -251,7 +251,7 @@
   
   [1X3.2-10 LiftToSL2ZOdd[101X
   
-  [29X[2XLiftToSL2ZOdd[102X( [3XG[103X ) [32X operation
+  [33X[1;0Y[29X[2XLiftToSL2ZOdd[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
   
   [33X[0;0YLifts  a  given subgroup [3XG[103X of [22XPSL_2(ℤ)[122X to an odd subgroup of [22XSL_2(ℤ)[122X, i.e. a
@@ -271,7 +271,7 @@
   
   [1X3.2-11 IndexModN[101X
   
-  [29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [33X[1;0Y[29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YFor  a  projective  modular  subgroup  [3XG[103X  and a natural number [3XN[103X this method
@@ -291,7 +291,7 @@
   
   [1X3.2-12 Deficiency[101X
   
-  [29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation
+  [33X[1;0Y[29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
   
   [33X[0;0YFor  a  projective  modular  subgroup  [3XG[103X  and a natural number [3XN[103X this method
@@ -315,7 +315,7 @@
   
   [1X3.2-13 NormalCore[101X
   
-  [29X[2XNormalCore[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
   
   [33X[0;0YCalculates  the normal core of [3XG[103X in [22XPSL_2(ℤ)[122X, i.e. the maximal subgroup of [3XG[103X
@@ -335,7 +335,7 @@
   
   [1X3.2-14 QuotientByNormalCore[101X
   
-  [29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA finite group.[133X
   
   [33X[0;0YCalculates the quotient of [22XPSL_2(ℤ)[122X by the normal core of [3XG[103X.[133X
@@ -354,7 +354,7 @@
   
   [1X3.2-15 AssociatedCharacterTable[101X
   
-  [29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA character table.[133X
   
   [33X[0;0YReturns the character table of [22XPSL_2(ℤ)/N[122X where [22XN[122X is the normal core of [3XG[103X.[133X
