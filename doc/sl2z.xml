@@ -2,14 +2,14 @@
 <Heading>Subgroups of <M>SL_2(&ZZ;)</M></Heading>
 
 For representing finite-index subgroups of <M>SL_2(&ZZ;)</M>, this package
-introduces the new type <C>ModularSubgroup</C>. As stated in the introduction,
+introduces the new object <C>ModularSubgroup</C>. As stated in the introduction,
 a <C>ModularSubgroup</C> essentially consists of the two permutations
 <M>\sigma_S</M> and <M>\sigma_T</M> describing the coset graph with respect
-to the generator matrices <M>S</M> and <M>T</M> (with the convention that <M>1</M>
+to the generators <M>S</M> and <M>T</M> (with the convention that <M>1</M>
 corresponds to the identity coset). So explicitly specifying these permutations
 is the canonical way to construct a <C>ModularSubgroup</C>. <Br/>
 Though you might not always have a coset graph of your subgroup at hand, but
-rather a list of generator matrices. Therefore we implement multiple
+rather a list of generating matrices. Therefore we implement multiple
 constructors for <C>ModularSubgroup</C>: three that take as input two permutations
 describing the coset graph with respect to different pairs of generators of
 <M>SL_2(&ZZ;)</M>, and one that takes a list of <M>SL_2(&ZZ;)</M> matrices as
@@ -39,7 +39,7 @@ generators.
                   1 & 0
                \end{array}
             \right)
-            \quad
+            ,\quad
             T =
             \left(
                \begin{array}{rr}
@@ -51,14 +51,15 @@ generators.
       ]]>
     </Alt>
     <Alt Only="Text,HTML"><Verb><![CDATA[
-                     [ 0 -1 ]           [ 1  1 ]
-                 S = [ 1  0 ]       T = [ 0  1 ]
+                     [ 0 -1 ]            [ 1  1 ]
+                 S = [ 1  0 ],       T = [ 0  1 ]
     ]]></Verb></Alt>
     by checking that they act transitively and satisfy the relations
     <Display>s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</Display>
 
     Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
-    to make the internal interaction with existing &GAP; methods easier.
+    to make the internal interaction with existing &GAP; methods easier. (The fact
+    that <M>1</M> corresponds to the identity coset is not changed by this)
 
     <Example>
     <![CDATA[
@@ -112,7 +113,8 @@ generators.
     on the cosets of some subgroup. <Br/>
 
     Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
-    to make the internal interaction with existing &GAP; methods easier.
+    to make the internal interaction with existing &GAP; methods easier. (The fact
+    that <M>1</M> corresponds to the identity coset is not changed by this)
 
     <Example>
     <![CDATA[
@@ -160,7 +162,8 @@ generators.
     on the cosets of some subgroup. <Br/>
 
     Upon creation, the cosets are renamed in a <URL Text="standardized way">https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0</URL>
-    to make the internal interaction with existing &GAP; methods easier.
+    to make the internal interaction with existing &GAP; methods easier. (The fact
+    that <M>1</M> corresponds to the identity coset is not changed by this)
 
     <Example>
     <![CDATA[

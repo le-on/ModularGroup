@@ -8,7 +8,10 @@ the modular groups <M>SL_2(&ZZ;)</M> and <M>PSL_2(&ZZ;)</M>. This includes,
 but is not limited to, computation of the generalized level, index or cusp widths.
 It also implements algorithms described in <Cite Key="hsu_1996"/> and
 <Cite Key="hamilton_loeffler_2014"/> for testing if a given group is a congruence
-subgroup.
+subgroup. Hence it differs from the <URL Text="Congruence">https://gap-packages.github.io/congruence/</URL>
+package, which can be used - among other things - to construct canonical congruence
+subgroups of <M>SL_2(&ZZ;)</M>.
+
 </Section>
 
 <Section Label="IntroTech">
@@ -38,12 +41,12 @@ cosets by right multiplication. For example, one could choose the generators
   ]]>
 </Alt>
 <Alt Only="Text,HTML"><Verb><![CDATA[
-                 [ 0 -1 ]           [ 1  1 ]
-             S = [ 1  0 ]       T = [ 0  1 ]
+                 [ 0 -1 ]            [ 1  1 ]
+             S = [ 1  0 ],       T = [ 0  1 ]
 ]]></Verb></Alt>
 and represent a subgroup as a tuple of transitive permutations
 <M>(\sigma_S,\sigma_T)</M> describing the action of <M>S</M> and <M>T</M>.
-This is exactly the way this package internally treats such subgroups. We employ
+This is exactly the way this package internally treats such subgroups. We use
 the convention that <M>1</M> corresponds to the coset of the identity matrix.
 
 </Section>
