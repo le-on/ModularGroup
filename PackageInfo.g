@@ -13,7 +13,7 @@ Date := "05/12/2018", ## dd/mm/yyyy
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "1.0.0">
-##  <!ENTITY RELEASEDATE "08 November 2018">
+##  <!ENTITY RELEASEDATE "05 December 2018">
 ##  <!ENTITY RELEASEYEAR "2018">
 ##  <#/GAPDoc>
 
