@@ -9,7 +9,7 @@ SetPackageInfo( rec(
 PackageName := "ModularGroup",
 Subtitle := "Finite-index subgroups of (P)SL(2,Integers)",
 Version := "1.0.0",
-Date := "08/11/2018", ## dd/mm/yyyy
+Date := "05/12/2018", ## dd/mm/yyyy
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "1.0.0">
