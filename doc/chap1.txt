@@ -9,8 +9,9 @@
   limited  to,  computation of the generalized level, index or cusp widths. It
   also  implements algorithms described in [Hsu96] and [HL14] for testing if a
   given  group  is a congruence subgroup. Hence it differs from the Congruence
-  ([7Xhttps://gap-packages.github.io/congruence/[107X)  package,  which  can be used -
-  among other things - to construct canonical congruence subgroups of [22XSL_2(ℤ)[122X.[133X
+  ([7Xhttps://gap-packages.github.io/congruence/[107X)  package [DJKV18], which can be
+  used  -  among other things - to construct canonical congruence subgroups of
+  [22XSL_2(ℤ)[122X.[133X
   
   
   [1X1.2 [33X[0;0YTechnicalities[133X[101X

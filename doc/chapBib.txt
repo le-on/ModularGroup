@@ -2,6 +2,12 @@
   
   [1XReferences[101X
   
+  [[20XDJKV18[120X]  [16XDooms, A., Jespers, E., Konovalov, A. and Verrill, H.[116X, [17XCongruence,
+  Congruence  subgroups  of  SL(2,  Z), Version 1.2.2[117X (2018), ((GAP package)),
+  \href{https://gap-packages.github.io/congruence/}
+  {\texttt{https://gap-packages.github.io/}\discretionary
+  {}{}{}\texttt{Congruence}}.
+  
   [[20XHL14[120X]  [16XHamilton,  T. and Loeffler, D.[116X, [17XCongruence testing for odd subgroups
   of  the  modular  group[117X,  [18XLMS Journal of Computation and Mathematics[118X, London
   Mathematical Society, [19X17[119X, 1 (2014), 206-208.
