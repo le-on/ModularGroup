@@ -9,7 +9,7 @@ but is not limited to, computation of the generalized level, index or cusp width
 It also implements algorithms described in <Cite Key="hsu_1996"/> and
 <Cite Key="hamilton_loeffler_2014"/> for testing if a given group is a congruence
 subgroup. Hence it differs from the <URL Text="Congruence">https://gap-packages.github.io/congruence/</URL>
-package, which can be used - among other things - to construct canonical congruence
+package <Cite Key="congruence_package"/>, which can be used - among other things - to construct canonical congruence
 subgroups of <M>SL_2(&ZZ;)</M>.
 
 </Section>
