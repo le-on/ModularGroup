@@ -66,7 +66,7 @@
 
 <h3>2 <span class="Heading">Subgroups of <span class="SimpleMath">SL_2(ℤ)</span></span></h3>
 
-<p>For representing finite-index subgroups of <span class="SimpleMath">SL_2(ℤ)</span>, this package introduces the new type <code class="code">ModularSubgroup</code>. As stated in the introduction, a <code class="code">ModularSubgroup</code> essentially consists of the two permutations <span class="SimpleMath">σ_S</span> and <span class="SimpleMath">σ_T</span> describing the coset graph with respect to the generator matrices <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span> (with the convention that <span class="SimpleMath">1</span> corresponds to the identity coset). So explicitly specifying these permutations is the canonical way to construct a <code class="code">ModularSubgroup</code>. <br /> Though you might not always have a coset graph of your subgroup at hand, but rather a list of generator matrices. Therefore we implement multiple constructors for <code class="code">ModularSubgroup</code>: three that take as input two permutations describing the coset graph with respect to different pairs of generators of <span class="SimpleMath">SL_2(ℤ)</span>, and one that takes a list of <span class="SimpleMath">SL_2(ℤ)</span> matrices as generators.</p>
+<p>For representing finite-index subgroups of <span class="SimpleMath">SL_2(ℤ)</span>, this package introduces the new object <code class="code">ModularSubgroup</code>. As stated in the introduction, a <code class="code">ModularSubgroup</code> essentially consists of the two permutations <span class="SimpleMath">σ_S</span> and <span class="SimpleMath">σ_T</span> describing the coset graph with respect to the generators <span class="SimpleMath">S</span> and <span class="SimpleMath">T</span> (with the convention that <span class="SimpleMath">1</span> corresponds to the identity coset). So explicitly specifying these permutations is the canonical way to construct a <code class="code">ModularSubgroup</code>. <br /> Though you might not always have a coset graph of your subgroup at hand, but rather a list of generating matrices. Therefore we implement multiple constructors for <code class="code">ModularSubgroup</code>: three that take as input two permutations describing the coset graph with respect to different pairs of generators of <span class="SimpleMath">SL_2(ℤ)</span>, and one that takes a list of <span class="SimpleMath">SL_2(ℤ)</span> matrices as generators.</p>
 
 <p><a id="X82B1267A8369ABC3" name="X82B1267A8369ABC3"></a></p>
 
@@ -84,8 +84,8 @@
 
 <pre class="normal">
 
-                     [ 0 -1 ]           [ 1  1 ]
-                 S = [ 1  0 ]       T = [ 0  1 ]
+                     [ 0 -1 ]            [ 1  1 ]
+                 S = [ 1  0 ],       T = [ 0  1 ]
     
 </pre>
 
@@ -93,7 +93,7 @@
 
 <p class="pcenter">s^4 = (s^3 t)^3 = s^2 t s^{-2} t^{-1} = 1</p>
 
-<p>Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier.</p>
+<p>Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier. (The fact that <span class="SimpleMath">1</span> corresponds to the identity coset is not changed by this)</p>
 
 
 <div class="example"><pre>
@@ -123,7 +123,7 @@
     
 </pre>
 
-<p>on the right cosets. <br /> A check is performed if the permutations actually describe such an action on the cosets of some subgroup. <br /> Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier.</p>
+<p>on the right cosets. <br /> A check is performed if the permutations actually describe such an action on the cosets of some subgroup. <br /> Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier. (The fact that <span class="SimpleMath">1</span> corresponds to the identity coset is not changed by this)</p>
 
 
 <div class="example"><pre>
@@ -148,7 +148,7 @@
     
 </pre>
 
-<p>on the right cosets. <br /> A check is performed if the permutations actually describe such an action on the cosets of some subgroup. <br /> Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier.</p>
+<p>on the right cosets. <br /> A check is performed if the permutations actually describe such an action on the cosets of some subgroup. <br /> Upon creation, the cosets are renamed in a <span class="URL"><a href="https://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0">standardized way</a></span> to make the internal interaction with existing <strong class="pkg">GAP</strong> methods easier. (The fact that <span class="SimpleMath">1</span> corresponds to the identity coset is not changed by this)</p>
 
 
 <div class="example"><pre>

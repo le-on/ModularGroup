@@ -8,7 +8,9 @@
   of  the  modular  groups  [22XSL_2(ℤ)[122X  and  [22XPSL_2(ℤ)[122X.  This includes, but is not
   limited  to,  computation of the generalized level, index or cusp widths. It
   also  implements algorithms described in [Hsu96] and [HL14] for testing if a
-  given group is a congruence subgroup.[133X
+  given  group  is a congruence subgroup. Hence it differs from the Congruence
+  ([7Xhttps://gap-packages.github.io/congruence/[107X)  package,  which  can be used -
+  among other things - to construct canonical congruence subgroups of [22XSL_2(ℤ)[122X.[133X
   
   
   [1X1.2 [33X[0;0YTechnicalities[133X[101X
@@ -17,11 +19,11 @@
   specifying  the  action of generator matrices of [22XSL_2(ℤ)[122X on the right cosets
   by right multiplication. For example, one could choose the generators[133X
   
-                   [ 0 -1 ]           [ 1  1 ]
-               S = [ 1  0 ]       T = [ 0  1 ]
+                   [ 0 -1 ]            [ 1  1 ]
+               S = [ 1  0 ],       T = [ 0  1 ]
   
   [33X[0;0Yand  represent  a  subgroup  as a tuple of transitive permutations [22X(σ_S,σ_T)[122X
   describing  the  action  of  [22XS[122X  and  [22XT[122X. This is exactly the way this package
-  internally   treats   such  subgroups.  We  employ  the  convention  that  [22X1[122X
-  corresponds to the coset of the identity matrix.[133X
+  internally  treats  such subgroups. We use the convention that [22X1[122X corresponds
+  to the coset of the identity matrix.[133X
   

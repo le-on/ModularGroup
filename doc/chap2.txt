@@ -2,14 +2,14 @@
   [1X2 [33X[0;0YSubgroups of [22XSL_2(ℤ)[122X[101X[1X[133X[101X
   
   [33X[0;0YFor  representing finite-index subgroups of [22XSL_2(ℤ)[122X, this package introduces
-  the   new   type   [10XModularSubgroup[110X.   As   stated  in  the  introduction,  a
+  the   new   object   [10XModularSubgroup[110X.  As  stated  in  the  introduction,  a
   [10XModularSubgroup[110X  essentially  consists  of  the two permutations [22Xσ_S[122X and [22Xσ_T[122X
-  describing  the  coset  graph with respect to the generator matrices [22XS[122X and [22XT[122X
-  (with  the  convention  that  [22X1[122X  corresponds  to  the  identity  coset).  So
-  explicitly specifying these permutations is the canonical way to construct a
+  describing  the coset graph with respect to the generators [22XS[122X and [22XT[122X (with the
+  convention  that  [22X1[122X  corresponds  to  the  identity  coset).  So  explicitly
+  specifying   these   permutations  is  the  canonical  way  to  construct  a
   [10XModularSubgroup[110X.[133X
   [33X[0;0YThough you might not always have a coset graph of your subgroup at hand, but
-  rather  a  list  of  generator  matrices.  Therefore  we  implement multiple
+  rather  a  list  of  generating  matrices.  Therefore  we implement multiple
   constructors  for [10XModularSubgroup[110X: three that take as input two permutations
   describing  the coset graph with respect to different pairs of generators of
   [22XSL_2(ℤ)[122X, and one that takes a list of [22XSL_2(ℤ)[122X matrices as generators.[133X
@@ -28,8 +28,8 @@
   [33X[0;0YThis constructor tests if the given permutations actually describe the coset
   action of the matrices[133X
   
-                       [ 0 -1 ]           [ 1  1 ]
-                   S = [ 1  0 ]       T = [ 0  1 ]
+                       [ 0 -1 ]            [ 1  1 ]
+                   S = [ 1  0 ],       T = [ 0  1 ]
       
   
   [33X[0;0Yby checking that they act transitively and satisfy the relations[133X
@@ -41,7 +41,8 @@
   
   [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
   ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
-  to make the internal interaction with existing [5XGAP[105X methods easier.[133X
+  to make the internal interaction with existing [5XGAP[105X methods easier. (The fact
+  that [22X1[122X corresponds to the identity coset is not changed by this)[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X    [128X[104X
@@ -74,7 +75,8 @@
   the cosets of some subgroup.[133X
   [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
   ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
-  to make the internal interaction with existing [5XGAP[105X methods easier.[133X
+  to make the internal interaction with existing [5XGAP[105X methods easier. (The fact
+  that [22X1[122X corresponds to the identity coset is not changed by this)[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X    [128X[104X
@@ -102,7 +104,8 @@
   the cosets of some subgroup.[133X
   [33X[0;0YUpon   creation,   the   cosets   are   renamed   in   a   standardized  way
   ([7Xhttps://www.gap-system.org/Manuals/doc/ref/chap47.html#X85B882F782D7AFD0[107X)
-  to make the internal interaction with existing [5XGAP[105X methods easier.[133X
+  to make the internal interaction with existing [5XGAP[105X methods easier. (The fact
+  that [22X1[122X corresponds to the identity coset is not changed by this)[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X    [128X[104X
