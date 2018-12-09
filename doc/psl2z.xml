@@ -386,6 +386,44 @@ Nevertheless we list them here.
   ]]>
 </Example>
 
+
+<ManSection>
+  <Oper Name="IsElementOf" Label="IsElementOfPSL2Z" Arg="A, G" />
+  <Returns>True or false.</Returns>
+  <Description>
+    This function checks if the image of a given matrix <A>A</A> in <M>PSL_2(&ZZ;)</M>
+    is an element of the group <A>G</A>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup((1,2),(2,3));
+  <modular subgroup of index 3>
+  gap> IsElementOf([[1,1],[0,1]], G);
+  true
+  gap> IsElementOf([[0,-1],[1,0]], G);
+  false
+  ]]>
+</Example>
+
+
+<ManSection>
+  <Attr Name="Genus" Label="GenusPSL2Z" Arg="G" />
+  <Returns>A non-negative integer.</Returns>
+  <Description>
+    Computes the genus of the quotient <M>G \setminus &HH;</M> via an algorithm
+    described in <Cite Key="schmithuesen_alg"/>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ProjectiveModularSubgroup((1,2),(2,3));
+  <modular subgroup of index 3>
+  gap> Genus(G);
+  0
+  ]]>
+</Example>
+
 </Section>
 
 </Chapter>

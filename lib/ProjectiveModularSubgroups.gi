@@ -44,6 +44,32 @@ InstallMethod(TAction, [IsProjectiveModularSubgroup], function(G)
   return G!.t;
 end);
 
+InstallMethod(CosetActionOf, [IsMatrix, IsProjectiveModularSubgroup], function(A, G)
+  local w, F2;
+
+  if not A in SL(2, Integers) then
+    Error("<A> has to be an element of SL(2,Z)");
+  fi;
+
+  # By writing A as a word in S and T we can compute its action on the cosets
+  # from the actions of S and T.
+  w := STDecomposition(A);
+  F2 := FreeGroup(2);
+  w := ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(w));
+  return MappedWord(w, [F2.1, F2.2], [SAction(G), TAction(G)]);
+end);
+
+InstallMethod(IsElementOf, [IsMatrix, IsProjectiveModularSubgroup], function(A, G)
+  local p;
+
+  if not A in SL(2,Integers) then
+    Error("<A> has to be an element of SL(2,Z)");
+  fi;
+
+  p := CosetActionOf(A, G);
+  return 1^p = 1;
+end);
+
 InstallMethod(Index, "for a projective modular subgroup", [IsProjectiveModularSubgroup], function(G)
   local s, t;
   s := SAction(G);
@@ -349,6 +375,40 @@ InstallMethod(AssociatedCharacterTable, [IsProjectiveModularSubgroup], function(
   local F;
   F := QuotientByNormalCore(G);
   return CharacterTable(F);
+end);
+
+InstallMethod(Genus, [IsProjectiveModularSubgroup], function(G)
+  local reps, F2, S, T, t, e, v, glued, i, j, r1, r2, c;
+  reps := ShallowCopy(RightCosetRepresentatives(G));
+  F2 := FreeGroup(["S", "T"]);
+  S := [[0,-1], [1,0]]; T := [[1,1], [0,1]];
+  Apply(reps, w -> ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(w)));
+  Apply(reps, w -> MappedWord(w, [F2.1, F2.2], [S, T]));
+
+  t := Length(reps);
+  glued := ListWithIdenticalEntries(t, false);
+  c := 0;
+  for i in [1..t] do
+    if glued[i] then continue; fi;
+    r1 := reps[i];
+    for j in [1..t] do
+      if glued[j] then continue; fi;
+      r2 := reps[j];
+      if IsElementOf(r1*S*r2^-1, G) then
+        glued[j] := true;
+        if i = j then c := c+1; fi;
+        break;
+      fi;
+    od;
+    glued[i] := true;
+  od;
+  t := t+c;
+  e := 3*t/2;
+  v := Length(Cycles(TAction(G), [1..Index(G)])) # number of cusps
+     + Length(Cycles(TAction(G)^-1*SAction(G), [1..Index(G)])) # number of cycles in T^-1*S
+     + Length(Filtered(Cycles(SAction(G), [1..Index(G)]), l -> Length(l) = 1)); # number of singleton cycles of S
+
+  return (2-(v-e+t))/2;
 end);
 
 InstallMethod(PrintObj, "for projective modular subgroups", [IsProjectiveModularSubgroup], function(G)

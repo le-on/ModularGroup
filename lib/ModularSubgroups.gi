@@ -542,6 +542,10 @@ InstallMethod(AssociatedCharacterTable, [IsModularSubgroup], function(G)
   return CharacterTable(F);
 end);
 
+InstallMethod(Genus, [IsModularSubgroup], function(G)
+  return Genus(Projection(G));
+end);
+
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
   Print("ModularSubgroup(",
           "\n  S : ", SAction(G),

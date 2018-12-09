@@ -12,13 +12,14 @@ DeclareAttribute("GeneratorsOfGroup", IsProjectiveModularSubgroup);
 DeclareAttribute("NormalCore", IsProjectiveModularSubgroup);
 DeclareAttribute("QuotientByNormalCore", IsProjectiveModularSubgroup);
 DeclareAttribute("AssociatedCharacterTable", IsProjectiveModularSubgroup);
+DeclareAttribute("Genus", IsProjectiveModularSubgroup);
 
 DeclareOperation("DefinesProjectiveCosetAction", [IsPerm, IsPerm]);
 DeclareOperation("ProjectiveModularSubgroup", [IsPerm, IsPerm]);
 DeclareOperation("SAction", [IsProjectiveModularSubgroup]);
 DeclareOperation("TAction", [IsProjectiveModularSubgroup]);
-#DeclareOperation("CosetActionFromGenerators", [IsRectangularTable]);
-#DeclareOperation("IsElementOf", [IsMatrix, IsProjectiveModularSubgroup]);
+DeclareOperation("CosetActionOf", [IsMatrix, IsProjectiveModularSubgroup]);
+DeclareOperation("IsElementOf", [IsMatrix, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspWidth", [IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("LiftToSL2ZEven", [IsProjectiveModularSubgroup]);

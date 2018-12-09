@@ -547,7 +547,7 @@ generators.
 
 
 <ManSection>
-  <Oper Name="IsElementOf" Arg="A, G" />
+  <Oper Name="IsElementOf" Label="IsElementOfSL2Z" Arg="A, G" />
   <Returns>True or false.</Returns>
   <Description>
     This function checks if a given matrix <A>A</A> is an element of the modular
@@ -565,6 +565,24 @@ generators.
   false
   gap> IsElementOf([[1,4],[0,1]], G);
   true
+  ]]>
+</Example>
+
+
+<ManSection>
+  <Attr Name="Genus" Label="GenusSL2Z" Arg="G" />
+  <Returns>A non-negative integer.</Returns>
+  <Description>
+    Computes the genus of the quotient <M>G \setminus &HH;</M> via an algorithm
+    described in <Cite Key="schmithuesen_alg"/>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup((1,2),(2,3));
+  <modular subgroup of index 3>
+  gap> Genus(G);
+  0
   ]]>
 </Example>
 

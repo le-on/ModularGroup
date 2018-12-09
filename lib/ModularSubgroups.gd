@@ -13,6 +13,7 @@ DeclareAttribute("MatrixGeneratorsOfGroup", IsModularSubgroup);
 DeclareAttribute("NormalCore", IsModularSubgroup);
 DeclareAttribute("QuotientByNormalCore", IsModularSubgroup);
 DeclareAttribute("AssociatedCharacterTable", IsModularSubgroup);
+DeclareAttribute("Genus", IsModularSubgroup);
 
 DeclareOperation("DefinesCosetActionST", [IsPerm, IsPerm]);
 DeclareOperation("DefinesCosetActionRT", [IsPerm, IsPerm]);
