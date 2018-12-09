@@ -239,7 +239,7 @@ Nevertheless we list them here.
 </Example>
 
 <ManSection>
-  <Oper Name="CosetRepresentativeOfCusp" Label="CosetRepresentativeOfCuspSL2Z" Arg="c, G" />
+  <Oper Name="CosetRepresentativeOfCusp" Label="CosetRepresentativeOfCuspPSL2Z" Arg="c, G" />
   <Returns>A word in S and T.</Returns>
   <Description>
     For a cusp <A>c</A> this function returns a right coset representative <M>A</M>
