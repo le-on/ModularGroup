@@ -306,6 +306,35 @@ InstallOtherMethod(CuspsEquivalent, [IsInfinity, IsInfinity, IsProjectiveModular
   return true;
 end);
 
+InstallMethod(CosetRepresentativeOfCusp, [IsRat, IsProjectiveModularSubgroup], function(c, G)
+  local t, reps, cycles, relevant_reps, d, MatS, MatT, S, T, F2, r;
+
+  t := TAction(G);
+  reps := RightCosetRepresentatives(G);
+  cycles := Orbits(Group(t), [1..Index(G)]);
+  relevant_reps := [];
+  for d in cycles do
+    Add(relevant_reps, reps[d[1]]);
+  od;
+
+  MatS := [[0,-1],[1,0]];
+  MatT := [[1,1],[0,1]];
+  F2 := FreeGroup("S", "T");
+  S := F2.1;
+  T := F2.2;
+
+  Apply(relevant_reps, r -> ObjByExtRep(FamilyObj(S), ExtRepOfObj(r)));
+
+  for r in relevant_reps do
+    if CuspsEquivalent(c, MoebiusTransformation(MappedWord(r, [S, T], [MatS, MatT]), infinity), G) then
+      return r;
+    fi;
+  od;
+end);
+InstallOtherMethod(CosetRepresentativeOfCusp, [IsInfinity, IsModularSubgroup], function(c, G)
+  return One(FreeGroup(["S", "T"]));
+end);
+
 InstallMethod(LiftToSL2ZEven, [IsProjectiveModularSubgroup], function(G)
   return ModularSubgroup(SAction(G), TAction(G));
 end);

@@ -22,6 +22,7 @@ DeclareOperation("CosetActionOf", [IsMatrix, IsProjectiveModularSubgroup]);
 DeclareOperation("IsElementOf", [IsMatrix, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspWidth", [IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("CuspsEquivalent", [IsRat, IsRat, IsProjectiveModularSubgroup]);
+DeclareOperation("CosetRepresentativeOfCusp", [IsRat, IsProjectiveModularSubgroup]);
 DeclareOperation("LiftToSL2ZEven", [IsProjectiveModularSubgroup]);
 DeclareOperation("LiftToSL2ZOdd", [IsProjectiveModularSubgroup]);
 DeclareOperation("IndexModN", [IsProjectiveModularSubgroup, IsPosInt]);
