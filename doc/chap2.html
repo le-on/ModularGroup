@@ -42,13 +42,15 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78BF0B867D965A6C">2.2-7 Cusps</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83E84049842EC55A">2.2-8 CuspWidth</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80EBA8E17B6DC9F1">2.2-9 CuspsEquivalent</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FEB5D3B853CA831">2.2-10 IndexModN</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6754897B892B4A">2.2-11 Deficiency</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8769E8DA80BC96C1">2.2-12 Projection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874DC4FA8436FCBC">2.2-13 NormalCore</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D645ABF7BF4600B">2.2-14 QuotientByNormalCore</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874C4C4584FB5D03">2.2-15 AssociatedCharacterTable</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E87C71487EADF4A">2.2-16 IsElementOf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A73C80F7AA9FCF1">2.2-10 CosetRepresentativeOfCusp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FEB5D3B853CA831">2.2-11 IndexModN</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6754897B892B4A">2.2-12 Deficiency</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8769E8DA80BC96C1">2.2-13 Projection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874DC4FA8436FCBC">2.2-14 NormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D645ABF7BF4600B">2.2-15 QuotientByNormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874C4C4584FB5D03">2.2-16 AssociatedCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E8C4D97BF50B74">2.2-17 IsElementOf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X87B255C4784B8CBC">2.2-18 Genus</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C5563A37D566DA5">2.3 <span class="Heading">Miscellaneous</span></a>
 </span>
@@ -406,9 +408,31 @@
   
 </pre></div>
 
+<p><a id="X7A73C80F7AA9FCF1" name="X7A73C80F7AA9FCF1"></a></p>
+
+<h5>2.2-10 CosetRepresentativeOfCusp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CosetRepresentativeOfCusp</code>( <var class="Arg">c</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: A word in S and T.</p>
+
+<p>For a cusp <var class="Arg">c</var> this function returns a right coset representative <span class="SimpleMath">A</span> of <var class="Arg">G</var> such that <span class="SimpleMath">A ∞</span> and <var class="Arg">c</var> are equivalent with respect to <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup(
+  &gt; (1,2,6,3)(4,11,15,12)(5,13,16,14)(7,17,9,18)(8,19,10,20)(21,24,22,23),
+  &gt; (1,4,5)(2,7,8)(3,9,10)(6,15,16)(11,20,21)(12,19,22)(13,23,17)(14,24,18)
+  &gt; );
+  &lt;modular subgroup of index 24&gt;
+  gap&gt; CosetRepresentativeOfCusp(4, G);
+  T*S
+  
+</pre></div>
+
 <p><a id="X7FEB5D3B853CA831" name="X7FEB5D3B853CA831"></a></p>
 
-<h5>2.2-10 IndexModN</h5>
+<h5>2.2-11 IndexModN</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndexModN</code>( <var class="Arg">G</var>, <var class="Arg">N</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A natural number.</p>
@@ -427,7 +451,7 @@
 
 <p><a id="X7E6754897B892B4A" name="X7E6754897B892B4A"></a></p>
 
-<h5>2.2-11 Deficiency</h5>
+<h5>2.2-12 Deficiency</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Deficiency</code>( <var class="Arg">G</var>, <var class="Arg">N</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A natural number.</p>
@@ -451,7 +475,7 @@
 
 <p><a id="X8769E8DA80BC96C1" name="X8769E8DA80BC96C1"></a></p>
 
-<h5>2.2-12 Projection</h5>
+<h5>2.2-13 Projection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Projection</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A projective modular subgroup.</p>
@@ -473,7 +497,7 @@
 
 <p><a id="X874DC4FA8436FCBC" name="X874DC4FA8436FCBC"></a></p>
 
-<h5>2.2-13 NormalCore</h5>
+<h5>2.2-14 NormalCore</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A modular subgroup.</p>
@@ -495,7 +519,7 @@
 
 <p><a id="X7D645ABF7BF4600B" name="X7D645ABF7BF4600B"></a></p>
 
-<h5>2.2-14 QuotientByNormalCore</h5>
+<h5>2.2-15 QuotientByNormalCore</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientByNormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A finite group.</p>
@@ -517,7 +541,7 @@
 
 <p><a id="X874C4C4584FB5D03" name="X874C4C4584FB5D03"></a></p>
 
-<h5>2.2-15 AssociatedCharacterTable</h5>
+<h5>2.2-16 AssociatedCharacterTable</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedCharacterTable</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A character table.</p>
@@ -537,9 +561,9 @@
   
 </pre></div>
 
-<p><a id="X7E87C71487EADF4A" name="X7E87C71487EADF4A"></a></p>
+<p><a id="X79E8C4D97BF50B74" name="X79E8C4D97BF50B74"></a></p>
 
-<h5>2.2-16 IsElementOf</h5>
+<h5>2.2-17 IsElementOf</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementOf</code>( <var class="Arg">A</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: True or false.</p>
@@ -558,6 +582,25 @@
   false
   gap&gt; IsElementOf([[1,4],[0,1]], G);
   true
+  
+</pre></div>
+
+<p><a id="X87B255C4784B8CBC" name="X87B255C4784B8CBC"></a></p>
+
+<h5>2.2-18 Genus</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Genus</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: A non-negative integer.</p>
+
+<p>Computes the genus of the quotient <span class="SimpleMath">G ∖ ℍ</span> via an algorithm described in <a href="chapBib.html#biBschmithuesen_alg">[Sch04]</a>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup((1,2),(2,3));
+  &lt;modular subgroup of index 3&gt;
+  gap&gt; Genus(G);
+  0
   
 </pre></div>
 

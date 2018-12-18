@@ -41,13 +41,16 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E507BE47A873817">3.2-6 Cusps</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X821D38048561DBE4">3.2-7 CuspWidth</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C280B5D7F4FF4CC">3.2-8 CuspsEquivalent</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83153565839269C2">3.2-9 LiftToSL2ZEven</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83FBC7C57B8CFB80">3.2-10 LiftToSL2ZOdd</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81D105548473B68F">3.2-11 IndexModN</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X858D7C9A7D134684">3.2-12 Deficiency</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8772A1C282AC9172">3.2-13 NormalCore</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F5807107867298D">3.2-14 QuotientByNormalCore</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CDFA32A86529C5A">3.2-15 AssociatedCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F29CCC382880A6F">3.2-9 CosetRepresentativeOfCusp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83153565839269C2">3.2-10 LiftToSL2ZEven</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83FBC7C57B8CFB80">3.2-11 LiftToSL2ZOdd</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81D105548473B68F">3.2-12 IndexModN</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X858D7C9A7D134684">3.2-13 Deficiency</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8772A1C282AC9172">3.2-14 NormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F5807107867298D">3.2-15 QuotientByNormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7CDFA32A86529C5A">3.2-16 AssociatedCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BF171DA7DBE5CDB">3.2-17 IsElementOf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A99E7BF7F5AEEC7">3.2-18 Genus</a></span>
 </div></div>
 </div>
 
@@ -282,9 +285,31 @@
   
 </pre></div>
 
+<p><a id="X7F29CCC382880A6F" name="X7F29CCC382880A6F"></a></p>
+
+<h5>3.2-9 CosetRepresentativeOfCusp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CosetRepresentativeOfCusp</code>( <var class="Arg">c</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: A word in S and T.</p>
+
+<p>For a cusp <var class="Arg">c</var> this function returns a right coset representative <span class="SimpleMath">A</span> of <var class="Arg">G</var> such that <span class="SimpleMath">A ∞</span> and <var class="Arg">c</var> are equivalent with respect to <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ProjectiveModularSubgroup(
+  &gt; (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),
+  &gt; (1,3,4)(2,5,6)(7,10,11)(8,12,9)
+  &gt; );
+  &lt;projective modular subgroup of index 12&gt;
+  gap&gt; CosetRepresentativeOfCusp(4, G);
+  T*S
+  
+</pre></div>
+
 <p><a id="X83153565839269C2" name="X83153565839269C2"></a></p>
 
-<h5>3.2-9 LiftToSL2ZEven</h5>
+<h5>3.2-10 LiftToSL2ZEven</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LiftToSL2ZEven</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A modular subgroup.</p>
@@ -306,7 +331,7 @@
 
 <p><a id="X83FBC7C57B8CFB80" name="X83FBC7C57B8CFB80"></a></p>
 
-<h5>3.2-10 LiftToSL2ZOdd</h5>
+<h5>3.2-11 LiftToSL2ZOdd</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LiftToSL2ZOdd</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A modular subgroup.</p>
@@ -328,7 +353,7 @@
 
 <p><a id="X81D105548473B68F" name="X81D105548473B68F"></a></p>
 
-<h5>3.2-11 IndexModN</h5>
+<h5>3.2-12 IndexModN</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IndexModN</code>( <var class="Arg">G</var>, <var class="Arg">N</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A natural number.</p>
@@ -350,7 +375,7 @@
 
 <p><a id="X858D7C9A7D134684" name="X858D7C9A7D134684"></a></p>
 
-<h5>3.2-12 Deficiency</h5>
+<h5>3.2-13 Deficiency</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Deficiency</code>( <var class="Arg">G</var>, <var class="Arg">N</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A natural number.</p>
@@ -372,7 +397,7 @@
 
 <p><a id="X8772A1C282AC9172" name="X8772A1C282AC9172"></a></p>
 
-<h5>3.2-13 NormalCore</h5>
+<h5>3.2-14 NormalCore</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A projective modular subgroup.</p>
@@ -394,7 +419,7 @@
 
 <p><a id="X7F5807107867298D" name="X7F5807107867298D"></a></p>
 
-<h5>3.2-14 QuotientByNormalCore</h5>
+<h5>3.2-15 QuotientByNormalCore</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientByNormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A finite group.</p>
@@ -416,7 +441,7 @@
 
 <p><a id="X7CDFA32A86529C5A" name="X7CDFA32A86529C5A"></a></p>
 
-<h5>3.2-15 AssociatedCharacterTable</h5>
+<h5>3.2-16 AssociatedCharacterTable</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedCharacterTable</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A character table.</p>
@@ -433,6 +458,46 @@
   &lt;projective modular subgroup of index 24&gt;
   gap&gt; AssociatedCharacterTable(G);
   CharacterTable( &lt;permutation group of size 3456 with 2 generators&gt; )
+  
+</pre></div>
+
+<p><a id="X7BF171DA7DBE5CDB" name="X7BF171DA7DBE5CDB"></a></p>
+
+<h5>3.2-17 IsElementOf</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementOf</code>( <var class="Arg">A</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: True or false.</p>
+
+<p>This function checks if the image of a given matrix <var class="Arg">A</var> in <span class="SimpleMath">PSL_2(ℤ)</span> is an element of the group <var class="Arg">G</var>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ProjectiveModularSubgroup((1,2),(2,3));
+  &lt;modular subgroup of index 3&gt;
+  gap&gt; IsElementOf([[1,1],[0,1]], G);
+  true
+  gap&gt; IsElementOf([[0,-1],[1,0]], G);
+  false
+  
+</pre></div>
+
+<p><a id="X7A99E7BF7F5AEEC7" name="X7A99E7BF7F5AEEC7"></a></p>
+
+<h5>3.2-18 Genus</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Genus</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: A non-negative integer.</p>
+
+<p>Computes the genus of the quotient <span class="SimpleMath">G ∖ ℍ</span> via an algorithm described in <a href="chapBib.html#biBschmithuesen_alg">[Sch04]</a>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ProjectiveModularSubgroup((1,2),(2,3));
+  &lt;modular subgroup of index 3&gt;
+  gap&gt; Genus(G);
+  0
   
 </pre></div>
 

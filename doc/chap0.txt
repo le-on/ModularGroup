@@ -59,13 +59,15 @@
       2.2-7 Cusps
       2.2-8 CuspWidth
       2.2-9 CuspsEquivalent
-      2.2-10 IndexModN
-      2.2-11 Deficiency
-      2.2-12 Projection
-      2.2-13 NormalCore
-      2.2-14 QuotientByNormalCore
-      2.2-15 AssociatedCharacterTable
-      2.2-16 IsElementOf
+      2.2-10 CosetRepresentativeOfCusp
+      2.2-11 IndexModN
+      2.2-12 Deficiency
+      2.2-13 Projection
+      2.2-14 NormalCore
+      2.2-15 QuotientByNormalCore
+      2.2-16 AssociatedCharacterTable
+      2.2-17 IsElementOf
+      2.2-18 Genus
     2.3 [33X[0;0YMiscellaneous[133X
       2.3-1 DefinesCosetActionST
       2.3-2 DefinesCosetActionRT
@@ -88,13 +90,16 @@
       3.2-6 Cusps
       3.2-7 CuspWidth
       3.2-8 CuspsEquivalent
-      3.2-9 LiftToSL2ZEven
-      3.2-10 LiftToSL2ZOdd
-      3.2-11 IndexModN
-      3.2-12 Deficiency
-      3.2-13 NormalCore
-      3.2-14 QuotientByNormalCore
-      3.2-15 AssociatedCharacterTable
+      3.2-9 CosetRepresentativeOfCusp
+      3.2-10 LiftToSL2ZEven
+      3.2-11 LiftToSL2ZOdd
+      3.2-12 IndexModN
+      3.2-13 Deficiency
+      3.2-14 NormalCore
+      3.2-15 QuotientByNormalCore
+      3.2-16 AssociatedCharacterTable
+      3.2-17 IsElementOf
+      3.2-18 Genus
   
   
   [32X

@@ -15,12 +15,15 @@
   [[20XHsu96[120X]  [16XHsu,  T.[116X,  [17XIdentifying  congruence  subgroups of the modular group[117X,
   [18XProceedings of the American Mathematical Society[118X, [19X124[119X, 5 (1996), .
   
+  [[20XSch04[120X]  [16XSchmithuesen,  G.[116X,  [17XAn  algorithm for finding the Veech group of an
+  origami[117X, [18XExperimental Mathematics[118X, Taylor & Francis, [19X13[119X, 4 (2004), 459-472.
+  
   [[20XWoh64[120X] [16XWohlfahrt, K.[116X, [17XAn extension of F. Klein's level concept[117X, [18XIllinois J.
   Math.[118X,   University   of   Illinois   at   Urbana-Champaign,  Department  of
   Mathematics, [19X8[119X, 3 (1964), 529--535.
   
-  [[20XWS15[120X]  [16XWeitze-Schmithuesen,  G.[116X, [17XThe Deficiency of being a Congruence Group
-  for  Veech  Groups  of Origamis[117X, [18XInternational Mathematics Research Notices[118X,
+  [[20XWS15[120X]  [16XWeitze-Schmithuesen,  G.[116X, [17XThe deficiency of being a congruence group
+  for  Veech  groups  of origamis[117X, [18XInternational Mathematics Research Notices[118X,
   [19X2015[119X, 6 (2015), 1613-1637.
   
   

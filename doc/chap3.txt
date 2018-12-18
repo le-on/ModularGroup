@@ -229,7 +229,27 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-9 LiftToSL2ZEven[101X
+  [1X3.2-9 CosetRepresentativeOfCusp[101X
+  
+  [33X[1;0Y[29X[2XCosetRepresentativeOfCusp[102X( [3Xc[103X, [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA word in S and T.[133X
+  
+  [33X[0;0YFor  a cusp [3Xc[103X this function returns a right coset representative [22XA[122X of [3XG[103X such
+  that [22XA ∞[122X and [3Xc[103X are equivalent with respect to [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup([128X[104X
+    [4X[28X  > (1,2)(3,7)(4,8)(5,9)(6,10)(11,12),[128X[104X
+    [4X[28X  > (1,3,4)(2,5,6)(7,10,11)(8,12,9)[128X[104X
+    [4X[28X  > );[128X[104X
+    [4X[28X  <projective modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> CosetRepresentativeOfCusp(4, G);[128X[104X
+    [4X[28X  T*S[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-10 LiftToSL2ZEven[101X
   
   [33X[1;0Y[29X[2XLiftToSL2ZEven[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
@@ -249,7 +269,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-10 LiftToSL2ZOdd[101X
+  [1X3.2-11 LiftToSL2ZOdd[101X
   
   [33X[1;0Y[29X[2XLiftToSL2ZOdd[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
@@ -269,7 +289,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-11 IndexModN[101X
+  [1X3.2-12 IndexModN[101X
   
   [33X[1;0Y[29X[2XIndexModN[102X( [3XG[103X, [3XN[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
@@ -289,7 +309,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-12 Deficiency[101X
+  [1X3.2-13 Deficiency[101X
   
   [33X[1;0Y[29X[2XDeficiency[102X( [3XG[103X, [3XN[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA natural number.[133X
@@ -313,7 +333,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-13 NormalCore[101X
+  [1X3.2-14 NormalCore[101X
   
   [33X[1;0Y[29X[2XNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
@@ -333,7 +353,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-14 QuotientByNormalCore[101X
+  [1X3.2-15 QuotientByNormalCore[101X
   
   [33X[1;0Y[29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA finite group.[133X
@@ -352,7 +372,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X3.2-15 AssociatedCharacterTable[101X
+  [1X3.2-16 AssociatedCharacterTable[101X
   
   [33X[1;0Y[29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA character table.[133X
@@ -368,6 +388,42 @@
     [4X[28X  <projective modular subgroup of index 24>[128X[104X
     [4X[28X  gap> AssociatedCharacterTable(G);[128X[104X
     [4X[28X  CharacterTable( <permutation group of size 3456 with 2 generators> )[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-17 IsElementOf[101X
+  
+  [33X[1;0Y[29X[2XIsElementOf[102X( [3XA[103X, [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YTrue or false.[133X
+  
+  [33X[0;0YThis  function  checks  if  the  image of a given matrix [3XA[103X in [22XPSL_2(ℤ)[122X is an
+  element of the group [3XG[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup((1,2),(2,3));[128X[104X
+    [4X[28X  <modular subgroup of index 3>[128X[104X
+    [4X[28X  gap> IsElementOf([[1,1],[0,1]], G);[128X[104X
+    [4X[28X  true[128X[104X
+    [4X[28X  gap> IsElementOf([[0,-1],[1,0]], G);[128X[104X
+    [4X[28X  false[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-18 Genus[101X
+  
+  [33X[1;0Y[29X[2XGenus[102X( [3XG[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YA non-negative integer.[133X
+  
+  [33X[0;0YComputes  the  genus  of  the  quotient  [22XG ∖ ℍ[122X via an algorithm described in
+  [Sch04].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ProjectiveModularSubgroup((1,2),(2,3));[128X[104X
+    [4X[28X  <modular subgroup of index 3>[128X[104X
+    [4X[28X  gap> Genus(G);[128X[104X
+    [4X[28X  0[128X[104X
     [4X[28X  [128X[104X
   [4X[32X[104X
   
