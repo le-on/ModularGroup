@@ -440,6 +440,109 @@ InstallMethod(Genus, [IsProjectiveModularSubgroup], function(G)
   return (2-(v-e+t))/2;
 end);
 
+InstallMethod(IO_Pickle, "for a projective modular subgroup", [IsFile, IsProjectiveModularSubgroup], function(f, G)
+  local nr;
+  nr := IO_AddToPickled(G); # this should always be false (?)
+  if IO_Write(f, "PMOD") = fail then IO_FinalizePickled(); return IO_Error; fi;
+  if IO_Pickle(f, SAction(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  if IO_Pickle(f, TAction(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+
+  if HasIsCongruence(G) then
+    if IO_Pickle(f, IsCongruence(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasCusps(G) then
+    if IO_Pickle(f, Cusps(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  ## There is no implementation of IO_Pickle for words in a finitely presented group
+  #if HasRightCosetRepresentatives(G) then
+  #  if IO_Pickle(f, RightCosetRepresentatives(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #else
+  #  if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #fi;
+
+  if HasGeneralizedLevel(G) then
+    if IO_Pickle(f, GeneralizedLevel(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  ## There is no implementation of IO_Pickle for words in a finitely presented group
+  #if HasGeneratorsOfGroup(G) then
+  #  if IO_Pickle(f, GeneratorsOfGroup(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #else
+  #  if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #fi;
+
+  if HasNormalCore(G) then
+    if IO_Pickle(f, NormalCore(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasQuotientByNormalCore(G) then
+    if IO_Pickle(f, QuotientByNormalCore(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasAssociatedCharacterTable(G) then
+    if IO_Pickle(f, AssociatedCharacterTable(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasGenus(G) then
+    if IO_Pickle(f, Genus(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  IO_FinalizePickled();
+  return IO_OK;
+end);
+
+IO_Unpicklers.PMOD := function(f)
+  local H, s, t, cong, cusps, level, normal_core, quotient_nc, ctbl, genus;
+  s := IO_Unpickle(f);
+  if s = IO_Error then return IO_Error; fi;
+  t := IO_Unpickle(f);
+  if t = IO_Error then return IO_Error; fi;
+  H := ProjectiveModularSubgroup(s, t);
+  IO_AddToUnpickled(H);
+
+  cong := IO_Unpickle(f);
+  if cong = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  cusps := IO_Unpickle(f);
+  if cusps = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  level := IO_Unpickle(f);
+  if level = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  normal_core := IO_Unpickle(f);
+  if normal_core = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  quotient_nc := IO_Unpickle(f);
+  if quotient_nc = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  ctbl := IO_Unpickle(f);
+  if ctbl = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  genus := IO_Unpickle(f);
+  if genus = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+
+  if cong <> fail then SetIsCongruence(H, cong); fi;
+  if cusps <> fail then SetCusps(H, cusps); fi;
+  if level <> fail then SetGeneralizedLevel(H, level); fi;
+  if normal_core <> fail then SetNormalCore(H, normal_core); fi;
+  if quotient_nc <> fail then SetQuotientByNormalCore(H, quotient_nc); fi;
+  if ctbl <> fail then SetAssociatedCharacterTable(H, ctbl); fi;
+  if genus <> fail then SetGenus(H, genus); fi;
+
+  IO_FinalizeUnpickled();
+  return H;
+end;
+
 InstallMethod(PrintObj, "for projective modular subgroups", [IsProjectiveModularSubgroup], function(G)
   Print("ProjectiveModularSubgroup( ", SAction(G), ", ", TAction(G)," )");
 end);
