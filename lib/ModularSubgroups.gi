@@ -575,6 +575,118 @@ InstallMethod(Genus, [IsModularSubgroup], function(G)
   return Genus(Projection(G));
 end);
 
+InstallMethod(IO_Pickle, "for a modular subgroup", [IsFile, IsModularSubgroup], function(f, G)
+  local nr;
+  nr := IO_AddToPickled(G); # this should always be false (?)
+  if IO_Write(f, "MODS") = fail then IO_FinalizePickled(); return IO_Error; fi;
+  if IO_Pickle(f, SAction(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  if IO_Pickle(f, TAction(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+
+  if HasIsCongruence(G) then
+    if IO_Pickle(f, IsCongruence(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasCusps(G) then
+    if IO_Pickle(f, Cusps(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  ## There is no implementation of IO_Pickle for words in a finitely presented group
+  #if HasRightCosetRepresentatives(G) then
+  #  if IO_Pickle(f, RightCosetRepresentatives(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #else
+  #  if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #fi;
+
+  if HasGeneralizedLevel(G) then
+    if IO_Pickle(f, GeneralizedLevel(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  ## There is no implementation of IO_Pickle for words in a finitely presented group
+  #if HasGeneratorsOfGroup(G) then
+  #  if IO_Pickle(f, GeneratorsOfGroup(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #else
+  #  if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  #fi;
+
+  if HasMatrixGeneratorsOfGroup(G) then
+    if IO_Pickle(f, MatrixGeneratorsOfGroup(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasNormalCore(G) then
+    if IO_Pickle(f, NormalCore(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasQuotientByNormalCore(G) then
+    if IO_Pickle(f, QuotientByNormalCore(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasAssociatedCharacterTable(G) then
+    if IO_Pickle(f, AssociatedCharacterTable(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  if HasGenus(G) then
+    if IO_Pickle(f, Genus(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
+  IO_FinalizePickled();
+  return IO_OK;
+end);
+
+IO_Unpicklers.MODS := function(f)
+  local H, s, t, cong, cusps, level, matrixgen, normal_core, quotient_nc, ctbl, genus;
+  s := IO_Unpickle(f);
+  if s = IO_Error then return IO_Error; fi;
+  t := IO_Unpickle(f);
+  if t = IO_Error then return IO_Error; fi;
+  H := ModularSubgroup(s, t);
+  IO_AddToUnpickled(H);
+
+  cong := IO_Unpickle(f);
+  if cong = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  cusps := IO_Unpickle(f);
+  if cusps = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  level := IO_Unpickle(f);
+  if level = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  matrixgen := IO_Unpickle(f);
+  if matrixgen = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  normal_core := IO_Unpickle(f);
+  if normal_core = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  quotient_nc := IO_Unpickle(f);
+  if quotient_nc = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  ctbl := IO_Unpickle(f);
+  if ctbl = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  genus := IO_Unpickle(f);
+  if genus = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+
+  if cong <> fail then SetIsCongruence(H, cong); fi;
+  if cusps <> fail then SetCusps(H, cusps); fi;
+  if level <> fail then SetGeneralizedLevel(H, level); fi;
+  if matrixgen <> fail then SetMatrixGeneratorsOfGroup(H, matrixgen); fi;
+  if normal_core <> fail then SetNormalCore(H, normal_core); fi;
+  if quotient_nc <> fail then SetQuotientByNormalCore(H, quotient_nc); fi;
+  if ctbl <> fail then SetAssociatedCharacterTable(H, ctbl); fi;
+  if genus <> fail then SetGenus(H, genus); fi;
+
+  IO_FinalizeUnpickled();
+  return H;
+end;
+
 InstallMethod(PrintObj, "for modular subgroups", [IsModularSubgroup], function(G)
   Print("ModularSubgroup(",
           "\n  S : ", SAction(G),
