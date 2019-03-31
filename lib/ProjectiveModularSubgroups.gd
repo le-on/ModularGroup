@@ -13,6 +13,7 @@ DeclareAttribute("NormalCore", IsProjectiveModularSubgroup);
 DeclareAttribute("QuotientByNormalCore", IsProjectiveModularSubgroup);
 DeclareAttribute("AssociatedCharacterTable", IsProjectiveModularSubgroup);
 DeclareAttribute("Genus", IsProjectiveModularSubgroup);
+DeclareAttribute("Deficiency", IsProjectiveModularSubgroup);
 
 DeclareOperation("DefinesProjectiveCosetAction", [IsPerm, IsPerm]);
 DeclareOperation("ProjectiveModularSubgroup", [IsPerm, IsPerm]);

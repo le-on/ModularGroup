@@ -487,6 +487,27 @@ generators.
 </Example>
 
 <ManSection>
+  <Attr Name="Deficiency" Label="DeficiencySL2ZAttr" Arg="G" />
+  <Returns>A natural number.</Returns>
+  <Description>
+    Shorthand for <C>Deficiency(G, GeneralizedLevel(G))</C>.
+  </Description>
+</ManSection>
+<Example>
+  <![CDATA[
+  gap> G := ModularSubgroup([
+  > [[1,2],[0,1]],
+  > [[1,0],[2,1]]
+  > ]);
+  <modular subgroup of index 12>
+  gap> Deficiency(G);
+  2
+  gap> Deficiency(G, GeneralizedLevel(G));
+  2
+  ]]>
+</Example>
+
+<ManSection>
   <Oper Name="Projection" Arg="G" />
   <Returns>A projective modular subgroup.</Returns>
   <Description>

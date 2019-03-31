@@ -355,6 +355,10 @@ InstallMethod(IndexModN, [IsProjectiveModularSubgroup, IsPosInt], function(G, N)
   return IndexModN(lift, N);
 end);
 
+InstallMethod(Deficiency, [IsProjectiveModularSubgroup], function(G)
+  return Index(G) / IndexModN(G, GeneralizedLevel(G));
+end);
+
 InstallMethod(Deficiency, [IsProjectiveModularSubgroup, IsPosInt], function(G, N)
   return Index(G) / IndexModN(G, N);
 end);

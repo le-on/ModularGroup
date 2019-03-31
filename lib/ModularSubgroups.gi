@@ -478,6 +478,10 @@ InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
   return Index(SL2Zn, H);
 end);
 
+InstallMethod(Deficiency, [IsModularSubgroup], function(G)
+  return Index(G) / IndexModN(G, GeneralizedLevel(G));
+end);
+
 InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
   return Index(G) / IndexModN(G, N);
 end);

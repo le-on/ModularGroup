@@ -14,6 +14,7 @@ DeclareAttribute("NormalCore", IsModularSubgroup);
 DeclareAttribute("QuotientByNormalCore", IsModularSubgroup);
 DeclareAttribute("AssociatedCharacterTable", IsModularSubgroup);
 DeclareAttribute("Genus", IsModularSubgroup);
+DeclareAttribute("Deficiency", IsModularSubgroup);
 
 DeclareOperation("DefinesCosetActionST", [IsPerm, IsPerm]);
 DeclareOperation("DefinesCosetActionRT", [IsPerm, IsPerm]);
