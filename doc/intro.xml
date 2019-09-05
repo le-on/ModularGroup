@@ -48,6 +48,9 @@ and represent a subgroup as a tuple of transitive permutations
 <M>(\sigma_S,\sigma_T)</M> describing the action of <M>S</M> and <M>T</M>.
 This is exactly the way this package internally treats such subgroups. We use
 the convention that <M>1</M> corresponds to the coset of the identity matrix.
+Note that such a representation as a tuple of permutations is only unique up to
+relabelling of the cosets, i.e. up to simultaneous conjugation (fixing the
+<M>1</M> coset by our convention).
 
 </Section>
 
