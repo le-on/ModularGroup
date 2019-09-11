@@ -28,3 +28,4 @@ DeclareOperation("LiftToSL2ZEven", [IsProjectiveModularSubgroup]);
 DeclareOperation("LiftToSL2ZOdd", [IsProjectiveModularSubgroup]);
 DeclareOperation("IndexModN", [IsProjectiveModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsProjectiveModularSubgroup, IsPosInt]);
+DeclareOperation("Conjugate", [IsProjectiveModularSubgroup, IsMatrix]);

@@ -363,6 +363,14 @@ InstallMethod(Deficiency, [IsProjectiveModularSubgroup, IsPosInt], function(G, N
   return Index(G) / IndexModN(G, N);
 end);
 
+InstallMethod(Conjugate, [IsProjectiveModularSubgroup, IsMatrix], function(G, A)
+  local a, s, t;
+  a := CosetActionOf(A, G);
+  s := SAction(G);
+  t := TAction(G);
+  return ProjectiveModularSubgroup(a*s*a^-1, a*t*a^-1);
+end);
+
 InstallMethod(NormalCore, [IsProjectiveModularSubgroup], function(G)
   local s, t, F2, S, T, PSL2Z, index, m, Sd, core, coset_table;
 

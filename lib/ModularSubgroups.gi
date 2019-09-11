@@ -528,6 +528,14 @@ InstallMethod(Projection, [IsModularSubgroup], function(G)
   return ProjectiveModularSubgroup(q, p);
 end);
 
+InstallMethod(Conjugate, [IsModularSubgroup, IsMatrix], function(G, A)
+  local a, s, t;
+  a := CosetActionOf(A, G);
+  s := SAction(G);
+  t := TAction(G);
+  return ModularSubgroup(a*s*a^-1, a*t*a^-1);
+end);
+
 InstallMethod(NormalCore, [IsModularSubgroup], function(G)
   local s, t, F2, S, T, SL2Z, index, m, Sd, core, coset_table;
 
