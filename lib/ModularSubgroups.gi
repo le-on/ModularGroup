@@ -468,6 +468,7 @@ end);
 
 InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
   local gens, SL2Zn, H;
+  if N = 1 then return 1; fi;
   gens := ShallowCopy(MatrixGeneratorsOfGroup(G));
   Apply(gens, M ->
     [[ZmodnZObj(M[1][1], N), ZmodnZObj(M[1][2], N)],
@@ -484,6 +485,7 @@ InstallMethod(Deficiency, [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
+  if RemInt(N, GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
   return Index(G) / IndexModN(G, N);
 end);
 
