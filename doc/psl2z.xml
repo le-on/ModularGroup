@@ -375,7 +375,7 @@ Nevertheless we list them here.
   <Returns>A ProjectiveModularSubgroup.</Returns>
   <Description>
     Conjugates the group <A>G</A> by (the redidue class in <M>PSL_2(&ZZ;)</M> of)
-    <A>A</A> and returns the group <M>A*G*A^{-1}</M>.
+    <A>A</A> and returns the group <M>A^{-1}*G*A</M>.
   </Description>
 </ManSection>
 
