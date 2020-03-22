@@ -369,7 +369,7 @@ InstallMethod(Conjugate, [IsProjectiveModularSubgroup, IsMatrix], function(G, A)
   a := CosetActionOf(A, G);
   s := SAction(G);
   t := TAction(G);
-  return ProjectiveModularSubgroup(a*s*a^-1, a*t*a^-1);
+  return ProjectiveModularSubgroup(a*s*a^-1, a*t*a^-1); # this is A^-1*G*A
 end);
 
 InstallMethod(NormalCore, [IsProjectiveModularSubgroup], function(G)

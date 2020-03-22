@@ -41,5 +41,4 @@ DeclareOperation("IndexModN", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Deficiency", [IsModularSubgroup, IsPosInt]);
 DeclareOperation("Projection", [IsModularSubgroup]);
 DeclareOperation("Conjugate", [IsModularSubgroup, IsMatrix]);
-
 DeclareOperation("MoebiusTransformation", [IsMatrix, IsRat]);
