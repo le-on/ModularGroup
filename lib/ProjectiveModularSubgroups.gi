@@ -69,6 +69,29 @@ InstallMethod(IsElementOf, [IsMatrix, IsProjectiveModularSubgroup], function(A, 
   p := CosetActionOf(A, G);
   return 1^p = 1;
 end);
+InstallMethod(\in, "for a finite-index subgroup of PSL(2,Z)", [IsMatrix, IsProjectiveModularSubgroup], 10000, function(A, G)
+  return IsElementOf(A, G);
+end);
+
+InstallMethod(IsSubset, "for two finite-index subgroups of PSL(2,Z)", [IsProjectiveModularSubgroup, IsProjectiveModularSubgroup], function(H, G)
+  local gens, result, g, F2, MatS, MatT;
+  if Index(H) > Index(G) then return false; fi;
+  gens := ShallowCopy(GeneratorsOfGroup(H));
+  F2 := FreeGroup("S", "T");
+  MatS := [[0,-1],[1,0]];
+  MatT := [[1,1], [0,1]];
+  Apply(gens, w -> ObjByExtRep(FamilyObj(F2.1), ExtRepOfObj(w)));
+  Apply(gens, w -> MappedWord(w, [F2.1, F2.2], [MatS, MatT]));
+  result := true;
+  for g in gens do
+    result := result and (g in G);
+  od;
+  return result;
+end);
+
+InstallMethod(\=, "for two finite-index subgroups of PSL(2,Z)", [IsProjectiveModularSubgroup, IsProjectiveModularSubgroup], function(G, H)
+  return (Index(G) = Index(H)) and IsSubgroup(G, H);
+end);
 
 InstallMethod(Index, "for a projective modular subgroup", [IsProjectiveModularSubgroup], function(G)
   local s, t;

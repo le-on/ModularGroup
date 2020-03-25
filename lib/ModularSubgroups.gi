@@ -386,6 +386,23 @@ InstallMethod(IsElementOf, [IsMatrix, IsModularSubgroup], function(A, G)
   p := CosetActionOf(A, G);
   return 1^p = 1;
 end);
+InstallMethod(\in, "for a finite-index subgroup of SL(2,Z)", [IsMatrix, IsModularSubgroup], 10000, function(A, G)
+  return IsElementOf(A, G);
+end);
+
+InstallMethod(IsSubset, "for two finite-index subgroups of SL(2,Z)", [IsModularSubgroup, IsModularSubgroup], function(H, G)
+  local gens, result, g;
+  gens := MatrixGeneratorsOfGroup(H);
+  result := true;
+  for g in gens do
+    result := result and (g in G);
+  od;
+  return result;
+end);
+
+InstallMethod(\=, "for two finite-index subgroups of SL(2,Z)", [IsModularSubgroup, IsModularSubgroup], function(G, H)
+  return (Index(G) = Index(H)) and IsSubgroup(G, H);
+end);
 
 InstallMethod(CuspWidth, [IsRat, IsModularSubgroup], function(c, G)
   return CuspWidth(c, Projection(G));
