@@ -392,7 +392,9 @@ InstallMethod(Conjugate, [IsProjectiveModularSubgroup, IsMatrix], function(G, A)
   a := CosetActionOf(A, G);
   s := SAction(G);
   t := TAction(G);
-  return ProjectiveModularSubgroup(a*s*a^-1, a*t*a^-1); # this is A^-1*G*A
+  return ProjectiveModularSubgroup(a^-1*s*a, a^-1*t*a); # this is A^-1*G*A
+  # note that if G = (\sigma_S, \sigma_T) then A^-1*G*A = (\sigma_A*\sigma_S*\sigma_A^-1, \sigma_A*\sigma_T*\sigma_A^-1)
+  # but GAP multiplies permutations the other way around
 end);
 
 InstallMethod(NormalCore, [IsProjectiveModularSubgroup], function(G)
