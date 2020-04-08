@@ -9,12 +9,12 @@ SetPackageInfo( rec(
 PackageName := "ModularGroup",
 Subtitle := "Finite-index subgroups of (P)SL(2,Integers)",
 Version := "1.0.0",
-Date := "05/12/2018", ## dd/mm/yyyy
+Date := "08/04/2020", ## dd/mm/yyyy
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "1.0.0">
-##  <!ENTITY RELEASEDATE "05 December 2018">
-##  <!ENTITY RELEASEYEAR "2018">
+##  <!ENTITY RELEASEDATE "08 April 2020">
+##  <!ENTITY RELEASEYEAR "2020">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
@@ -79,7 +79,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := "4.5.3",
 
-  NeededOtherPackages := [["GAPDoc", ">= 1.5"], ["CTblLib", ">= 1.2.2"]],
+  NeededOtherPackages := [["GAPDoc", ">= 1.5"], ["CTblLib", ">= 1.2.2"], ["IO", ">= 4.0.0"]],
 
   SuggestedOtherPackages := [["Congruence", ">=1.1.1"]],
 

@@ -2,8 +2,10 @@
   
   [1XIndex[101X
   
-  [2XAssociatedCharacterTable[102X, AssociatedCharacterTablePSL2Z 3.2-16 
-      AssociatedCharacterTableSL2Z 2.2-16 
+  [2XAssociatedCharacterTable[102X, AssociatedCharacterTablePSL2Z 3.2-18 
+      AssociatedCharacterTableSL2Z 2.2-18 
+  [2XConjugate[102X, ConjugatePSL2Z 3.2-15 
+      ConjugateSL2Z 2.2-15 
   [2XCosetActionFromGenerators[102X 2.3-4 
   [2XCosetActionOf[102X 2.1-2 
   [2XCosetRepresentativeOfCusp[102X, CosetRepresentativeOfCuspPSL2Z 3.2-9 
@@ -15,7 +17,9 @@
   [2XCuspWidth[102X, CuspWidthPSL2Z 3.2-7 
       CuspWidthSL2Z 2.2-8 
   [2XDeficiency[102X, DeficiencyPSL2Z 3.2-13 
+      DeficiencyPSL2ZAttr 3.2-14 
       DeficiencySL2Z 2.2-12 
+      DeficiencySL2ZAttr 2.2-13 
   [2XDefinesCosetActionRT[102X 2.3-2 
   [2XDefinesCosetActionSJ[102X 2.3-3 
   [2XDefinesCosetActionST[102X 2.3-1 
@@ -23,16 +27,16 @@
       GeneralizedLevelSL2Z 2.2-2 
   [2XGeneratorsOfGroup[102X, GeneratorsOfGroupPSL2Z 3.2-4 
       GeneratorsOfGroupSL2Z 2.2-4 
-  [2XGenus[102X, GenusPSL2Z 3.2-18 
-      GenusSL2Z 2.2-18 
+  [2XGenus[102X, GenusPSL2Z 3.2-20 
+      GenusSL2Z 2.2-20 
   [2XIndex[102X, IndexPSL2Z 3.2-1 
       IndexSL2Z 2.2-1 
   [2XIndexModN[102X, IndexModNPSL2Z 3.2-12 
       IndexModNSL2Z 2.2-11 
   [2XIsCongruence[102X, IsCongruencePSL2Z 3.2-5 
       IsCongruenceSL2Z 2.2-6 
-  [2XIsElementOf[102X, IsElementOfPSL2Z 3.2-17 
-      IsElementOfSL2Z 2.2-17 
+  [2XIsElementOf[102X, IsElementOfPSL2Z 3.2-19 
+      IsElementOfSL2Z 2.2-19 
   [2XJAction[102X 2.1-2 
   [2XLiftToSL2ZEven[102X 3.2-10 
   [2XLiftToSL2ZOdd[102X 3.2-11 
@@ -42,12 +46,12 @@
   [2XModularSubgroupRT[102X 2.1-1 
   [2XModularSubgroupST[102X 2.1-1 
   [2XModularSubgrouSJ[102X 2.1-1 
-  [2XNormalCore[102X, NormalCorePSL2Z 3.2-14 
-      NormalCoreSL2Z 2.2-14 
-  [2XProjection[102X 2.2-13 
+  [2XNormalCore[102X, NormalCorePSL2Z 3.2-16 
+      NormalCoreSL2Z 2.2-16 
+  [2XProjection[102X 2.2-14 
   [2XProjectiveModularSubgroup[102X 3.1-1 
-  [2XQuotientByNormalCore[102X, QuotientByNormalCorePSL2Z 3.2-15 
-      QuotientByNormalCoreSL2Z 2.2-15 
+  [2XQuotientByNormalCore[102X, QuotientByNormalCorePSL2Z 3.2-17 
+      QuotientByNormalCoreSL2Z 2.2-17 
   [2XRAction[102X 2.1-2 
   [2XRightCosetRepresentatives[102X, RightCosetRepresentativesPSL2Z 3.2-3 
       RightCosetRepresentativesSL2Z 2.2-3 

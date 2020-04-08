@@ -45,12 +45,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A73C80F7AA9FCF1">2.2-10 CosetRepresentativeOfCusp</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FEB5D3B853CA831">2.2-11 IndexModN</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6754897B892B4A">2.2-12 Deficiency</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8769E8DA80BC96C1">2.2-13 Projection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874DC4FA8436FCBC">2.2-14 NormalCore</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D645ABF7BF4600B">2.2-15 QuotientByNormalCore</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874C4C4584FB5D03">2.2-16 AssociatedCharacterTable</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E8C4D97BF50B74">2.2-17 IsElementOf</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X87B255C4784B8CBC">2.2-18 Genus</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B704B49846C54E7">2.2-13 Deficiency</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8769E8DA80BC96C1">2.2-14 Projection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X813AAF0D7D026CC0">2.2-15 Conjugate</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874DC4FA8436FCBC">2.2-16 NormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D645ABF7BF4600B">2.2-17 QuotientByNormalCore</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X874C4C4584FB5D03">2.2-18 AssociatedCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E8C4D97BF50B74">2.2-19 IsElementOf</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X87B255C4784B8CBC">2.2-20 Genus</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C5563A37D566DA5">2.3 <span class="Heading">Miscellaneous</span></a>
 </span>
@@ -473,9 +475,33 @@
   
 </pre></div>
 
+<p><a id="X7B704B49846C54E7" name="X7B704B49846C54E7"></a></p>
+
+<h5>2.2-13 Deficiency</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Deficiency</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: A natural number.</p>
+
+<p>Shorthand for <code class="code">Deficiency(G, GeneralizedLevel(G))</code>.</p>
+
+
+<div class="example"><pre>
+  
+  gap&gt; G := ModularSubgroup([
+  &gt; [[1,2],[0,1]],
+  &gt; [[1,0],[2,1]]
+  &gt; ]);
+  &lt;modular subgroup of index 12&gt;
+  gap&gt; Deficiency(G);
+  2
+  gap&gt; Deficiency(G, GeneralizedLevel(G));
+  2
+  
+</pre></div>
+
 <p><a id="X8769E8DA80BC96C1" name="X8769E8DA80BC96C1"></a></p>
 
-<h5>2.2-13 Projection</h5>
+<h5>2.2-14 Projection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Projection</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: A projective modular subgroup.</p>
@@ -495,9 +521,18 @@
   
 </pre></div>
 
+<p><a id="X813AAF0D7D026CC0" name="X813AAF0D7D026CC0"></a></p>
+
+<h5>2.2-15 Conjugate</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Conjugate</code>( <var class="Arg">G</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: A ModularSubgroup.</p>
+
+<p>Conjugates the group <var class="Arg">G</var> by <var class="Arg">A</var> and returns the group <span class="SimpleMath">A^-1*G*A</span>.</p>
+
 <p><a id="X874DC4FA8436FCBC" name="X874DC4FA8436FCBC"></a></p>
 
-<h5>2.2-14 NormalCore</h5>
+<h5>2.2-16 NormalCore</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A modular subgroup.</p>
@@ -519,7 +554,7 @@
 
 <p><a id="X7D645ABF7BF4600B" name="X7D645ABF7BF4600B"></a></p>
 
-<h5>2.2-15 QuotientByNormalCore</h5>
+<h5>2.2-17 QuotientByNormalCore</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientByNormalCore</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A finite group.</p>
@@ -541,7 +576,7 @@
 
 <p><a id="X874C4C4584FB5D03" name="X874C4C4584FB5D03"></a></p>
 
-<h5>2.2-16 AssociatedCharacterTable</h5>
+<h5>2.2-18 AssociatedCharacterTable</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatedCharacterTable</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A character table.</p>
@@ -563,7 +598,7 @@
 
 <p><a id="X79E8C4D97BF50B74" name="X79E8C4D97BF50B74"></a></p>
 
-<h5>2.2-17 IsElementOf</h5>
+<h5>2.2-19 IsElementOf</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsElementOf</code>( <var class="Arg">A</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: True or false.</p>
@@ -587,7 +622,7 @@
 
 <p><a id="X87B255C4784B8CBC" name="X87B255C4784B8CBC"></a></p>
 
-<h5>2.2-18 Genus</h5>
+<h5>2.2-20 Genus</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Genus</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: A non-negative integer.</p>

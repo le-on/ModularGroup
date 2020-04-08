@@ -412,7 +412,28 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X2.2-13 Projection[101X
+  [1X2.2-13 Deficiency[101X
+  
+  [33X[1;0Y[29X[2XDeficiency[102X( [3XG[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YA natural number.[133X
+  
+  [33X[0;0YShorthand for [10XDeficiency(G, GeneralizedLevel(G))[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  [128X[104X
+    [4X[28X  gap> G := ModularSubgroup([[128X[104X
+    [4X[28X  > [[1,2],[0,1]],[128X[104X
+    [4X[28X  > [[1,0],[2,1]][128X[104X
+    [4X[28X  > ]);[128X[104X
+    [4X[28X  <modular subgroup of index 12>[128X[104X
+    [4X[28X  gap> Deficiency(G);[128X[104X
+    [4X[28X  2[128X[104X
+    [4X[28X  gap> Deficiency(G, GeneralizedLevel(G));[128X[104X
+    [4X[28X  2[128X[104X
+    [4X[28X  [128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-14 Projection[101X
   
   [33X[1;0Y[29X[2XProjection[102X( [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YA projective modular subgroup.[133X
@@ -432,7 +453,14 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X2.2-14 NormalCore[101X
+  [1X2.2-15 Conjugate[101X
+  
+  [33X[1;0Y[29X[2XConjugate[102X( [3XG[103X, [3XA[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10YA ModularSubgroup.[133X
+  
+  [33X[0;0YConjugates the group [3XG[103X by [3XA[103X and returns the group [22XA^-1*G*A[122X.[133X
+  
+  [1X2.2-16 NormalCore[101X
   
   [33X[1;0Y[29X[2XNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA modular subgroup.[133X
@@ -452,7 +480,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X2.2-15 QuotientByNormalCore[101X
+  [1X2.2-17 QuotientByNormalCore[101X
   
   [33X[1;0Y[29X[2XQuotientByNormalCore[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA finite group.[133X
@@ -471,7 +499,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X2.2-16 AssociatedCharacterTable[101X
+  [1X2.2-18 AssociatedCharacterTable[101X
   
   [33X[1;0Y[29X[2XAssociatedCharacterTable[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA character table.[133X
@@ -490,7 +518,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X2.2-17 IsElementOf[101X
+  [1X2.2-19 IsElementOf[101X
   
   [33X[1;0Y[29X[2XIsElementOf[102X( [3XA[103X, [3XG[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10YTrue or false.[133X
@@ -512,7 +540,7 @@
     [4X[28X  [128X[104X
   [4X[32X[104X
   
-  [1X2.2-18 Genus[101X
+  [1X2.2-20 Genus[101X
   
   [33X[1;0Y[29X[2XGenus[102X( [3XG[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YA non-negative integer.[133X

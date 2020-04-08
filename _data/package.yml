@@ -1,6 +1,6 @@
 name: ModularGroup
 version: 1.0.0
-date: 2018-12-05
+date: 2020-04-08
 description: |
     Finite-index subgroups of (P)SL(2,Integers)
 
@@ -21,6 +21,9 @@ needed-pkgs:
     - name: "CTblLib"
       version: ">= 1.2.2"
       url: "http://www.math.rwth-aachen.de/~Thomas.Breuer/ctbllib"
+    - name: "IO"
+      version: ">= 4.0.0"
+      url: "https://gap-packages.github.io/io"
 
 suggested-pkgs:
     - name: "Congruence"
@@ -45,10 +48,10 @@ keywords: |
     PSL(2,Z), PSL2Z, SL(2,Z), SL2Z, modular group, congruence subgroup.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Jun18</span>]   <b class='BibAuthor'>Junk, L. L.</b>,
+    [<span class='BibKey'>Jun20</span>]   <b class='BibAuthor'>Junk, L. L.</b>,
      <i class='BibTitle'>ModularGroup, Finite-index subgroups of (P)SL(2,Integers),
              Version 1.0.0</i>
-     (<span class='BibYear'>2018</span>)<br />
+     (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://le-on.github.io/ModularGroup">https://le-on.github.io/ModularGroup</a></span>.
     </p>
@@ -59,14 +62,14 @@ bibtex: |
       author =           {Junk, L. L.},
       title =            {{ModularGroup},      Finite-index     subgroups     of
                           (P)SL(2,Integers), {V}ersion 1.0.0},
-      month =            {Dec},
-      year =             {2018},
+      month =            {Apr},
+      year =             {2020},
       note =             {GAP package},
       howpublished =     {\href           {https://le-on.github.io/ModularGroup}
                           {\texttt{https://le-on.github.io/}\discretionary
                           {}{}{}\texttt{ModularGroup}}},
       keywords =         {PSL(2,Z);   PSL2Z;   SL(2,Z);   SL2Z;  modular  group;
                           congruence subgroup},
-      printedkey =       {Jun18}
+      printedkey =       {Jun20}
     }
 

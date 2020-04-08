@@ -26,5 +26,7 @@
   [33X[0;0Yand  represent  a  subgroup  as a tuple of transitive permutations [22X(σ_S,σ_T)[122X
   describing  the  action  of  [22XS[122X  and  [22XT[122X. This is exactly the way this package
   internally  treats  such subgroups. We use the convention that [22X1[122X corresponds
-  to the coset of the identity matrix.[133X
+  to  the  coset  of the identity matrix. Note that such a representation as a
+  tuple  of  permutations is only unique up to relabelling of the cosets, i.e.
+  up to simultaneous conjugation (fixing the [22X1[122X coset by our convention).[133X
   
