@@ -19,7 +19,7 @@ InstallMethod(ModularSubgroup, [IsPerm, IsPerm], function(sp, tp)
   l3 := ListPerm(tp, index);    l3[1] := l3[1];
   l4 := ListPerm(tp^-1, index); l4[1] := l4[1];
   tab := [l1, l2, l3, l4];
-  #StandardizeTable(tab);
+  StandardizeTable(tab);
 
   sp := PermList(tab[1]);
   tp := PermList(tab[3]);
