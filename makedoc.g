@@ -4,4 +4,5 @@ MakeGAPDocDoc(
   ["../PackageInfo.g"],
   "ModularGroup"
 );;
+CopyHTMLStyleFiles("doc");
 QUIT;
