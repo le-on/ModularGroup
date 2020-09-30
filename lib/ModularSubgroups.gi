@@ -502,7 +502,9 @@ InstallMethod(Deficiency, [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
-  if RemInt(N, GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
+  # if G is congruence, then the level of G equals either l or 2*l, where l is the generalized level
+  # reference: 'Lifts of projective congruence groups', Kiming, Schütt, Verrill; JLMS, 2011
+  if RemInt(N, 2*GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
   return Index(G) / IndexModN(G, N);
 end);
 
