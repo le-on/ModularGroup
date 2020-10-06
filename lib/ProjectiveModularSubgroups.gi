@@ -388,6 +388,7 @@ InstallMethod(Deficiency, [IsProjectiveModularSubgroup], function(G)
 end);
 
 InstallMethod(Deficiency, [IsProjectiveModularSubgroup, IsPosInt], function(G, N)
+  if RemInt(N, GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
   return Index(G) / IndexModN(G, N);
 end);
 

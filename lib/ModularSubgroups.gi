@@ -497,7 +497,7 @@ InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
 end);
 
 InstallMethod(Deficiency, [IsModularSubgroup], function(G)
-  if IsCongruence(G) then return 1; fi;
+  # if IsCongruence(G) then return 1; fi;
   return Index(G) / IndexModN(G, GeneralizedLevel(G));
 end);
 
