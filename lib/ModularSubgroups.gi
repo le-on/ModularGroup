@@ -680,12 +680,18 @@ InstallMethod(IO_Pickle, "for a modular subgroup", [IsFile, IsModularSubgroup], 
     if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
   fi;
 
+  if HasDeficiency(G) then
+    if IO_Pickle(f, Deficiency(G)) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  else
+    if IO_Pickle(f, fail) = IO_Error then IO_FinalizePickled(); return IO_Error; fi;
+  fi;
+
   IO_FinalizePickled();
   return IO_OK;
 end);
 
 IO_Unpicklers.MODS := function(f)
-  local H, s, t, cong, cusps, level, matrixgen, normal_core, quotient_nc, ctbl, genus;
+  local H, s, t, cong, cusps, level, matrixgen, normal_core, quotient_nc, ctbl, genus, deficiency;
   s := IO_Unpickle(f);
   if s = IO_Error then return IO_Error; fi;
   t := IO_Unpickle(f);
@@ -709,6 +715,8 @@ IO_Unpicklers.MODS := function(f)
   if ctbl = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
   genus := IO_Unpickle(f);
   if genus = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
+  deficiency := IO_Unpickle(f);
+  if deficiency = IO_Error then IO_FinalizeUnpickled(); return IO_Error; fi;
 
   if cong <> fail then SetIsCongruence(H, cong); fi;
   if cusps <> fail then SetCusps(H, cusps); fi;
@@ -718,6 +726,7 @@ IO_Unpicklers.MODS := function(f)
   if quotient_nc <> fail then SetQuotientByNormalCore(H, quotient_nc); fi;
   if ctbl <> fail then SetAssociatedCharacterTable(H, ctbl); fi;
   if genus <> fail then SetGenus(H, genus); fi;
+  if deficiency <> fail then SetDeficiency(H, deficiency); fi;
 
   IO_FinalizeUnpickled();
   return H;
