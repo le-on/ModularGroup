@@ -8,6 +8,8 @@ DeclareAttribute("IsCongruence", IsModularSubgroup);
 DeclareAttribute("Cusps", IsModularSubgroup);
 DeclareAttribute("RightCosetRepresentatives", IsModularSubgroup);
 DeclareAttribute("GeneralizedLevel", IsModularSubgroup);
+DeclareAttribute("WohlfahrtLevel", IsModularSubgroup);
+DeclareAttribute("CongruenceLevel", IsModularSubgroup);
 DeclareAttribute("GeneratorsOfGroup", IsModularSubgroup);
 DeclareAttribute("MatrixGeneratorsOfGroup", IsModularSubgroup);
 DeclareAttribute("NormalCore", IsModularSubgroup);

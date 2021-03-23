@@ -322,7 +322,24 @@ InstallMethod(RightCosetRepresentatives, [IsModularSubgroup], function(G)
   return AsList(RightTransversal(SL2Z, H));
 end);
 
+# The generalized level of G is defined to be the smallest n for which Deficiency(G, n) is minimal.
+# We know that Deficiency(G, 2*l) (where l is the Wohlfahrt level) is minimal
 InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
+  local l, d1, d2;
+
+  l := WohlfahrtLevel(G);
+  d1 := Deficiency(G, l);
+  d2 := Deficiency(G, 2*l);
+
+  if d1 <= d2 then
+    return l;
+  else
+    return 2*l;
+  fi;
+end);
+
+# The Wohlfahrt level is the least common multiple of all cusp widths. Thus it only depends on the image of G in PSL(2,Z).
+InstallMethod(WohlfahrtLevel, [IsModularSubgroup], function(G)
   local s, t, i, ind, orbits, plist, p, k;
   s := SAction(G);
   t := TAction(G);
@@ -344,6 +361,27 @@ InstallMethod(GeneralizedLevel, [IsModularSubgroup], function(G)
   od;
   p := PermList(plist);
   return Order(p);
+end);
+
+# The congruence level is the least smallest n such that G contains the principal congruence subgroup \Gamma(n).
+InstallMethod(CongruenceLevel, [IsModularSubgroup], function(G)
+  local l, one;
+  
+  if not IsCongruence(G) then
+    Info("This group is not a congruence subgroup.");
+    return fail;
+  fi;
+
+  # if G is congruence, then the congruence level of G equals either l or 2*l, where l is the Wohlfahrt level
+  # reference: 'Lifts of projective congruence groups', Kiming, Schütt, Verrill; Journal of the LMS, 2011
+
+  l := WohlfahrtLevel(G);
+  one := [[1,0],[0,1]];
+  if (-one in G) or Deficiency(G, l) = 1 then
+    return l;
+  else
+    return 2*l;
+  fi;
 end);
 
 InstallOtherMethod(GeneratorsOfGroup, [IsModularSubgroup], function(G)
@@ -497,13 +535,13 @@ InstallMethod(IndexModN, [IsModularSubgroup, IsPosInt], function(G, N)
 end);
 
 InstallMethod(Deficiency, [IsModularSubgroup], function(G)
-  # if IsCongruence(G) then return 1; fi;
-  return Index(G) / IndexModN(G, GeneralizedLevel(G));
+  if IsCongruence(G) then return 1; fi;
+  return Index(G) / IndexModN(G, 2 * GeneralizedLevel(G));
 end);
 
 InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
-  # if G is congruence, then the level of G equals either l or 2*l, where l is the generalized level
-  # reference: 'Lifts of projective congruence groups', Kiming, Schütt, Verrill; JLMS, 2011
+  # if G is congruence, then the congruence level of G equals either l or 2*l, where l is the Wohlfahrt level
+  # reference: 'Lifts of projective congruence groups', Kiming, Schütt, Verrill; Journal of the LMS, 2011
   if RemInt(N, 2*GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
   return Index(G) / IndexModN(G, N);
 end);
