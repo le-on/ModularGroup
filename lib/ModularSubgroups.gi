@@ -368,7 +368,7 @@ InstallMethod(CongruenceLevel, [IsModularSubgroup], function(G)
   local l, one;
   
   if not IsCongruence(G) then
-    Info("This group is not a congruence subgroup.");
+    Print("This group is not a congruence subgroup.\n");
     return fail;
   fi;
 
@@ -540,9 +540,11 @@ InstallMethod(Deficiency, [IsModularSubgroup], function(G)
 end);
 
 InstallMethod(Deficiency, [IsModularSubgroup, IsPosInt], function(G, N)
-  # if G is congruence, then the congruence level of G equals either l or 2*l, where l is the Wohlfahrt level
-  # reference: 'Lifts of projective congruence groups', Kiming, Schütt, Verrill; Journal of the LMS, 2011
-  if RemInt(N, 2*GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
+  if HasGeneralizedLevel(G) then
+    # if G is congruence, then the congruence level of G equals either l or 2*l, where l is the Wohlfahrt level
+    # reference: 'Lifts of projective congruence groups', Kiming, Schütt, Verrill; Journal of the LMS, 2011
+    if RemInt(N, 2*GeneralizedLevel(G)) = 0 and IsCongruence(G) then return 1; fi;
+  fi;
   return Index(G) / IndexModN(G, N);
 end);
 
