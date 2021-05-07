@@ -9,20 +9,20 @@ SetPackageInfo( rec(
 PackageName := "ModularGroup",
 Subtitle := "Finite-index subgroups of (P)SL(2,Integers)",
 Version := "1.0.0",
-Date := "08/04/2020", ## dd/mm/yyyy
+Date := "07/05/2021", ## dd/mm/yyyy
 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "1.0.0">
-##  <!ENTITY RELEASEDATE "08 April 2020">
-##  <!ENTITY RELEASEYEAR "2020">
+##  <!ENTITY RELEASEDATE "07 May 2021">
+##  <!ENTITY RELEASEYEAR "2021">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
-  Concatenation( "https://le-on.github.io/", ~.PackageName ),
+  Concatenation( "https://ag-weitze-schmithusen.github.io/", ~.PackageName ),
 
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/le-on/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/ag-weitze-schmithusen/", ~.PackageName ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 SupportEmail := "junk@math.uni-sb.de",
@@ -41,6 +41,21 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "junk@math.uni-sb.de",
+    WWWHome       := "http://www.math.uni-sb.de/ag/weitze/",
+    PostalAddress := Concatenation( [
+                       "AG Weitze-Schmithüsen\n",
+                       "FR 6.1 Mathematik\n",
+                       "Universität des Saarlandes\n",
+                       "D-66041 Saarbrücken" ] ),
+    Place         := "Saarbrücken",
+    Institution   := "Universität des Saarlandes"
+  ),
+  rec(
+    LastName      := "Weitze-Schmithüsen",
+    FirstNames    := "Gabriela",
+    IsAuthor      := true,
+    IsMaintainer  := true,
+    Email         := "weitze@math.uni-sb.de",
     WWWHome       := "http://www.math.uni-sb.de/ag/weitze/",
     PostalAddress := Concatenation( [
                        "AG Weitze-Schmithüsen\n",

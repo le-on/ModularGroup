@@ -22,8 +22,18 @@
       D-66041 Saarbrücken<Br/>
     </Address>
   </Author>
+  <Author>Gabriela Weitze-Schmithüsen<Br/>
+    <Email>weitze@math.uni-sb.de</Email>
+    <Homepage>http://www.math.uni-sb.de/ag/weitze/</Homepage>
+    <Address>
+      AG Weitze-Schmithüsen<Br/>
+      FR 6.1 Mathematik<Br/>
+      Universität des Saarlandes<Br/>
+      D-66041 Saarbrücken<Br/>
+    </Address>
+  </Author>
 
-  <Copyright>&copyright; &RELEASEYEAR; by Luca L. Junk
+  <Copyright>&copyright; &RELEASEYEAR; by Luca L. Junk and Gabriela Weitze-Schmithüsen
   </Copyright>
 
   <Acknowledgements>
